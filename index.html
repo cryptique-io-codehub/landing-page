@@ -7,10 +7,13 @@
     <link rel="icon" href="Public/Images/favicon.ico">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
-    <!-- Floating Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
@@ -32,220 +35,30 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
+        <canvas id="hero-canvas" class="hero-canvas"></canvas>
         <div class="hero-container">
             <div class="hero-content">
                 <h1 class="hero-title">
-                    <span class="gradient-text">Your Intelligent Hub</span><br>
-                    <span class="gradient-text">For The New Internet</span>
+                    <span class="gradient-text hero-title-main">Your Intelligent Hub</span><br>
+                    <span class="gradient-text hero-title-sub">For The New Internet</span>
                 </h1>
                 <div class="hero-animation">
-                    <!-- Intelligence Prism Animation -->
-                    <div class="intelligence-prism-container">
-                        <!-- Dynamic Data Sources Section -->
-                        <div class="data-sources">
-                            <!-- Dynamic Logo Containers -->
-                            <div class="dynamic-logo-container">
-                                <div class="floating-logo" data-logo="x">
-                                    <img src="Public/Images/x-logo.png" alt="X">
-                                    <div class="logo-name">X</div>
-                                    <div class="logo-particles"></div>
-                                </div>
-                                <div class="floating-logo" data-logo="discord">
-                                    <img src="Public/Images/discord-logo.png" alt="Discord">
-                                    <div class="logo-name">Discord</div>
-                                    <div class="logo-particles"></div>
-                                </div>
-                                <div class="floating-logo" data-logo="telegram">
-                                    <img src="Public/Images/telegram-logo.png" alt="Telegram">
-                                    <div class="logo-name">Telegram</div>
-                                    <div class="logo-particles"></div>
-                                </div>
-                                <div class="floating-logo" data-logo="meta">
-                                    <img src="Public/Images/meta-logo.png" alt="Meta">
-                                    <div class="logo-name">Meta</div>
-                                    <div class="logo-particles"></div>
-                                </div>
-                                <div class="floating-logo" data-logo="google">
-                                    <img src="Public/Images/google-ads-logo.png" alt="Google Ads">
-                                    <div class="logo-name">Google Ads</div>
-                                    <div class="logo-particles"></div>
-                                </div>
-                                <div class="floating-logo" data-logo="ethereum">
-                                    <img src="Public/Images/ethereum-logo.png" alt="Ethereum">
-                                    <div class="logo-name">Ethereum</div>
-                                    <div class="logo-particles"></div>
-                                </div>
-                                <div class="floating-logo" data-logo="polygon">
-                                    <img src="Public/Images/polygon-logo.png" alt="Polygon">
-                                    <div class="logo-name">Polygon</div>
-                                    <div class="logo-particles"></div>
-                                </div>
-                                <div class="floating-logo" data-logo="solana">
-                                    <img src="Public/Images/solana-logo.png" alt="Solana">
-                                    <div class="logo-name">Solana</div>
-                                    <div class="logo-particles"></div>
-                                </div>
-                                <div class="floating-logo" data-logo="optimism">
-                                    <img src="Public/Images/optimism-logo.png" alt="Optimism">
-                                    <div class="logo-name">Optimism</div>
-                                    <div class="logo-particles"></div>
-                                </div>
-                                <div class="floating-logo" data-logo="questn">
-                                    <img src="Public/Images/questn-logo.png" alt="QuestN">
-                                    <div class="logo-name">QuestN</div>
-                                    <div class="logo-particles"></div>
-                                </div>
-                                <div class="floating-logo" data-logo="bnb">
-                                    <img src="Public/Images/bnb-logo.png" alt="BNB">
-                                    <div class="logo-name">BNB</div>
-                                    <div class="logo-particles"></div>
-                                </div>
-                            </div>
-                            
-                            <!-- Enhanced Stardust Particle System -->
-                            <div class="stardust-system">
-                                <!-- Purple stardust particles -->
-                                <div class="stardust purple-dust"></div>
-                                <div class="stardust purple-dust"></div>
-                                <div class="stardust purple-dust"></div>
-                                <div class="stardust purple-dust"></div>
-                                <div class="stardust purple-dust"></div>
-                                <div class="stardust purple-dust"></div>
-                                <div class="stardust purple-dust"></div>
-                                <div class="stardust purple-dust"></div>
-                                <div class="stardust purple-dust"></div>
-                                <div class="stardust purple-dust"></div>
-                                <div class="stardust purple-dust"></div>
-                                <div class="stardust purple-dust"></div>
-                                
-                                <!-- Gold stardust particles -->
-                                <div class="stardust gold-dust"></div>
-                                <div class="stardust gold-dust"></div>
-                                <div class="stardust gold-dust"></div>
-                                <div class="stardust gold-dust"></div>
-                                <div class="stardust gold-dust"></div>
-                                <div class="stardust gold-dust"></div>
-                                <div class="stardust gold-dust"></div>
-                                <div class="stardust gold-dust"></div>
-                                <div class="stardust gold-dust"></div>
-                                <div class="stardust gold-dust"></div>
-                                <div class="stardust gold-dust"></div>
-                                <div class="stardust gold-dust"></div>
-                            </div>
-                            
-                            <!-- Mixed Stardust Stream -->
-                            <div class="mixed-stardust-stream">
-                                <div class="stream-particle mixed-particle"></div>
-                                <div class="stream-particle mixed-particle"></div>
-                                <div class="stream-particle mixed-particle"></div>
-                                <div class="stream-particle mixed-particle"></div>
-                                <div class="stream-particle mixed-particle"></div>
-                                <div class="stream-particle mixed-particle"></div>
-                            </div>
-                        </div>
-                        
-                        <!-- Center Convergence Point -->
-                        <div class="center-convergence">
-                            <div class="convergence-point"></div>
-                        </div>
-                        
-                        <!-- Central Prism -->
-                        <div class="prism-container">
-                            <div class="cryptique-prism">
-                                <img src="Public/Images/cryptique-logo.png" alt="Cryptique Prism">
-                                <div class="prism-light-core"></div>
-                                <div class="internal-reflections">
-                                    <div class="reflection"></div>
-                                    <div class="reflection"></div>
-                                    <div class="reflection"></div>
-                                    <div class="reflection"></div>
-                                </div>
-                            </div>
-                            <div class="unified-beam"></div>
-                        </div>
-                        
-                        <!-- Holographic UI Output -->
-                        <div class="holographic-output">
-                            <!-- User Profile Constellation -->
-                            <div class="ui-element constellation">
-                                <div class="constellation-nodes">
-                                    <div class="node primary"></div>
-                                    <div class="node secondary"></div>
-                                    <div class="node secondary"></div>
-                                    <div class="node tertiary"></div>
-                                    <div class="node tertiary"></div>
-                                    <div class="node tertiary"></div>
-                                </div>
-                                <div class="constellation-connections">
-                                    <svg class="connections-svg">
-                                        <path class="connection" d="M20,20 L60,40 L40,80 L80,60 Z"></path>
-                                    </svg>
-                                </div>
-                                <div class="ui-label">On-Chain Loyalist</div>
-                            </div>
-                            
-                            <!-- Conversion Funnel -->
-                            <div class="ui-element funnel">
-                                <div class="funnel-stages">
-                                    <div class="stage" data-stage="visit">
-                                        <div class="stage-bar"></div>
-                                        <div class="stage-particles"></div>
-                                        <span class="stage-label">Website Visit</span>
-                                    </div>
-                                    <div class="stage" data-stage="connect">
-                                        <div class="stage-bar"></div>
-                                        <div class="stage-particles"></div>
-                                        <span class="stage-label">Wallet Connect</span>
-                                    </div>
-                                    <div class="stage" data-stage="deposit">
-                                        <div class="stage-bar"></div>
-                                        <div class="stage-particles"></div>
-                                        <span class="stage-label">First Deposit</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- ROI Graph -->
-                            <div class="ui-element roi-graph">
-                                <div class="graph-container">
-                                    <svg class="graph-svg">
-                                        <path class="roi-line" d="M10,80 Q30,60 50,40 T90,20"></path>
-                                        <circle class="roi-point" cx="90" cy="20" r="3"></circle>
-                                    </svg>
-                                    <div class="roi-metric">+40% ROI</div>
-                                </div>
-                                <div class="ui-label">Campaign ROI</div>
-                            </div>
-                            
-                            <!-- AI Insight Card -->
-                            <div class="ui-element insight-card">
-                                <div class="card-header">CQ™ Insight</div>
-                                <div class="insight-text">
-                                    <span class="typing-text">Users from your 'Dev Grant' campaign are 2.5x more likely to stake.</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Spectrum Light Bands -->
-                        <div class="spectrum-container">
-                            <div class="light-band purple-band"></div>
-                            <div class="light-band gold-band"></div>
-                            <div class="light-band purple-band"></div>
-                            <div class="light-band gold-band"></div>
+                    <div class="hero-logo-container">
+                        <div class="hero-logo-3d">
+                            <img src="Public/Images/cryptique-logo.png" alt="Cryptique Logo" class="logo-3d-image">
                         </div>
                     </div>
-                    
-                    <!-- Intelligence Prism is the main visual element -->
                 </div>
                 <div class="hero-cursor"></div>
             </div>
         </div>
-        <div class="hero-bg-animation"></div>
+        <div class="hero-buttons">
+            <button class="hero-btn hero-btn-primary">Get Started</button>
+            <button class="hero-btn hero-btn-secondary">Explore</button>
+        </div>
     </section>
 
-    <!-- Trusted By Section -->
     <section class="trusted-by">
         <div class="container">
             <p class="trusted-text">Trusted by over 25+ Web3 Businesses</p>
@@ -258,7 +71,6 @@
                     <div class="logo-item"><img src="Public/Images/optimism-logo.png" alt="Optimism"></div>
                     <div class="logo-item"><img src="Public/Images/bnb-logo.png" alt="BNB"></div>
                     <div class="logo-item"><img src="Public/Images/questn-logo.png" alt="QuestN"></div>
-                    <!-- Duplicate for seamless loop -->
                     <div class="logo-item"><img src="Public/Images/ethereum-logo.png" alt="Ethereum"></div>
                     <div class="logo-item"><img src="Public/Images/solana-logo.png" alt="Solana"></div>
                     <div class="logo-item"><img src="Public/Images/polygon-logo.png" alt="Polygon"></div>
@@ -271,17 +83,93 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">About Cryptique</h2>
-            <div class="about-content">
-                <p class="about-text">Content will be added later...</p>
+            <h2 class="about-title">About Cryptique</h2>
+        </div>
+        
+        <div class="blockchain-visual-section">
+            <div class="blockchain-cube-container">
+                <div class="blockchain-cube">
+                    <div class="cube-face front">
+                        <div class="block-header">Block #1247</div>
+                        <div class="block-hash">0x1a2b3c4d5e6f...</div>
+                        <div class="block-data">
+                            <div class="transaction">→ 0.5 ETH</div>
+                            <div class="transaction">→ 1.2 ETH</div>
+                            <div class="transaction">→ 0.8 ETH</div>
+                        </div>
+                    </div>
+                    <div class="cube-face back">
+                        <div class="block-header">Block #1248</div>
+                        <div class="block-hash">0x7g8h9i0j1k2l...</div>
+                        <div class="block-data">
+                            <div class="transaction">→ 2.1 ETH</div>
+                            <div class="transaction">→ 0.3 ETH</div>
+                            <div class="transaction">→ 1.7 ETH</div>
+                        </div>
+                    </div>
+                    <div class="cube-face right">
+                        <div class="block-header">Block #1249</div>
+                        <div class="block-hash">0xm3n4o5p6q7r8...</div>
+                        <div class="block-data">
+                            <div class="transaction">→ 0.9 ETH</div>
+                            <div class="transaction">→ 3.2 ETH</div>
+                            <div class="transaction">→ 0.6 ETH</div>
+                        </div>
+                    </div>
+                    <div class="cube-face left">
+                        <div class="block-header">Block #1250</div>
+                        <div class="block-hash">0xs9t0u1v2w3x...</div>
+                        <div class="block-data">
+                            <div class="transaction">→ 1.4 ETH</div>
+                            <div class="transaction">→ 0.7 ETH</div>
+                            <div class="transaction">→ 2.5 ETH</div>
+                        </div>
+                    </div>
+                    <div class="cube-face top">
+                        <div class="block-header">Block #1251</div>
+                        <div class="block-hash">0xy4z5a6b7c8d...</div>
+                        <div class="block-data">
+                            <div class="transaction">→ 1.8 ETH</div>
+                            <div class="transaction">→ 0.4 ETH</div>
+                            <div class="transaction">→ 2.9 ETH</div>
+                        </div>
+                    </div>
+                    <div class="cube-face bottom">
+                        <div class="block-header">Block #1252</div>
+                        <div class="block-hash">0xe9f0g1h2i3j4...</div>
+                        <div class="block-data">
+                            <div class="transaction">→ 0.2 ETH</div>
+                            <div class="transaction">→ 1.6 ETH</div>
+                            <div class="transaction">→ 3.1 ETH</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section problem-section">
+                <div class="problem-stats-container">
+                    <div class="stat-content">
+                        <div class="stat-number"></div>
+                        <div class="stat-description"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-section solution-section">
+                <div class="solution-content-wrapper">
+                    <div class="solution-text-container">
+                        <h3 class="solution-text-top-left">We do not just bridge Off-chain user behavior and on chain actions</h3>
+                        <h3 class="solution-text-bottom-right">We <span class="highlight">Amplify</span> this <span class="highlight">Intelligence</span> for your Adoption</h3>
+                    </div>
+                    <div id="data-arrays-container"></div>
+                    <div id="insight-cards-container"></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
     <section id="features" class="features">
         <div class="container">
             <h2 class="section-title">Our Features</h2>
@@ -331,7 +219,6 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
     <section class="testimonials">
         <div class="container">
             <h2 class="section-title">What Our Clients Say</h2>
@@ -397,7 +284,6 @@
                         </div>
                     </div>
 
-                    <!-- Duplicate for seamless loop -->
                     <div class="testimonial-card">
                         <div class="testimonial-content">
                             <p>"Cryptique has revolutionized how we manage our DeFi operations. The platform is incredibly intuitive and powerful."</p>
@@ -422,7 +308,6 @@
         </div>
     </section>
 
-    <!-- Call to Action Section -->
     <section class="cta">
         <div class="container">
             <div class="cta-content">
@@ -436,7 +321,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -498,6 +382,7 @@
         </div>
     </footer>
 
+    <script src="hero-animation.js"></script>
     <script src="script.js"></script>
 </body>
-</html> 
+</html>
