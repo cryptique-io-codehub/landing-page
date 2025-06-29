@@ -528,7 +528,7 @@ body {
 .trusted-text {
     text-align: center;
     font-size: 14px;
-    color: #444;
+    color: #4B5563; /* UPDATED from #444 */
     margin-bottom: 15px;
     font-weight: 500;
     position: relative;
@@ -1220,7 +1220,7 @@ body {
 
 .feature-text {
     font-size: 16px;
-    color: #666;
+    color: #374151; /* UPDATED from #666 */
     line-height: 1.6;
     margin-bottom: 25px;
 }
@@ -1250,6 +1250,322 @@ body {
 
 .learn-more-btn:hover i {
     transform: translateX(5px);
+}
+
+/* Side Feature Tracker */
+.side-feature-tracker {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.side-feature-tracker.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.tracker-node {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.tracker-node:hover {
+    transform: scale(1.1);
+    border-color: #1d0c46;
+}
+
+.tracker-node.active {
+    background: linear-gradient(135deg, #1d0c46, #caa968);
+    border-color: #1d0c46;
+    box-shadow: 0 4px 15px rgba(29, 12, 70, 0.3);
+}
+
+.tracker-line {
+    width: 2px;
+    height: 50px;
+    background: linear-gradient(to bottom, #e5e7eb, #d1d5db);
+    position: relative;
+}
+
+/* --- NEW AND UPDATED FEATURE SECTION STYLES --- */
+.feature-section {
+    margin-bottom: 80px;
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.6s ease;
+    /* Add this to make the sticky positioning work */
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.feature-section:not(.active) {
+    opacity: 0.3;
+    transform: translateY(20px);
+}
+
+/* New class for the left-side sticky description */
+.feature-description-sticky {
+    width: 33.333%;
+    /* This is the key property */
+    position: sticky;
+    top: 100px; /* Adjust this value based on your navbar height */
+    height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+/* New class for the right-side scrolling content */
+.feature-visual-scrolling {
+    width: 66.667%;
+    min-height: 120vh; /* Ensure there is enough content to scroll */
+}
+
+/* Styling for placeholder mockup images */
+.feature-mockup-img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(29, 12, 70, 0.15);
+}
+
+/* Special adjustments for Feature 1 */
+.feature-section#feature-1 {
+    background: linear-gradient(135deg, #f8f8ff 0%, #ffffff 50%, #f0f0ff 100%);
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    padding: 40px 20px;
+    min-height: auto;
+}
+
+.feature-section#feature-1 .feature-visual-scrolling {
+    min-height: auto; /* It has its own content height */
+}
+
+/* Apply this to the Feature 1 dashboard to ensure it takes full width of its container */
+.analytics-dashboard {
+    width: 100%;
+}
+
+/* --- REMOVED OLD STYLES --- */
+/* The old .sticky-feature-header and .analytics-dashboard styles for fixed positioning are removed. */
+/* The new structure uses .feature-description-sticky and .feature-visual-scrolling */
+.sticky-feature-header {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.feature-header {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 60px auto;
+    padding: 0 20px;
+}
+
+.feature-header-content {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.feature-header .feature-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1d0c46;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    transition: all 0.3s ease;
+}
+
+.feature-header .feature-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+/* Original Card style for reference if needed, but the new layout is preferred */
+.feature-card-modern {
+    background: white;
+    border-radius: 20px;
+    padding: 60px;
+    box-shadow: 0 20px 60px rgba(29, 12, 70, 0.1);
+    border: 1px solid rgba(29, 12, 70, 0.05);
+    transition: all 0.3s ease;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.feature-card-modern:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 80px rgba(29, 12, 70, 0.15);
+}
+
+.feature-card-modern .feature-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1d0c46;
+    margin-bottom: 20px;
+}
+
+.feature-card-modern .feature-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Analytics Dashboard */
+.analytics-dashboard .container {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Enhanced chart grid for two-thirds width layout */
+.analytics-dashboard .chart-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.analytics-dashboard .chart-grid.single-column {
+    grid-template-columns: 1fr;
+}
+
+.analytics-dashboard .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+}
+
+/* Campaign Metric Cards */
+.metric-card {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 3px 15px rgba(29, 12, 70, 0.1);
+    border: 1px solid rgba(29, 12, 70, 0.05);
+    transition: all 0.3s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(29, 12, 70, 0.15);
+}
+
+.metric-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.metric-header h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1d0c46;
+    margin: 0;
+}
+
+.status-badge {
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-badge.active {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status-badge.completed {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.metric-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.7rem;
+    color: #666;
+    margin-bottom: 2px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1d0c46;
+}
+
+.metric-progress {
+    height: 4px;
+    background: #f3f4f6;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #1d0c46, #caa968);
+    border-radius: 2px;
+    transition: width 0.8s ease;
+}
+
+.analytics-dashboard .chart-container {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 3px 15px rgba(29, 12, 70, 0.1);
+    border: 1px solid rgba(29, 12, 70, 0.05);
+    transition: all 0.3s ease;
+}
+
+.analytics-dashboard .chart-container:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(29, 12, 70, 0.15);
 }
 
 /* Testimonials Section */
@@ -1365,11 +1681,8 @@ body {
 
 .testimonial-author span {
     font-size: 14px;
-    color: #666;
-    background: linear-gradient(135deg, #1d0c46, #caa968);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #1d0c46; /* UPDATED from gradient */
+    font-weight: 600; /* ADDED for emphasis */
 }
 
 @keyframes testimonial-scroll {
@@ -1629,6 +1942,64 @@ body {
     .features-grid {
         grid-template-columns: 1fr;
     }
+
+    /* --- RESPONSIVE FEATURE LAYOUT --- */
+    .feature-section {
+        flex-direction: column;
+    }
+
+    .feature-description-sticky {
+        position: relative;
+        width: 100%;
+        height: auto;
+        top: 0;
+        padding: 20px 15px;
+    }
+
+    .feature-visual-scrolling {
+        width: 100%;
+        min-height: auto;
+    }
+    
+    .feature-section#feature-1 {
+        padding: 0;
+    }
+
+    .feature-section#feature-1 .feature-description-sticky {
+        background: linear-gradient(135deg, #f8f8ff 0%, #ffffff 50%, #f0f0ff 100%);
+    }
+    
+    /* Side Feature Tracker Mobile */
+    .side-feature-tracker {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        flex-direction: row;
+        justify-content: center;
+        margin: 40px 0;
+        background: rgba(248, 248, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 15px;
+        border-radius: 25px;
+        border: 1px solid rgba(29, 12, 70, 0.1);
+        box-shadow: 0 8px 25px rgba(29, 12, 70, 0.1);
+    }
+
+    .tracker-line {
+        width: 40px;
+        height: 2px;
+        background: linear-gradient(to right, #e5e7eb, #d1d5db);
+    }
+
+    .tracker-node {
+        width: 35px;
+        height: 35px;
+    }
+
+    .node-number {
+        font-size: 13px;
+    }
     
     .testimonial-card {
         width: 300px;
@@ -1753,4 +2124,974 @@ body {
     .feature-card {
         padding: 20px;
     }
+}
+
+/* Duplicated Interactive styles from styles.css are intentionally kept below for modularity. */
+/* This section can be moved to a separate file like `interactive-features.css` if desired. */
+
+/* Interactive Features Showcase Styles */
+.interactive-showcase {
+    background: linear-gradient(135deg, #f8f8ff 0%, #ffffff 100%);
+    padding: 4rem 0;
+    min-height: 100vh;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+/* ... all other interactive styles from the original styles.css ... */
+
+/* Hero Section */
+.showcase-hero {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.showcase-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #1d0c46 0%, #3a1d8a 50%, #caa968 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.showcase-subtitle {
+    font-size: 1.25rem;
+    color: #6B7280;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Showcase Sections */
+.showcase-section {
+    margin-bottom: 3rem;
+}
+
+.two-column-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+/* Chart Container */
+.chart-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.chart-container:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+}
+
+.chart-container.animated {
+    animation: slideInUp 0.6s ease-out;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.chart-header h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 0;
+}
+
+.chart-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.trend-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.trend-indicator.positive {
+    color: #10B981;
+}
+
+.trend-indicator.negative {
+    color: #EF4444;
+}
+
+.total-users,
+.global-indicator,
+.live-indicator,
+.retention-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+    color: #6B7280;
+    font-weight: 500;
+}
+
+.chart-area {
+    min-height: 300px;
+    position: relative;
+}
+
+/* World Map Visualization */
+.world-map-container {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.world-map-placeholder {
+    margin-bottom: 1rem;
+}
+
+.location-stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    max-width: 100%;
+}
+
+.location-badge {
+    background: #1d0c46;
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 80px;
+    animation: fadeInScale 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.location-name {
+    font-weight: 600;
+    margin-bottom: 0.125rem;
+}
+
+.location-users {
+    font-size: 0.75rem;
+    opacity: 0.9;
+}
+
+@keyframes fadeInScale {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+/* Metrics Grid */
+.metrics-grid {
+    width: 100%;
+}
+
+.metrics-header {
+    margin-bottom: 2rem;
+}
+
+.metrics-header h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 0;
+    text-align: center;
+}
+
+.metrics-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.metric-card {
+    background: linear-gradient(135deg, #1d0c46 0%, #3a1d8a 100%);
+    color: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    animation: slideInUp 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.metric-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(29, 12, 70, 0.3);
+}
+
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(202, 169, 104, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.metric-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.metric-header h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.status-badge.active {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10B981;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.status-badge.completed {
+    background: rgba(139, 92, 246, 0.2);
+    color: #8B5CF6;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.metric-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    opacity: 0.8;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.stat-value.conversion {
+    color: #caa968;
+}
+
+.metric-progress {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #caa968;
+    border-radius: 2px;
+    transition: width 1s ease;
+}
+
+/* Table Styles */
+.table-container {
+    overflow-x: auto;
+}
+
+.traffic-table {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.traffic-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.traffic-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: #374151;
+    border-bottom: 2px solid #E5E7EB;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.traffic-table th:hover {
+    background-color: #F9FAFB;
+}
+
+.traffic-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #F3F4F6;
+}
+
+.traffic-table tr {
+    animation: slideInLeft 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.traffic-table tr:hover {
+    background-color: #F9FAFB;
+}
+
+@keyframes slideInLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.source-cell {
+    font-weight: 600;
+    color: #1F2937;
+}
+
+.percentage-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.progress-bar-mini {
+    width: 60px;
+    height: 6px;
+    background: #E5E7EB;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #1d0c46;
+    border-radius: 3px;
+    transition: width 0.8s ease;
+}
+
+.change-indicator {
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.change-indicator.positive {
+    color: #10B981;
+}
+
+.change-indicator.negative {
+    color: #EF4444;
+}
+
+/* Responsive Design for Interactive Features */
+@media (max-width: 1024px) {
+    .showcase-title {
+        font-size: 2.5rem;
+    }
+    
+    .two-column-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .metrics-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .interactive-showcase {
+        padding: 2rem 0;
+    }
+    
+    .showcase-title {
+        font-size: 2rem;
+    }
+    
+    .showcase-subtitle {
+        font-size: 1rem;
+    }
+    
+    .chart-container {
+        padding: 1rem;
+    }
+    
+    .chart-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .metrics-cards {
+        gap: 1rem;
+    }
+    
+    .metric-card {
+        padding: 1rem;
+    }
+    
+    .metric-stats {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    
+    .traffic-table {
+        font-size: 0.75rem;
+    }
+    
+    .traffic-table th,
+    .traffic-table td {
+        padding: 0.5rem;
+    }
+    
+    .location-stats {
+        gap: 0.5rem;
+    }
+    
+    .location-badge {
+        min-width: 70px;
+        padding: 0.375rem 0.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .showcase-section {
+        margin-bottom: 2rem;
+    }
+    
+    .chart-container {
+        border-radius: 8px;
+    }
+    
+    .percentage-cell {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+    
+    .progress-bar-mini {
+        width: 100%;
+    }
+    
+    .world-map-placeholder svg {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+    }
+}
+
+/* Custom Funnel Visualization */
+.funnel-container {
+    padding: 20px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.funnel-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.conversion-stats {
+    display: flex;
+    gap: 15px;
+}
+
+.stat-box {
+    background: #2D1B69;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+}
+
+.stat-label {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.stat-value {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.funnel-visualization {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin: 30px 0;
+}
+
+.funnel-stage {
+    width: var(--stage-width);
+    height: 60px;
+    background: var(--stage-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 100%, 20px 100%);
+    transition: all 0.3s ease;
+}
+
+.funnel-stage:first-child {
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 100%, 0 100%);
+}
+
+.funnel-stage:last-child {
+    clip-path: polygon(20px 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.stage-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.stage-number {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.stage-label {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.funnel-legend {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.color-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+/* Horizontal Funnel Styles */
+.funnel-stats {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.funnel-stats .stat-item {
+    text-align: center;
+}
+
+.funnel-stats .stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.funnel-stats .stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1d0c46;
+}
+
+.horizontal-funnel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0;
+    padding: 20px 10px;
+}
+
+.funnel-stage {
+    position: relative;
+    text-align: center;
+}
+
+.funnel-stage.stage-1 .funnel-segment {
+    background: #1d0c46;
+    width: 100px;
+    height: 60px;
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+}
+
+.funnel-stage.stage-2 .funnel-segment {
+    background: #3a1a7a;
+    width: 80px;
+    height: 50px;
+    clip-path: polygon(15% 0, 100% 0, 85% 100%, 0% 100%);
+}
+
+.funnel-stage.stage-3 .funnel-segment {
+    background: #caa968;
+    width: 60px;
+    height: 40px;
+    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.funnel-segment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.funnel-segment:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.segment-number {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.segment-label {
+    font-size: 0.6rem;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.funnel-legend {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+/* Retention Cohort Table */
+.cohort-container {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.cohort-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.cohort-header h4 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1d0c46;
+}
+
+.cohort-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.cohort-controls button {
+    background: none;
+    border: 1px solid #e5e7eb;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.cohort-controls button:hover {
+    background: #f3f4f6;
+}
+
+.table-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 3fr;
+    gap: 20px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.week-numbers {
+    display: grid;
+    grid-template-columns: 2fr 1fr repeat(6, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+    font-size: 12px;
+    color: #9ca3af;
+    text-align: center;
+}
+
+.week-spacer {
+    grid-column: span 1;
+}
+
+.week-number {
+    font-weight: 600;
+}
+
+.cohort-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cohort-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr repeat(6, 1fr);
+    gap: 10px;
+    align-items: center;
+}
+
+.date-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.date-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+}
+
+.user-icons {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.users-cell {
+    text-align: center;
+    font-weight: 600;
+    color: #374151;
+}
+
+.retention-cell {
+    text-align: center;
+    padding: 8px 4px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    background: rgba(45, 27, 105, var(--intensity, 0));
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.retention-cell.empty {
+    background: #f9fafb;
+    color: transparent;
+}
+
+.retention-cell:not(.empty) {
+    background: linear-gradient(135deg, 
+        rgba(45, 27, 105, var(--intensity)), 
+        rgba(139, 93, 255, var(--intensity)));
+}
+
+/* Mobile Responsiveness for Side Tracker */
+@media (max-width: 768px) {
+    .side-feature-tracker {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        flex-direction: row;
+        justify-content: center;
+        margin: 40px 0;
+        background: rgba(248, 248, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 15px;
+        border-radius: 25px;
+        border: 1px solid rgba(29, 12, 70, 0.1);
+        box-shadow: 0 8px 25px rgba(29, 12, 70, 0.1);
+    }
+
+    .tracker-line {
+        width: 40px;
+        height: 2px;
+        background: linear-gradient(to right, #e5e7eb, #d1d5db);
+    }
+
+    .tracker-node {
+        width: 35px;
+        height: 35px;
+    }
+
+    .node-number {
+        font-size: 13px;
+    }
+
+    /* Cohort table mobile */
+    .cohort-container {
+        overflow-x: auto;
+        padding: 15px;
+    }
+
+    .table-header,
+    .week-numbers,
+    .cohort-row {
+        min-width: 600px;
+    }
+
+    /* Horizontal Funnel mobile */
+    .horizontal-funnel {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px 10px;
+    }
+
+    .funnel-stage.stage-1 .funnel-segment,
+    .funnel-stage.stage-2 .funnel-segment,
+    .funnel-stage.stage-3 .funnel-segment {
+        width: 250px;
+        height: 80px;
+        clip-path: none;
+        border-radius: 8px;
+    }
+
+    .funnel-stats {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .funnel-stats .stat-value {
+        font-size: 1.2rem;
+    }
+
+    .segment-number {
+        font-size: 1.5rem;
+    }
+
+    .segment-label {
+        font-size: 0.8rem;
+    }
+
+    .funnel-legend {
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    /* Original Funnel mobile (for backwards compatibility) */
+    .funnel-stage {
+        height: 50px;
+    }
+
+    .stage-number {
+        font-size: 20px;
+    }
+
+    .stage-label {
+        font-size: 12px;
+    }
+
+    .conversion-stats {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .stat-box {
+        min-width: 70px;
+        padding: 6px 12px;
+    }
+}
+/* styles.css - Add this snippet at the very end */
+
+/* Force high-contrast text on analytics metric cards */
+.analytics-dashboard .metric-card {
+    background: white; /* Ensure background is white */
+}
+.analytics-dashboard .metric-card .metric-header h4,
+.analytics-dashboard .metric-card .stat-value {
+    color: #1d0c46; /* Force dark purple for main text */
+}
+.analytics-dashboard .metric-card .stat-label {
+    color: #4B5563; /* Force a darker grey for labels */
+}
+
+/* Force high-contrast text on funnel stats */
+.funnel-container .stat-box {
+    background: #2D1B69; /* Ensure background is dark */
+}
+.funnel-container .stat-box .stat-label,
+.funnel-container .stat-box .stat-value {
+    color: white; /* Force text to be white */
 }

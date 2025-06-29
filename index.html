@@ -183,47 +183,186 @@
     <section id="features" class="features">
         <div class="container">
             <h2 class="section-title">Our Features</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-visual">
-                        <img src="Public/Images/feature1.png" alt="Feature 1">
-                        <div class="feature-overlay">
-                            <div class="interactive-element pulse"></div>
+            
+            <div class="side-feature-tracker">
+                <div class="tracker-node active" data-feature="1">
+                    <span class="node-number">1</span>
+                </div>
+                <div class="tracker-line"></div>
+                <div class="tracker-node" data-feature="2">
+                    <span class="node-number">2</span>
+                </div>
+                <div class="tracker-line"></div>
+                <div class="tracker-node" data-feature="3">
+                    <span class="node-number">3</span>
                         </div>
                     </div>
-                    <div class="feature-content">
-                        <h3 class="feature-title">Advanced Analytics</h3>
-                        <p class="feature-text">Get deep insights into your Web3 operations with our comprehensive analytics dashboard.</p>
+
+            <div class="feature-section active" id="feature-1">
+                <div class="feature-description-sticky">
+                    <div class="feature-header sticky-feature-header">
+                        <div class="feature-header-content">
+                            <h3 class="feature-title">From Click to On-Chain: True ROI Attribution</h3>
+                            <p class="feature-text">Stop guessing where your most valuable users come from. Measure the true ROI of your marketing spend, cut inefficient channels with confidence, and reallocate your budget to the strategies that deliver genuine, high-value on-chain activity like swaps, stakes, and mints.</p>
+                            <button class="learn-more-btn">Learn More <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feature-visual-scrolling">
+                    <div class="analytics-dashboard">
+                        <div class="container">
+                                                <div class="chart-grid" data-aos="fade-up" data-aos-delay="100">
+                            <div class="chart-container">
+                                <div class="chart-header">
+                                    <h3>Transaction Activity</h3>
+                                    <div class="chart-controls">
+                                        <select class="time-range-select">
+                                            <option value="7d">Last 7 days</option>
+                                            <option value="30d" selected>Last 30 days</option>
+                                            <option value="90d">Last 90 days</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="chart-wrapper">
+                                    <canvas id="transactionActivityChart"></canvas>
+                                </div>
+                                <div class="chart-footer-stats">
+                                    <h4>Top Countries by Users</h4>
+                                    <div id="transaction-geo-stats" class="location-stats">
+                                        </div>
+                                </div>
+                            </div>
+
+                            <div class="chart-container">
+                                <div class="chart-header">
+                                    <h3>User Segmentation</h3>
+                                    <div class="chart-tooltip">
+                                        <i class="fas fa-info-circle"></i>
+                                        <span class="tooltip-text">User types based on on-chain behavior</span>
+                                    </div>
+                                </div>
+                                <div class="chart-wrapper">
+                                    <canvas id="userSegmentationChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="metrics-grid" data-aos="fade-up" data-aos-delay="200" id="campaign-metrics">
+                            </div>
+
+                        <div class="chart-grid" data-aos="fade-up" data-aos-delay="300">
+                            <div class="chart-container">
+                                <div class="chart-header">
+                                    <h3>User Journey Funnel</h3>
+                                    <div class="funnel-stats">
+                                        <div class="stat-item">
+                                            <span class="stat-label">Conversion Rate</span>
+                                            <span class="stat-value">0.12%</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-label">Web3 Users</span>
+                                            <span class="stat-value">22.76%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chart-wrapper">
+                                    <div id="funnelChart" class="horizontal-funnel">
+                                        <div class="funnel-stage stage-1">
+                                            <div class="funnel-segment">
+                                                <div class="segment-number">861</div>
+                                                <div class="segment-label">Unique Visitors</div>
+                                            </div>
+                                        </div>
+                                        <div class="funnel-stage stage-2">
+                                            <div class="funnel-segment">
+                                                <div class="segment-number">196</div>
+                                                <div class="segment-label">Web3 Users</div>
+                                            </div>
+                                        </div>
+                                        <div class="funnel-stage stage-3">
+                                            <div class="funnel-segment">
+                                                <div class="segment-number">87</div>
+                                                <div class="segment-label">Wallets Connected</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="funnel-legend">
+                                        <span class="legend-item"><span class="color-dot" style="background: #1d0c46;"></span>Visitors</span>
+                                        <span class="legend-item"><span class="color-dot" style="background: #3a1a7a;"></span>Web3 Users</span>
+                                        <span class="legend-item"><span class="color-dot" style="background: #caa968;"></span>Connected</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="chart-container">
+                                <div class="chart-header">
+                                    <h3>Traffic Sources</h3>
+                                    <div class="live-indicator">
+                                        <span class="live-dot"></span>
+                                        <span>Live Data</span>
+                                    </div>
+                                </div>
+                                <div class="table-wrapper">
+                                    <table class="traffic-table" id="trafficSourcesTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Source</th>
+                                                <th>Visitors</th>
+                                                <th>Conversions</th>
+                                                <th>Revenue</th>
+                                                <th>Trend</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chart-grid single-column" data-aos="fade-up" data-aos-delay="400">
+                            <div class="chart-container">
+                                <div class="chart-header">
+                                    <h3>User Retention Cohort</h3>
+                                    <div class="chart-tooltip">
+                                        <i class="fas fa-info-circle"></i>
+                                        <span class="tooltip-text">User retention by signup cohort</span>
+                                    </div>
+                                </div>
+                                <div class="chart-wrapper">
+                                    <canvas id="retentionChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-section" id="feature-2">
+                <div class="feature-description-sticky">
+                    <div class="feature-header-content">
+                        <h3 class="feature-title">360° Wallet Intelligence</h3>
+                        <p class="feature-text">A wallet address tells you what happened; a Cryptique User Profile tells you who did it and why. We move beyond simple transaction history by fusing on-chain data with off-chain behavioral signals from your website, SDK, and social channels. This creates a rich, evolving, 360° profile for each user, allowing you to segment your audience with unparalleled precision, identify your "High-Value LPs" or "At-Risk Power Users," and tailor every marketing action for maximum impact and retention.</p>
                         <button class="learn-more-btn">Learn More <i class="fas fa-arrow-right"></i></button>
                     </div>
                 </div>
+                <div class="feature-visual-scrolling">
+                    <img src="Public/Images/wallet-intelligence-mockup.png" alt="Wallet Intelligence Profile" class="feature-mockup-img">
+                </div>
+            </div>
 
-                <div class="feature-card">
-                    <div class="feature-visual">
-                        <img src="Public/Images/feature2.png" alt="Feature 2">
-                        <div class="feature-overlay">
-                            <div class="interactive-element rotate"></div>
-                        </div>
-                    </div>
-                    <div class="feature-content">
-                        <h3 class="feature-title">Smart Automation</h3>
-                        <p class="feature-text">Automate your workflows with AI-powered smart contracts and seamless integrations.</p>
+            <div class="feature-section" id="feature-3">
+                <div class="feature-description-sticky">
+                    <div class="feature-header-content">
+                        <h3 class="feature-title">CQ Intelligence™: Your Digital CMO</h3>
+                        <p class="feature-text">Drowning in data but starving for insights? CQ Intelligence™ is your dedicated AI co-pilot that amplifies hours of complex data analysis into minutes of strategic action. Ask complex questions in plain English, like "Which of my campaigns brought in the most valuable users last month?" or "What behaviors do my top stakers have in common?" CQ™ doesn't just answer questions; it provides proactive strategic recommendations, uncovers hidden growth opportunities, and can even help you draft campaign ideas—it's the ultimate tool to accelerate your ecosystem's growth.</p>
                         <button class="learn-more-btn">Learn More <i class="fas fa-arrow-right"></i></button>
                     </div>
                 </div>
-
-                <div class="feature-card">
-                    <div class="feature-visual">
-                        <img src="Public/Images/feature3.png" alt="Feature 3">
-                        <div class="feature-overlay">
-                            <div class="interactive-element bounce"></div>
-                        </div>
-                    </div>
-                    <div class="feature-content">
-                        <h3 class="feature-title">Multi-Chain Support</h3>
-                        <p class="feature-text">Connect and operate across multiple blockchain networks with unified management.</p>
-                        <button class="learn-more-btn">Learn More <i class="fas fa-arrow-right"></i></button>
-                    </div>
+                <div class="feature-visual-scrolling">
+                    <img src="Public/Images/cq-intelligence-mockup.png" alt="CQ Intelligence Interface" class="feature-mockup-img">
                 </div>
             </div>
         </div>
@@ -394,5 +533,6 @@
 
     <script src="hero-animation.js"></script>
     <script src="script.js"></script>
+    <script src="interactive-features.js"></script>
 </body>
 </html>
