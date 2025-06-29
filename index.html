@@ -12,6 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -202,7 +203,7 @@
                 <div class="feature-description-sticky">
                     <div class="feature-header sticky-feature-header">
                         <div class="feature-header-content">
-                            <h3 class="feature-title">From Click to On-Chain: True ROI Attribution</h3>
+                            <h3 class="feature-title">ROI Attribution</h3>
                             <p class="feature-text">Stop guessing where your most valuable users come from. Measure the true ROI of your marketing spend, cut inefficient channels with confidence, and reallocate your budget to the strategies that deliver genuine, high-value on-chain activity like swaps, stakes, and mints.</p>
                             <button class="learn-more-btn">Learn More <i class="fas fa-arrow-right"></i></button>
                         </div>
@@ -331,27 +332,674 @@
 
             <div class="feature-section" id="feature-2">
                 <div class="feature-description-sticky">
-                    <div class="feature-header-content">
-                        <h3 class="feature-title">360° Wallet Intelligence</h3>
-                        <p class="feature-text">A wallet address tells you what happened; a Cryptique User Profile tells you who did it and why. We move beyond simple transaction history by fusing on-chain data with off-chain behavioral signals from your website, SDK, and social channels. This creates a rich, evolving, 360° profile for each user, allowing you to segment your audience with unparalleled precision, identify your "High-Value LPs" or "At-Risk Power Users," and tailor every marketing action for maximum impact and retention.</p>
-                        <button class="learn-more-btn">Learn More <i class="fas fa-arrow-right"></i></button>
+                    <div class="feature-header sticky-feature-header">
+                        <div class="feature-header-content">
+                            <h3 class="feature-title">360° Wallet Intelligence</h3>
+                            <p class="feature-text">A wallet address tells you what happened; A Cryptique User Profile tells you who did it and why. This creates a rich, evolving, 360° profile for each user, allowing you to segment your audience with unparalleled precision, identify your "High-Value LPs" or "At-Risk Power Users," and tailor every marketing action for maximum impact and retention.</p>
+                            <button class="learn-more-btn">Learn More <i class="fas fa-arrow-right"></i></button>
+                        </div>
                     </div>
                 </div>
+                
                 <div class="feature-visual-scrolling">
-                    <img src="Public/Images/wallet-intelligence-mockup.png" alt="Wallet Intelligence Profile" class="feature-mockup-img">
+                    <div class="user-intelligence-dashboard">
+                        <div class="container">
+                            <!-- User Discovery & Search Interface -->
+                            <!-- REMOVED: Initial Search Interface & Stats Grid -->
+
+                            <!-- User Profile Deep Dive -->
+                            <div class="intelligence-section" data-aos="fade-up" data-aos-delay="200">
+                                <div class="user-profile-container">
+                                    <div class="profile-header">
+                                        <div class="profile-avatar">
+                                            <i class="fas fa-user-circle"></i>
+                                        </div>
+                                        <div class="profile-info">
+                                            <h3>👤 User Profile: user_abc123</h3>
+                                            <div class="profile-status">
+                                                <span class="status-badge active">Active</span>
+                                                <span class="user-segment">High-Value Trader</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="profile-summary-grid">
+                                        <div class="summary-item">
+                                            <span class="summary-label">First Visit</span>
+                                            <span class="summary-value">Jan 15, 2024</span>
+                                        </div>
+                                        <div class="summary-item">
+                                            <span class="summary-label">Last Seen</span>
+                                            <span class="summary-value">2 hours ago</span>
+                                        </div>
+                                        <div class="summary-item">
+                                            <span class="summary-label">Total Sessions</span>
+                                            <span class="summary-value">47</span>
+                                        </div>
+                                        <div class="summary-item">
+                                            <span class="summary-label">Pages Viewed</span>
+                                            <span class="summary-value">234</span>
+                                        </div>
+                                        <div class="summary-item">
+                                            <span class="summary-label">Time on Site</span>
+                                            <span class="summary-value">12h 34m</span>
+                                        </div>
+                                        <div class="summary-item">
+                                            <span class="summary-label">Conversion</span>
+                                            <span class="summary-value">✅ Wallet</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="profile-tabs">
+                                        <button class="tab-btn active" data-tab="journey">🕒 Journey Timeline</button>
+                                        <button class="tab-btn" data-tab="wallet">💰 Wallet Analysis</button>
+                                        <button class="tab-btn" data-tab="behavior">📊 Behavior</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Journey Timeline -->
+                            <div class="intelligence-section" data-aos="fade-up" data-aos-delay="300">
+                                <div class="timeline-container" id="journey-timeline">
+                                    <div class="timeline-header">
+                                        <h3>🕒 Complete User Journey Timeline</h3>
+                                        <div class="timeline-controls">
+                                            <button class="timeline-btn">Show All 47 Sessions</button>
+                                            <button class="timeline-btn secondary">Export Journey Data</button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="timeline-content">
+                                        <div class="timeline-session">
+                                            <div class="session-header">
+                                                <div class="session-info">
+                                                    <h4>Session 1 - Jan 15, 2024 10:23 AM</h4>
+                                                    <span class="session-duration">⏱️ 8m 34s</span>
+                                                </div>
+                                            </div>
+                                            <div class="session-timeline">
+                                                <div class="timeline-item">
+                                                    <div class="timeline-icon entry">🌐</div>
+                                                    <div class="timeline-content-item">
+                                                        <span class="timeline-label">Entry: Google Search → Landing Page</span>
+                                                    </div>
+                                                </div>
+                                                <div class="timeline-item">
+                                                    <div class="timeline-icon click">👆</div>
+                                                    <div class="timeline-content-item">
+                                                        <span class="timeline-label">Clicked: "Connect Wallet" button (3 times)</span>
+                                                    </div>
+                                                </div>
+                                                <div class="timeline-item">
+                                                    <div class="timeline-icon pages">📄</div>
+                                                    <div class="timeline-content-item">
+                                                        <span class="timeline-label">Pages: Home → Features → Pricing → FAQ</span>
+                                                    </div>
+                                                </div>
+                                                <div class="timeline-item">
+                                                    <div class="timeline-icon exit">🚪</div>
+                                                    <div class="timeline-content-item">
+                                                        <span class="timeline-label">Exit: Pricing page (no conversion)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="timeline-session success">
+                                            <div class="session-header">
+                                                <div class="session-info">
+                                                    <h4>Session 2 - Jan 16, 2024 2:15 PM</h4>
+                                                    <span class="session-duration">⏱️ 15m 22s</span>
+                                                    <span class="conversion-badge">🎯 CONVERSION</span>
+                                                </div>
+                                            </div>
+                                            <div class="session-timeline">
+                                                <div class="timeline-item">
+                                                    <div class="timeline-icon entry">🌐</div>
+                                                    <div class="timeline-content-item">
+                                                        <span class="timeline-label">Entry: Direct visit</span>
+                                                    </div>
+                                                </div>
+                                                <div class="timeline-item">
+                                                    <div class="timeline-icon click">👆</div>
+                                                    <div class="timeline-content-item">
+                                                        <span class="timeline-label">Clicked: "Connect Wallet" → MetaMask popup</span>
+                                                    </div>
+                                                </div>
+                                                <div class="timeline-item conversion">
+                                                    <div class="timeline-icon success">🎯</div>
+                                                    <div class="timeline-content-item">
+                                                        <span class="timeline-label">CONVERSION: Wallet Connected!</span>
+                                                        <div class="wallet-details">
+                                                            <span>Address: 0x742d35Cc6634C0532925a3b8D</span>
+                                                            <span>Type: MetaMask, Chain: Ethereum</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="timeline-item">
+                                                    <div class="timeline-icon pages">📄</div>
+                                                    <div class="timeline-content-item">
+                                                        <span class="timeline-label">Pages: Dashboard → Analytics → Settings</span>
+                                                    </div>
+                                                </div>
+                                                <div class="timeline-item">
+                                                    <div class="timeline-icon transaction">🎉</div>
+                                                    <div class="timeline-content-item">
+                                                        <span class="timeline-label">First transaction detected on-chain</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Wallet Deep Dive -->
+                            <div class="intelligence-section" data-aos="fade-up" data-aos-delay="400">
+                                <div class="wallet-analysis-container">
+                                    <div class="wallet-header">
+                                        <h3>💰 Wallet Analysis: 0x742d35Cc6634C0532925a3b8D</h3>
+                                        <div class="connected-wallets">
+                                            <span class="wallet-count">Connected Wallets (3):</span>
+                                            <div class="chain-badges">
+                                                <span class="chain-badge ethereum">🟢 Ethereum</span>
+                                                <span class="chain-badge polygon">🟣 Polygon</span>
+                                                <span class="chain-badge arbitrum">🔵 Arbitrum</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="wallet-overview-grid">
+                                        <div class="wallet-stat">
+                                            <span class="wallet-stat-label">Portfolio Value</span>
+                                            <span class="wallet-stat-value">$45,678</span>
+                                        </div>
+                                        <div class="wallet-stat">
+                                            <span class="wallet-stat-label">Transactions</span>
+                                            <span class="wallet-stat-value">1,234</span>
+                                        </div>
+                                        <div class="wallet-stat">
+                                            <span class="wallet-stat-label">First Activity</span>
+                                            <span class="wallet-stat-value">Dec 2023</span>
+                                        </div>
+                                        <div class="wallet-stat">
+                                            <span class="wallet-stat-label">Last Activity</span>
+                                            <span class="wallet-stat-value">2 hours ago</span>
+                                        </div>
+                                        <div class="wallet-stat">
+                                            <span class="wallet-stat-label">Chains Active</span>
+                                            <span class="wallet-stat-value">5</span>
+                                        </div>
+                                        <div class="wallet-stat">
+                                            <span class="wallet-stat-label">Protocols Used</span>
+                                            <span class="wallet-stat-value">23</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="user-classification">
+                                        <div class="classification-badge whale">
+                                            <div class="classification-icon">🐋</div>
+                                            <div class="classification-info">
+                                                <span class="classification-type">WHALE</span>
+                                                <span class="classification-desc">Top 5% Portfolio Value</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="wallet-activity-chart">
+                                        <h4>Transaction Activity Chart</h4>
+                                        <canvas id="walletActivityChart"></canvas>
+                                    </div>
+                                    
+                                    <div class="recent-transactions">
+                                        <h4>Recent Transactions:</h4>
+                                        <div class="transaction-list">
+                                            <div class="transaction-item">
+                                                <span class="tx-time">2 hours ago:</span>
+                                                <span class="tx-description">Swapped 5 ETH → USDC on Uniswap</span>
+                                            </div>
+                                            <div class="transaction-item">
+                                                <span class="tx-time">1 day ago:</span>
+                                                <span class="tx-description">Bridged 10 ETH from Ethereum → Arbitrum</span>
+                                            </div>
+                                            <div class="transaction-item">
+                                                <span class="tx-time">3 days ago:</span>
+                                                <span class="tx-description">Minted NFT on OpenSea (0.08 ETH)</span>
+                                            </div>
+                                            <div class="transaction-item">
+                                                <span class="tx-time">1 week ago:</span>
+                                                <span class="tx-description">Staked 32 ETH on Ethereum 2.0</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Advanced Wallet Categorization -->
+                            <div class="intelligence-section" data-aos="fade-up" data-aos-delay="500">
+                                <div class="categorization-container">
+                                    <div class="categorization-header">
+                                        <h3>🏷️ User Classification & Risk Analysis</h3>
+                                    </div>
+                                    
+                                    <div class="categorization-content">
+                                        <div class="primary-classification">
+                                            <div class="classification-card whale">
+                                                <div class="classification-header">
+                                                    <div class="classification-icon-large">🐋</div>
+                                                    <div class="classification-details">
+                                                        <h4>WHALE</h4>
+                                                        <div class="classification-metrics">
+                                                            <div class="metric-row">
+                                                                <span>Portfolio Value: $45,678 (Top 5%)</span>
+                                                            </div>
+                                                            <div class="metric-row">
+                                                                <span>Transaction Volume: High</span>
+                                                            </div>
+                                                            <div class="metric-row">
+                                                                <span>Activity: Very Active (Daily)</span>
+                                                            </div>
+                                                            <div class="metric-row">
+                                                                <span>Risk Level: Low</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="behavioral-patterns">
+                                            <h4>Behavioral Patterns:</h4>
+                                            <div class="pattern-list">
+                                                <div class="pattern-item positive">
+                                                    <span class="pattern-icon">✅</span>
+                                                    <span class="pattern-text">Consistent DeFi Usage</span>
+                                                </div>
+                                                <div class="pattern-item positive">
+                                                    <span class="pattern-icon">✅</span>
+                                                    <span class="pattern-text">Multi-chain Activity</span>
+                                                </div>
+                                                <div class="pattern-item positive">
+                                                    <span class="pattern-icon">✅</span>
+                                                    <span class="pattern-text">Long-term Holder (6+ months)</span>
+                                                </div>
+                                                <div class="pattern-item warning">
+                                                    <span class="pattern-icon">⚠️</span>
+                                                    <span class="pattern-text">High MEV Bot Interaction</span>
+                                                </div>
+                                                <div class="pattern-item negative">
+                                                    <span class="pattern-icon">❌</span>
+                                                    <span class="pattern-text">No Airdrop Farming Detected</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="chain-activity-map">
+                                            <h4>Cross-Chain Activity Map:</h4>
+                                            <div class="chain-activity-list">
+                                                <div class="chain-activity-item">
+                                                    <span class="chain-name">Ethereum:</span>
+                                                    <div class="activity-bar ethereum">
+                                                        <div class="activity-fill" style="width: 100%"></div>
+                                                    </div>
+                                                    <span class="activity-label">🟢●●●●● (Very Active) - 856 transactions</span>
+                                                </div>
+                                                <div class="chain-activity-item">
+                                                    <span class="chain-name">Polygon:</span>
+                                                    <div class="activity-bar polygon">
+                                                        <div class="activity-fill" style="width: 60%"></div>
+                                                    </div>
+                                                    <span class="activity-label">🟣●●●○○ (Active) - 234 transactions</span>
+                                                </div>
+                                                <div class="chain-activity-item">
+                                                    <span class="chain-name">Arbitrum:</span>
+                                                    <div class="activity-bar arbitrum">
+                                                        <div class="activity-fill" style="width: 40%"></div>
+                                                    </div>
+                                                    <span class="activity-label">🔵●●○○○ (Moderate) - 89 transactions</span>
+                                                </div>
+                                                <div class="chain-activity-item">
+                                                    <span class="chain-name">Optimism:</span>
+                                                    <div class="activity-bar optimism">
+                                                        <div class="activity-fill" style="width: 20%"></div>
+                                                    </div>
+                                                    <span class="activity-label">🔴●○○○○ (Low) - 23 transactions</span>
+                                                </div>
+                                                <div class="chain-activity-item">
+                                                    <span class="chain-name">BSC:</span>
+                                                    <div class="activity-bar bsc">
+                                                        <div class="activity-fill" style="width: 40%"></div>
+                                                    </div>
+                                                    <span class="activity-label">🟡●●○○○ (Moderate) - 67 transactions</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Advanced Analytics Dashboard -->
+                            <!-- REMOVED: Advanced User Analytics Dashboard -->
+
+                            <!-- Real-Time Alerts & Monitoring -->
+                            <div class="intelligence-section" data-aos="fade-up" data-aos-delay="700">
+                                <div class="alerts-container">
+                                    <div class="alerts-header">
+                                        <h3>🚨 Real-Time User Alerts</h3>
+                                        <div class="online-indicator">
+                                            <span class="online-dot"></span>
+                                            <span>Active Now (23 users online)</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="alerts-content">
+                                        <div class="recent-activity">
+                                            <h4>Recent Activity:</h4>
+                                            <div class="activity-feed">
+                                                <div class="activity-item">
+                                                    <span class="activity-time">2m ago:</span>
+                                                    <span class="activity-text">user_xyz789 connected new wallet (Coinbase)</span>
+                                                </div>
+                                                <div class="activity-item">
+                                                    <span class="activity-time">5m ago:</span>
+                                                    <span class="activity-text">user_abc123 made large transaction (50 ETH)</span>
+                                                </div>
+                                                <div class="activity-item">
+                                                    <span class="activity-time">8m ago:</span>
+                                                    <span class="activity-text">user_def456 visited pricing page 3 times</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="alert-notifications">
+                                            <h4>⚠️ Alerts:</h4>
+                                            <div class="alert-list">
+                                                <div class="alert-item warning">
+                                                    <span class="alert-icon">⚠️</span>
+                                                    <span class="alert-text">Potential airdrop farmer detected (user_ghi789)</span>
+                                                </div>
+                                                <div class="alert-item danger">
+                                                    <span class="alert-icon">🚨</span>
+                                                    <span class="alert-text">High-value user showing exit signals (user_jkl012)</span>
+                                                </div>
+                                                <div class="alert-item info">
+                                                    <span class="alert-icon">ℹ️</span>
+                                                    <span class="alert-text">Unusual transaction pattern (user_mno345)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="alert-controls">
+                                            <button class="alert-btn primary">Configure Alerts</button>
+                                            <button class="alert-btn secondary">Export Alert Log</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="feature-section" id="feature-3">
                 <div class="feature-description-sticky">
                     <div class="feature-header-content">
-                        <h3 class="feature-title">CQ Intelligence™: Your Digital CMO</h3>
-                        <p class="feature-text">Drowning in data but starving for insights? CQ Intelligence™ is your dedicated AI co-pilot that amplifies hours of complex data analysis into minutes of strategic action. Ask complex questions in plain English, like "Which of my campaigns brought in the most valuable users last month?" or "What behaviors do my top stakers have in common?" CQ™ doesn't just answer questions; it provides proactive strategic recommendations, uncovers hidden growth opportunities, and can even help you draft campaign ideas—it's the ultimate tool to accelerate your ecosystem's growth.</p>
-                        <button class="learn-more-btn">Learn More <i class="fas fa-arrow-right"></i></button>
+                        <h3 class="feature-title">CQ Intelligence</h3>
+                        <p class="feature-text">We are your dedicated AI co-pilot that amplifies hours of complex data analysis into minutes of strategic action. We doesn't just answer questions; We provide proactive strategic recommendations, uncovers hidden growth opportunities, and can even help you draft campaign ideas—it's the ultimate tool to accelerate your ecosystem's growth.</p>
                     </div>
                 </div>
                 <div class="feature-visual-scrolling">
-                    <img src="Public/Images/cq-intelligence-mockup.png" alt="CQ Intelligence Interface" class="feature-mockup-img">
+                    <div class="cq-intelligence-dashboard">
+                        <div class="container">
+                            <!-- Beat 1: Chat Interface & Prompt -->
+                            <div class="cqi-section" data-aos="fade-up" data-aos-delay="100">
+                                <div class="cqi-chat-container">
+                                    <div class="chat-header">
+                                        <h3>🤖 CQ Intelligence™</h3>
+                                        <div class="chat-status">
+                                            <span class="status-dot"></span>
+                                            <span>AI Assistant Ready</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="chat-messages">
+                                        <div class="message user-message">
+                                            <div class="message-content">
+                                                Show me how effective my last <strong>Launch-Day</strong> campaign was. I care about new vs returning users and total on-chain conversions.
+                                            </div>
+                                            <div class="message-time">Just now</div>
+                                        </div>
+                                        
+                                        <div class="message ai-message">
+                                            <div class="message-avatar">🤖</div>
+                                            <div class="message-content">
+                                                <div class="typing-indicator">
+                                                    <span></span><span></span><span></span>
+                                                </div>
+                                                Analyzing your Launch-Day campaign data across all channels and chains...
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Beat 2: Executive Summary Card -->
+                            <div class="cqi-section" data-aos="fade-up" data-aos-delay="200">
+                                <div class="insight-canvas-card">
+                                    <div class="card-header">
+                                        <h3>⚡ Launch-Day Campaign – Executive Summary</h3>
+                                        <div class="loading-skeleton"></div>
+                                    </div>
+                                    <div class="summary-metrics">
+                                        <div class="metric-row">
+                                            <span class="metric-label">Total Reach</span>
+                                            <span class="metric-value">183K impressions</span>
+                                        </div>
+                                        <div class="metric-row">
+                                            <span class="metric-label">Website Visitors</span>
+                                            <span class="metric-value">12,438 <span class="metric-change positive">(↑ 34% vs avg)</span></span>
+                                        </div>
+                                        <div class="metric-row">
+                                            <span class="metric-label">Wallet Connects</span>
+                                            <span class="metric-value">5,211 <span class="metric-secondary">(42% of visitors)</span></span>
+                                        </div>
+                                        <div class="metric-row">
+                                            <span class="metric-label">On-chain Conversions</span>
+                                            <span class="metric-value">3,487 Tx / 1,892 unique wallets</span>
+                                        </div>
+                                        <div class="metric-row">
+                                            <span class="metric-label">Returning Users</span>
+                                            <span class="metric-value">38% of converters</span>
+                                        </div>
+                                        <div class="metric-row highlight">
+                                            <span class="metric-label">ROI Est.</span>
+                                            <span class="metric-value">$214K <span class="metric-secondary">(2.8× spend)</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Beat 3: Multi-Source Performance Plot -->
+                            <div class="cqi-section" data-aos="fade-up" data-aos-delay="300">
+                                <div class="performance-chart-container">
+                                    <div class="chart-header">
+                                        <h3>Launch-Day Campaign Timeline</h3>
+                                        <div class="chart-controls">
+                                            <button class="chart-btn active">14 Days</button>
+                                            <button class="chart-btn">7 Days</button>
+                                            <button class="chart-btn">Peak Days</button>
+                                        </div>
+                                    </div>
+                                    <div class="dual-axis-chart">
+                                        <canvas id="campaignTimelineChart"></canvas>
+                                    </div>
+                                    <div class="chart-legend">
+                                        <div class="legend-item">
+                                            <div class="legend-color bar"></div>
+                                            <span>Daily Conversions</span>
+                                        </div>
+                                        <div class="legend-item">
+                                            <div class="legend-color line"></div>
+                                            <span>Returning User %</span>
+                                        </div>
+                                        <div class="legend-item">
+                                            <div class="legend-color area"></div>
+                                            <span>Website Visitors</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Beat 4: Attribution Matrix & Analytics Grid -->
+                            <div class="cqi-section" data-aos="fade-up" data-aos-delay="400">
+                                <div class="analytics-grid-container">
+                                    <div class="attribution-table-wrapper">
+                                        <h4>Traffic Source Attribution</h4>
+                                        <table class="attribution-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Source</th>
+                                                    <th>Impressions</th>
+                                                    <th>Visitors</th>
+                                                    <th>Wallet Conn</th>
+                                                    <th>Conv Rate</th>
+                                                    <th>Returning %</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><span class="source-icon">🐦</span> Twitter</td>
+                                                    <td>82K</td>
+                                                    <td>6,543</td>
+                                                    <td>2,244</td>
+                                                    <td><span class="conv-rate">34%</span></td>
+                                                    <td>41%</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="source-icon">💬</span> Discord</td>
+                                                    <td>38K</td>
+                                                    <td>3,201</td>
+                                                    <td>1,201</td>
+                                                    <td><span class="conv-rate">37%</span></td>
+                                                    <td>29%</td>
+                                                </tr>
+                                                <tr class="highlight">
+                                                    <td><span class="source-icon">🔗</span> Direct</td>
+                                                    <td>—</td>
+                                                    <td>1,499</td>
+                                                    <td>703</td>
+                                                    <td><span class="conv-rate high">47%</span></td>
+                                                    <td>61%</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="source-icon">📧</span> Email</td>
+                                                    <td>24K</td>
+                                                    <td>1,195</td>
+                                                    <td>563</td>
+                                                    <td><span class="conv-rate">47%</span></td>
+                                                    <td>73%</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    <div class="chain-split-container">
+                                        <h4>Chain Distribution</h4>
+                                        <div class="chain-donut-wrapper">
+                                            <canvas id="chainSplitChart"></canvas>
+                                        </div>
+                                        <div class="chain-stats">
+                                            <div class="chain-stat">
+                                                <div class="chain-color ethereum"></div>
+                                                <span>Ethereum 51%</span>
+                                            </div>
+                                            <div class="chain-stat">
+                                                <div class="chain-color polygon"></div>
+                                                <span>Polygon 28%</span>
+                                            </div>
+                                            <div class="chain-stat">
+                                                <div class="chain-color arbitrum"></div>
+                                                <span>Arbitrum 14%</span>
+                                            </div>
+                                            <div class="chain-stat">
+                                                <div class="chain-color others"></div>
+                                                <span>Others 7%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Beat 5: AI Insights & Recommendations -->
+                            <div class="cqi-section" data-aos="fade-up" data-aos-delay="500">
+                                <div class="ai-insights-container">
+                                    <div class="insights-header">
+                                        <h3>🧠 Key Findings & Recommendations</h3>
+                                        <div class="confidence-score">
+                                            <span>Confidence: 94%</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="insights-list">
+                                        <div class="insight-item">
+                                            <div class="insight-icon">📊</div>
+                                            <div class="insight-content">
+                                                <strong>Traffic Quality:</strong> Twitter drove the broadest reach, but Direct traffic converted 1.4× better.
+                                            </div>
+                                        </div>
+                                        <div class="insight-item">
+                                            <div class="insight-icon">🔄</div>
+                                            <div class="insight-content">
+                                                <strong>User Retention:</strong> 38% of converters were returning users – 6pp higher than the Q1 average.
+                                            </div>
+                                        </div>
+                                        <div class="insight-item">
+                                            <div class="insight-icon">🕐</div>
+                                            <div class="insight-content">
+                                                <strong>Attribution Trail:</strong> 61% of returning converters first visited during the <strong>Teaser</strong> campaign two weeks earlier.
+                                            </div>
+                                        </div>
+                                        <div class="insight-item">
+                                            <div class="insight-icon">⛽</div>
+                                            <div class="insight-content">
+                                                <strong>Chain Efficiency:</strong> Polygon users cost 23% less gas and completed 1.7× more repeat transactions.
+                                            </div>
+                                        </div>
+                                        <div class="insight-item">
+                                            <div class="insight-icon">📈</div>
+                                            <div class="insight-content">
+                                                <strong>Viral Moment:</strong> Spike on Day-4 correlates with @CryptoGuru tweet (12:14 UTC).
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="action-chips">
+                                        <button class="action-chip primary">Create Look-alike Audience</button>
+                                        <button class="action-chip secondary">Schedule Re-engagement Email</button>
+                                        <button class="action-chip tertiary">Export CSV</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Beat 6: Follow-up Chat -->
+                            <div class="cqi-section" data-aos="fade-up" data-aos-delay="600">
+                                <div class="chat-followup">
+                                    <div class="message ai-message">
+                                        <div class="message-avatar">🤖</div>
+                                        <div class="message-content">
+                                            Analysis complete! Would you like me to dive deeper into any specific metric, or shall we explore optimization strategies for your next campaign?
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="quick-actions">
+                                        <button class="quick-action">Analyze competitor campaigns</button>
+                                        <button class="quick-action">Optimize next campaign budget</button>
+                                        <button class="quick-action">Identify high-value user segments</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -363,81 +1011,154 @@
             <div class="testimonial-carousel">
                 <div class="testimonial-track">
                     <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p>"Cryptique has revolutionized how we manage our DeFi operations. The platform is incredibly intuitive and powerful."</p>
-                            <div class="testimonial-author">
-                                <h4>Sarah Chen</h4>
-                                <span>CEO, DeFi Solutions</span>
+                        <div class="testimonial-inner">
+                            <div class="testimonial-front">
+                                <div class="testimonial-content">
+                                    <p>"In the complex world of B2B Web3 adoption, understanding the full journey from initial enterprise contact to on-chain value creation is paramount. Before Cryptique, we had many data points, but connecting them into a coherent, actionable strategy was a significant challenge. Cryptique, with its powerful CQ Intelligence, has provided us with unprecedented clarity. We now see exactly which B2B marketing initiatives drive meaningful carrier onboarding and $ZBU utility. It's not just an analytics tool; it's a strategic growth engine that allows us to be far more precise and effective, directly impacting our ecosystem's velocity."</p>
+                                    <div class="testimonial-author">
+                                        <h4>Dr. Raghavendra Husangi</h4>
+                                        <span>CMO, Zeebu</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-back">
+                                <div class="testimonial-logo">
+                                    <img src="Public/Images/zeebu-logo.png" alt="Zeebu">
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p>"The analytics and automation features have saved us countless hours and improved our decision-making process."</p>
-                            <div class="testimonial-author">
-                                <h4>Marcus Rodriguez</h4>
-                                <span>CTO, Blockchain Ventures</span>
+                        <div class="testimonial-inner">
+                            <div class="testimonial-front">
+                                <div class="testimonial-content">
+                                    <p>"For a mobile-first project like ours, the biggest challenge was bridging the gap between an app store download and a user's first meaningful on-chain transaction. Cryptique became our essential tool for mapping that entire journey. We were able to identify the exact off-chain channels that brought us not just users, but active participants. The ability to segment our mobile user base based on their eventual on-chain behavior allowed us to slash our customer acquisition costs and focus our efforts on building real, sustainable engagement. It has been fundamental to our growth."</p>
+                                    <div class="testimonial-author">
+                                        <h4>Gerald Chenyi</h4>
+                                        <span>CEO, MWT</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-back">
+                                <div class="testimonial-logo">
+                                    <img src="Public/Images/mwt-logo.png" alt="MWT">
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p>"Outstanding platform with exceptional support. Cryptique is the future of Web3 business management."</p>
-                            <div class="testimonial-author">
-                                <h4>Emily Watson</h4>
-                                <span>Founder, NFT Marketplace</span>
+                        <div class="testimonial-inner">
+                            <div class="testimonial-front">
+                                <div class="testimonial-content">
+                                    <p>"Cryptique's AI-driven segmentation is, simply put, a game-changer. We moved beyond surface-level metrics and could finally distinguish between speculators, genuine users, and our true power users. CQ Intelligence uncovered patterns in behavior that we never would have seen manually, allowing us to identify a high-potential segment that was at risk of churning. A single proactive campaign targeted at that segment, based on Cryptique's recommendation, increased its retention by over 50%. That's the kind of actionable intelligence that defines the next generation of Web3 platforms."</p>
+                                    <div class="testimonial-author">
+                                        <h4>Jitesh Kumar</h4>
+                                        <span>CEO, Cubane</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-back">
+                                <div class="testimonial-logo">
+                                    <img src="Public/Images/cubane-logo.png" alt="Cubane">
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p>"The multi-chain support is seamless. We can now operate across different networks without any hassle."</p>
-                            <div class="testimonial-author">
-                                <h4>David Kim</h4>
-                                <span>Lead Developer, Cross Chain</span>
+                        <div class="testimonial-inner">
+                            <div class="testimonial-front">
+                                <div class="testimonial-content">
+                                    <p>"In the NFT space, community is everything, but correlating vibrant Discord chatter with mint-day conversions has always been a challenge. Cryptique gave us the ability to see exactly which community segments were most likely to convert. For our last launch, we used Cryptique to analyze pre-launch engagement and on-chain history, allowing us to target our marketing with surgical precision. The result was our most successful mint to date, with a significantly higher conversion rate from our core community. Cryptique turns community sentiment into measurable ROI."</p>
+                                    <div class="testimonial-author">
+                                        <h4>Masud Farshori</h4>
+                                        <span>CEO, Vingt</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-back">
+                                <div class="testimonial-logo">
+                                    <img src="Public/Images/vingt-logo.png" alt="Vingt">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Duplicate testimonials for smooth looping -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-inner">
+                            <div class="testimonial-front">
+                                <div class="testimonial-content">
+                                    <p>"In the complex world of B2B Web3 adoption, understanding the full journey from initial enterprise contact to on-chain value creation is paramount. Before Cryptique, we had many data points, but connecting them into a coherent, actionable strategy was a significant challenge. Cryptique, with its powerful CQ Intelligence, has provided us with unprecedented clarity. We now see exactly which B2B marketing initiatives drive meaningful carrier onboarding and $ZBU utility. It's not just an analytics tool; it's a strategic growth engine that allows us to be far more precise and effective, directly impacting our ecosystem's velocity."</p>
+                                    <div class="testimonial-author">
+                                        <h4>Dr. Raghavendra Husangi</h4>
+                                        <span>CMO, Zeebu</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-back">
+                                <div class="testimonial-logo">
+                                    <img src="Public/Images/zeebu-logo.png" alt="Zeebu">
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p>"Cryptique's intelligent hub has transformed our Web3 operations completely. Highly recommended!"</p>
-                            <div class="testimonial-author">
-                                <h4>Lisa Thompson</h4>
-                                <span>COO, Web3 Innovations</span>
+                        <div class="testimonial-inner">
+                            <div class="testimonial-front">
+                                <div class="testimonial-content">
+                                    <p>"For a mobile-first project like ours, the biggest challenge was bridging the gap between an app store download and a user's first meaningful on-chain transaction. Cryptique became our essential tool for mapping that entire journey. We were able to identify the exact off-chain channels that brought us not just users, but active participants. The ability to segment our mobile user base based on their eventual on-chain behavior allowed us to slash our customer acquisition costs and focus our efforts on building real, sustainable engagement. It has been fundamental to our growth."</p>
+                                    <div class="testimonial-author">
+                                        <h4>Gerald Chenyi</h4>
+                                        <span>CEO, MWT</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-back">
+                                <div class="testimonial-logo">
+                                    <img src="Public/Images/mwt-logo.png" alt="MWT">
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p>"The platform's AI capabilities are impressive. It's like having a Web3 expert on our team 24/7."</p>
-                            <div class="testimonial-author">
-                                <h4>Alex Johnson</h4>
-                                <span>Product Manager, Crypto Corp</span>
+                        <div class="testimonial-inner">
+                            <div class="testimonial-front">
+                                <div class="testimonial-content">
+                                    <p>"Cryptique's AI-driven segmentation is, simply put, a game-changer. We moved beyond surface-level metrics and could finally distinguish between speculators, genuine users, and our true power users. CQ Intelligence uncovered patterns in behavior that we never would have seen manually, allowing us to identify a high-potential segment that was at risk of churning. A single proactive campaign targeted at that segment, based on Cryptique's recommendation, increased its retention by over 50%. That's the kind of actionable intelligence that defines the next generation of Web3 platforms."</p>
+                                    <div class="testimonial-author">
+                                        <h4>Jitesh Kumar</h4>
+                                        <span>CEO, Cubane</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-back">
+                                <div class="testimonial-logo">
+                                    <img src="Public/Images/cubane-logo.png" alt="Cubane">
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p>"Cryptique has revolutionized how we manage our DeFi operations. The platform is incredibly intuitive and powerful."</p>
-                            <div class="testimonial-author">
-                                <h4>Sarah Chen</h4>
-                                <span>CEO, DeFi Solutions</span>
+                        <div class="testimonial-inner">
+                            <div class="testimonial-front">
+                                <div class="testimonial-content">
+                                    <p>"In the NFT space, community is everything, but correlating vibrant Discord chatter with mint-day conversions has always been a challenge. Cryptique gave us the ability to see exactly which community segments were most likely to convert. For our last launch, we used Cryptique to analyze pre-launch engagement and on-chain history, allowing us to target our marketing with surgical precision. The result was our most successful mint to date, with a significantly higher conversion rate from our core community. Cryptique turns community sentiment into measurable ROI."</p>
+                                    <div class="testimonial-author">
+                                        <h4>Masud Farshori</h4>
+                                        <span>CEO, Vingt</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p>"The analytics and automation features have saved us countless hours and improved our decision-making process."</p>
-                            <div class="testimonial-author">
-                                <h4>Marcus Rodriguez</h4>
-                                <span>CTO, Blockchain Ventures</span>
+                            <div class="testimonial-back">
+                                <div class="testimonial-logo">
+                                    <img src="Public/Images/vingt-logo.png" alt="Vingt">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -452,8 +1173,8 @@
                 <h2 class="cta-title">Ready to Transform Your Web3 Business?</h2>
                 <p class="cta-text">Join the future of decentralized business management with Cryptique</p>
                 <div class="cta-buttons">
-                    <a href="#book-demo" class="cta-btn-primary">Book a Demo</a>
-                    <a href="#get-started" class="cta-btn-secondary">Get Started</a>
+                    <a href="https://calendly.com/founders-cryptique/book-a-demo" class="cta-btn-primary" target="_blank" rel="noopener noreferrer">Book a Demo</a>
+                    <a href="https://app.cryptique.io/login" class="cta-btn-secondary">Get Started</a>
                 </div>
             </div>
         </div>
@@ -468,9 +1189,9 @@
                     </div>
                     <p class="footer-description">Your Intelligent Hub For The New Internet</p>
                     <div class="social-links">
-                        <a href="#" class="social-link"><img src="Public/Images/x-logo.png" alt="X"></a>
-                        <a href="#" class="social-link"><img src="Public/Images/discord-logo.png" alt="Discord"></a>
-                        <a href="#" class="social-link"><img src="Public/Images/telegram-logo.png" alt="Telegram"></a>
+                        <a href="https://x.com/Cryptiqueio" class="social-link" target="_blank" rel="noopener noreferrer"><img src="Public/Images/x-logo.png" alt="X"></a>
+                        <a href="https://discord.gg/H38UGQ6u" class="social-link" target="_blank" rel="noopener noreferrer"><img src="Public/Images/discord-logo.png" alt="Discord"></a>
+                        <a href="https://www.youtube.com/@Cryptiqueio" class="social-link youtube-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
 
@@ -478,28 +1199,23 @@
                     <h4>Product</h4>
                     <ul class="footer-links">
                         <li><a href="#features">Features</a></li>
-                        <li><a href="#docs">Documentation</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="#api">API</a></li>
+                        <li><a href="https://cryptique.gitbook.io/cryptique/">Documentation</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-section">
                     <h4>Company</h4>
                     <ul class="footer-links">
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#team">Team</a></li>
-                        <li><a href="#careers">Careers</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="https://www.linkedin.com/company/cryptique-io/jobs">Careers</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-section">
                     <h4>Legal</h4>
                     <ul class="footer-links">
-                        <li><a href="#privacy">Privacy Policy</a></li>
-                        <li><a href="#terms">Terms of Service</a></li>
-                        <li><a href="#cookies">Cookie Policy</a></li>
+                        <li><a href="https://cryptique.gitbook.io/cryptique/technical/privacy">Privacy Policy</a></li>
+                        <li><a href="https://cryptique.gitbook.io/cryptique/technical/privacy">Cookie Policy</a></li>
                     </ul>
                 </div>
 
