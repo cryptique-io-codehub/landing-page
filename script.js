@@ -159,8 +159,10 @@ function initBlockchainCubeAnimation() {
 
     if (!visualSection || !cubeContainer || !problemSection || !solutionSection) return;
 
+    // Initialize states
     gsap.set(solutionSection, { opacity: 0 });
     gsap.set(problemSection, { opacity: 1 });
+    gsap.set(['.solution-text-top-left', '.solution-text-bottom-right'], { opacity: 0 });
 
     let dataFlowInterval;
     let insightCardInterval;
@@ -169,25 +171,25 @@ function initBlockchainCubeAnimation() {
         scrollTrigger: {
             trigger: visualSection,
             start: 'top top',
-            end: '+=3000', // Adjusted scroll duration
+            end: '+=3000',
             pin: true,
-            scrub: 1.2,
+            scrub: true,
             anticipatePin: 1,
+            onUpdate: (self) => {
+                const solutionIsVisible = self.progress > 0.6; 
+                if (solutionIsVisible) {
+                    if (!dataFlowInterval) dataFlowInterval = setInterval(createDataArray, 300);
+                    if (!insightCardInterval) insightCardInterval = setInterval(createInsightCard, 3000);
+                } else {
+                    clearInterval(dataFlowInterval);
+                    clearInterval(insightCardInterval);
+                    dataFlowInterval = null;
+                    insightCardInterval = null;
+                }
+            },
             onEnter: () => {
                 if (statsInterval) clearInterval(statsInterval);
-                if (!dataFlowInterval) dataFlowInterval = setInterval(createDataArray, 300);
-                if (!insightCardInterval) insightCardInterval = setInterval(createInsightCard, 3000);
-            },
-            onLeave: () => {
-                clearInterval(dataFlowInterval);
-                clearInterval(insightCardInterval);
-                dataFlowInterval = null;
-                insightCardInterval = null;
-            },
-            onEnterBack: () => {
-                if (statsInterval) clearInterval(statsInterval);
-                if (!dataFlowInterval) dataFlowInterval = setInterval(createDataArray, 300);
-                if (!insightCardInterval) insightCardInterval = setInterval(createInsightCard, 3000);
+                gsap.killTweensOf('.blockchain-cube'); 
             },
             onLeaveBack: () => {
                 clearInterval(dataFlowInterval);
@@ -195,44 +197,46 @@ function initBlockchainCubeAnimation() {
                 dataFlowInterval = null;
                 insightCardInterval = null;
                 initProblemStatsCarousel();
-            },
-            onUpdate: (self) => {
-                const progress = self.progress;
-                if (progress > 0.2 && !cubeContainer.classList.contains('cube-assembled')) {
-                    cubeContainer.classList.add('cube-assembled');
-                } else if (progress <= 0.2 && cubeContainer.classList.contains('cube-assembled')) {
-                    cubeContainer.classList.remove('cube-assembled');
-                }
             }
         }
     });
 
-    // 1. Fade out problem stats and assemble cube
     masterTimeline
         .to('.problem-stats-container', {
             opacity: 0,
             scale: 0.8,
-            duration: 2,
+            duration: 2.5,
             ease: 'power2.in'
         }, "start")
-        .add(gsap.to('.cube-face', {
+        .to('.cube-face', {
             x: 0, y: 0, scale: 1, rotationZ: 0,
             duration: 4,
             stagger: 0.1,
             ease: 'power3.inOut'
-        }), "start")
-    
-    // 2. Fade in solution section and new title
-        .to(solutionSection, { opacity: 1, duration: 1 }, "start+=2.5")
-        .to('.solution-text-top-left', { opacity: 1, duration: 1.5, ease: 'power2.out' }, "start+=2.8")
-        .to('.solution-text-bottom-right', { opacity: 1, duration: 1.5, ease: 'power2.out' }, "start+=3.1");
+        }, "start")
+        .to(solutionSection, {
+            opacity: 1,
+            duration: 3,
+            ease: 'power2.inOut'
+        }, "start+=1")
+        .to(['.solution-text-top-left', '.solution-text-bottom-right'], {
+            opacity: 1,
+            duration: 2,
+            ease: 'power2.out',
+            stagger: 0.3
+        }, "start+=2")
+        .call(() => {
+            cubeContainer.classList.remove('cube-assembled');
+        }, [], "start+=3.9")
+        .call(() => {
+            cubeContainer.classList.add('cube-assembled');
+        }, [], "start+=4");
 
-    // --- Continuous Data Flow Functions ---
     const dataContainer = document.getElementById('data-arrays-container');
     const createDataArray = () => {
         if (!cubeContainer) return;
         const cubeRect = cubeContainer.getBoundingClientRect();
-        if (cubeRect.width === 0) return; // Don't run if not visible
+        if (cubeRect.width === 0) return;
 
         const arrayEl = document.createElement('div');
         arrayEl.className = 'data-array';
@@ -265,35 +269,58 @@ function initBlockchainCubeAnimation() {
     let dataIndex = 0;
 
     const generateGraphHTML = (type) => {
+        // --- IMPROVED GRAPH GENERATORS ---
         switch (type) {
-            case 'line':
-                const points = Array.from({length: 7}, (_, i) => `${i * 50},${60 - Math.random() * 40}`).join(' ');
-                return `<svg viewBox="0 0 320 60"><defs><linearGradient id="line-gradient" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#caa968;stop-opacity:0.5"/><stop offset="100%" style="stop-color:#caa968;stop-opacity:0"/></linearGradient></defs><polygon class="area" points="0,60 ${points} 320,60"/><polyline class="line" points="${points}"/></svg>`;
-            case 'pie':
-                const r = () => Math.random() * 360;
-                let a=r(), b=r(), c=r();
-                return `<div class="pie-chart" style="background: conic-gradient(#1d0c46 ${a}deg, #caa968 0 ${b}deg, #888 0 ${c}deg);"></div>`;
-            case 'geo':
-                const pointsHTML = Array.from({length: 3}, () => `<circle class="geo-point" cx="${10 + Math.random() * 80}%" cy="${20 + Math.random() * 60}%" r="3" />`).join('');
-                return `<svg viewBox="0 0 100 50"><path d="M49,1 C27,1 11,9 1,24 C11,39 27,48 49,48 C71,48 87,39 99,24 C87,9 71,1 49,1 Z" /></svg>${pointsHTML}`;
-            case 'retention':
+            case 'line': {
+                let lastY = 35 + (Math.random() - 0.5) * 10;
+                const points = Array.from({length: 10}, (_, i) => {
+                    lastY += (Math.random() - 0.5) * 8;
+                    lastY = Math.max(10, Math.min(50, lastY));
+                    return `${i * 35},${lastY}`;
+                }).join(' ');
+                return `<svg viewBox="0 0 320 60" class="chart-svg"><defs><linearGradient id="line-gradient" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#1d0c46;stop-opacity:0.4"/><stop offset="100%" style="stop-color:#1d0c46;stop-opacity:0"/></linearGradient></defs><polygon class="area" points="0,60 ${points} 315,60"/><polyline class="line" points="${points}"/></svg>`;
+            }
+            case 'pie': {
+                const p1 = 45; const p2 = 30;
+                const end1 = p1; const end2 = p1 + p2;
+                return `<div class="pie-chart" style="background: conic-gradient(#1d0c46 ${end1}%, #caa968 0 ${end2}%, #cccccc 0 100%);"></div>`;
+            }
+            case 'geo': {
+                const worldPath = "M178.6,83.1l-2.8-1.4l-1.9-3.2l-3.2-2.1c0,0-0.2-1.4-0.4-1.9c-0.2-0.5-0.2-0.8-0.2-0.8l-1.9-2.8l-3.2-1.9l-1-0.2l-3.2-2.1l0.2-2.2l-2.1-3l-2.1-1.2l-2.4-0.6l-2.2-2.8l-0.8-2.6l-2.1-1.9l-1.9-3.2l-3.7-2.6l-3.2-1.4l-3-2.6l-1.4-2.4l-3-3.2l-1.2-3.2l0-2.8l1.4-3l-0.5-3.5l-2.1-2.4l-3,0l-2.2-1.9l-2.2,0.5l-2.1,2.4l-3.2,1.9l-3.5-0.2l-2.6,1.2l-3.2,0.5l-2.8-1.2l-2.6-1.9l-3.5-0.8l-2.6,0.5l-3.2-0.8l-3-1.9l-3.2,0.8l-2.4-0.5l-3.2-1.4l-3.2,0.5l-3,2.2l-3.2-0.8l-2.1,0.8l-2.6-1.4l-3,0.5l-3.2-1.4l-2.6,1.4l-1.7,3.5l-1,1.4l-1.7,1.2l-0.8,2.4l0.2,2.1l-1.2,1.7l-0.5,2.6l-1.9,1.9l-1,2.1l-1.2,1.9l-0.8,2.6l-1.4,1.4l-0.8,2.1l0.2,2.4l1.4,1.9l-0.2,2.2l-1.4,1.9l-0.5,2.6l0.8,1.9l0.8,2.8l0.2,3.5l1.4,1.4l1.4,2.2l-0.2,2.4l0.5,2.1l1.2,1.9l0.8,2.1l1.9,1.4l2.6,1.9l1,2.2l1.9,1.4l2.4,1.9l1.4,2.2l1.9,1.2l2.6,1.9l2.4,1l2.8,1.4l3.2,1l2.4,1.4l3.2,0.8l3.2,1.2l2.6,0.8l3.2,0.5l3.2,0.8l2.8-0.2l3,1.2l3.2-0.5l2.6,0.5l3.2-0.5l3.2,0.5l2.6,0.2l3.2-0.5l2.8,0.2l3.2,0.8l2.8-0.5l3,0.5l6,1.2l3-0.2l3,1.2L178.6,83.1z";
+                const locations = [{cx: "60", cy: "35"}, {cx: "115", cy: "30"}, {cx: "155", cy: "50"}];
+                const pointsHTML = locations.map(loc => `<circle class="geo-point" cx="${loc.cx}" cy="${loc.cy}" r="2" />`).join('');
+                return `<svg viewBox="30 10 160 80"><path class="land" d="${worldPath}" /></svg>${pointsHTML}`;
+            }
+            case 'retention': {
                 let cellsHTML = '';
-                for (let i = 0; i < 40; i++) {
-                    cellsHTML += `<div class="cell" style="opacity: ${Math.max(0.1, (1 - (i % 8) / 8) * Math.random())}"></div>`;
+                for (let row = 0; row < 5; row++) {
+                    for (let col = 0; col < 8; col++) {
+                        if (col > (4 - row) + 3) continue;
+                        const baseOpacity = (col === 0) ? 0.9 : 0.7 - (col / 12);
+                        const noise = (Math.random() - 0.5) * 0.15;
+                        const finalOpacity = Math.max(0.1, Math.min(1, baseOpacity + noise));
+                        cellsHTML += `<div class="cell" style="background-color: #1d0c46; opacity: ${finalOpacity};"></div>`;
+                    }
                 }
                 return `<div class="retention-grid">${cellsHTML}</div>`;
-            case 'scatter':
+            }
+            case 'scatter': {
                  let dotsHTML = '';
-                for (let i = 0; i < 15; i++) {
-                    const highlight = Math.random() > 0.8 ? 'highlight' : '';
-                    dotsHTML += `<div class="dot ${highlight}" style="left: ${10 + Math.random() * 80}%; top: ${10 + Math.random() * 80}%"></div>`;
+                for (let i = 0; i < 20; i++) {
+                    let x = 10 + Math.random() * 80;
+                    let y = x - 15 + (Math.random() * 30);
+                    if (Math.random() > 0.9) { y = 10 + Math.random() * 80; }
+                    x = Math.max(5, Math.min(95, x)); y = Math.max(5, Math.min(95, y));
+                    dotsHTML += `<div class="dot" style="left: ${x}%; top: ${y}%"></div>`;
                 }
                 return `<div class="scatter-plot">${dotsHTML}</div>`;
+            }
             case 'bar':
-            default:
+            default: {
                 let barHTML = '';
                 for(let i = 0; i < 10; i++) { barHTML += `<div class="bar" style="height: ${Math.random() * 80 + 20}%"></div>`; }
                 return barHTML;
+            }
         }
     }
     
