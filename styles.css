@@ -514,36 +514,22 @@ body {
 
 /* Trusted By Section */
 .trusted-by {
-    padding: 40px 0;
-    background: #fff;
+    padding: 15px 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     position: relative;
-    z-index: 5; /* Ensure this is above the following section's animations */
+    z-index: 5;
     overflow: hidden;
-}
-
-.trusted-by::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(90deg, 
-        rgba(255,255,255,1) 0%, 
-        rgba(255,255,255,0.8) 15%, 
-        rgba(255,255,255,0) 25%, 
-        rgba(255,255,255,0) 75%, 
-        rgba(255,255,255,0.8) 85%, 
-        rgba(255,255,255,1) 100%);
-    z-index: 2;
-    pointer-events: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .trusted-text {
     text-align: center;
     font-size: 14px;
-    color: #666;
-    margin-bottom: 25px;
+    color: #444;
+    margin-bottom: 15px;
     font-weight: 500;
     position: relative;
     z-index: 3;
@@ -554,6 +540,8 @@ body {
     position: relative;
     width: 100vw;
     margin-left: calc(-50vw + 50%);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
 .logo-track {
