@@ -2739,37 +2739,12 @@ body {
     border-radius: 50%;
 }
 
-/* Horizontal Funnel Styles */
-.funnel-stats {
-    display: flex;
-    gap: 40px;
-    justify-content: center;
-    margin-bottom: 30px;
-}
-
-.funnel-stats .stat-item {
-    text-align: center;
-}
-
-.funnel-stats .stat-label {
-    display: block;
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 4px;
-}
-
-.funnel-stats .stat-value {
-    display: block;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #1d0c46;
-}
-
+/* --- MODIFICATION START: Funnel Shape to Rectangles --- */
 .horizontal-funnel {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
+    flex-direction: column; /* Stack the funnel stages vertically */
+    align-items: center;    /* Center the stages horizontally */
+    gap: 10px;              /* Add space between the rectangular stages */
     margin: 20px 0;
     padding: 20px 10px;
 }
@@ -2779,26 +2754,37 @@ body {
     text-align: center;
 }
 
+/* Remove margin overrides from the stages */
+.funnel-stage.stage-2,
+.funnel-stage.stage-3 {
+    margin-left: 0;
+}
+
+/* Make all segments proper rectangles with rounded corners */
 .funnel-stage.stage-1 .funnel-segment {
     background: #1d0c46;
-    width: 100px;
+    width: 250px;
     height: 60px;
-    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+    clip-path: none; /* Removed clip-path to make it a rectangle */
+    border-radius: 4px; /* Added border-radius */
 }
 
 .funnel-stage.stage-2 .funnel-segment {
     background: #3a1a7a;
-    width: 80px;
-    height: 50px;
-    clip-path: polygon(15% 0, 100% 0, 85% 100%, 0% 100%);
+    width: 200px;
+    height: 60px;
+    clip-path: none; /* Removed clip-path to make it a rectangle */
+    border-radius: 4px; /* Added border-radius */
 }
 
 .funnel-stage.stage-3 .funnel-segment {
     background: #caa968;
-    width: 60px;
-    height: 40px;
-    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+    width: 150px;
+    height: 60px;
+    clip-path: none; /* Removed clip-path to make it a rectangle */
+    border-radius: 4px; /* Added border-radius */
 }
+/* --- MODIFICATION END --- */
 
 .funnel-segment {
     display: flex;
@@ -3073,7 +3059,6 @@ body {
         padding: 6px 12px;
     }
 }
-/* styles.css - Add this snippet at the very end */
 
 /* Force high-contrast text on analytics metric cards */
 .analytics-dashboard .metric-card {
@@ -3095,3 +3080,10 @@ body {
 .funnel-container .stat-box .stat-value {
     color: white; /* Force text to be white */
 }
+
+/* MODIFICATION START: Center the "Conversions" column */
+.traffic-table thead th:nth-child(3),
+.traffic-table tbody td:nth-child(3) {
+    text-align: center;
+}
+/* MODIFICATION END */
