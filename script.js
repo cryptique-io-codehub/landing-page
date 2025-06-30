@@ -18,6 +18,8 @@ const heroCursor = document.querySelector('.hero-cursor');
 const heroSection = document.querySelector('.hero');
 
 if (heroCursor && heroSection) {
+    const cursorCube = heroCursor.querySelector('.cursor-cube');
+    
     heroSection.addEventListener('mousemove', (e) => {
         const rect = heroSection.getBoundingClientRect();
         const x = e.clientX - rect.left;
@@ -30,6 +32,24 @@ if (heroCursor && heroSection) {
     
     heroSection.addEventListener('mouseleave', () => {
         heroCursor.style.opacity = '0';
+    });
+
+    // Add interactive rotation based on mouse movement
+    heroSection.addEventListener('mousemove', (e) => {
+        if (cursorCube) {
+            const rect = heroSection.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            const mouseX = (e.clientX - centerX) / rect.width;
+            const mouseY = (e.clientY - centerY) / rect.height;
+            
+            // Add subtle rotation based on mouse position
+            const rotationX = mouseY * 20;
+            const rotationY = mouseX * 20;
+            
+            cursorCube.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
+        }
     });
 }
 
@@ -50,6 +70,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Navbar visibility and background on scroll
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
+    const ctaSection = document.querySelector('.cta');
     const scrollThreshold = 50;
     
     if (window.scrollY > scrollThreshold) {
@@ -60,6 +81,21 @@ window.addEventListener('scroll', () => {
     } else {
         navbar.classList.remove('visible');
         navbar.classList.remove('scrolled');
+    }
+
+    // Check if navbar is over CTA section (dark background)
+    if (ctaSection) {
+        const ctaRect = ctaSection.getBoundingClientRect();
+        const navbarRect = navbar.getBoundingClientRect();
+        
+        // Check if navbar overlaps with CTA section
+        const isOverCTA = ctaRect.top <= navbarRect.bottom && ctaRect.bottom >= navbarRect.top;
+        
+        if (isOverCTA) {
+            navbar.classList.add('over-dark-section');
+        } else {
+            navbar.classList.remove('over-dark-section');
+        }
     }
 });
 
@@ -146,7 +182,7 @@ function initProblemStatsCarousel() {
     gsap.set([numberEl, descriptionEl], { opacity: 1 });
 
     if (statsInterval) clearInterval(statsInterval);
-    statsInterval = setInterval(updateStat, 3000);
+    statsInterval = setInterval(updateStat, 1500);
 }
 
 function initBlockchainCubeAnimation() {
@@ -167,24 +203,65 @@ function initBlockchainCubeAnimation() {
     let dataFlowInterval;
     let insightCardInterval;
 
+    // Create smooth scroll-responsive cube assembly animation
+    const cubeAssemblyTimeline = gsap.timeline({ paused: true });
+    const cubeFaces = cubeContainer.querySelectorAll('.cube-face');
+    
+    // Set up cube assembly animation
+    cubeAssemblyTimeline
+        .to(cubeFaces, {
+            duration: 0.8,
+            ease: "power2.out",
+            stagger: 0.1,
+            transform: (i) => {
+                const faces = ['translateZ(125px)', 'rotateY(180deg) translateZ(125px)', 'rotateY(90deg) translateZ(125px)', 'rotateY(-90deg) translateZ(125px)', 'rotateX(90deg) translateZ(125px)', 'rotateX(-90deg) translateZ(125px)'];
+                return faces[i];
+            }
+        })
+        .to(cubeContainer, {
+            duration: 0.5,
+            onComplete: () => {
+                cubeContainer.classList.add('cube-assembled');
+                // Start data flows immediately when assembly completes
+                if (!dataFlowInterval) dataFlowInterval = setInterval(createDataArray, 100);
+                if (!insightCardInterval) {
+                    // Create first insight card instantly
+                    createInsightCard();
+                    // Then set up interval for subsequent cards with longer delay
+                    insightCardInterval = setInterval(createInsightCard, 2500);
+                }
+            }
+        }, "-=0.3");
+
     const masterTimeline = gsap.timeline({
         scrollTrigger: {
             trigger: visualSection,
             start: 'top top',
-            end: '+=3000',
+            end: '+=800',
             pin: true,
             scrub: true,
             anticipatePin: 1,
             onUpdate: (self) => {
-                const solutionIsVisible = self.progress > 0.6; 
-                if (solutionIsVisible) {
-                    if (!dataFlowInterval) dataFlowInterval = setInterval(createDataArray, 300);
-                    if (!insightCardInterval) insightCardInterval = setInterval(createInsightCard, 3000);
+                const assemblyProgress = Math.max(0, Math.min(1, (self.progress - 0.2) / 0.4));
+                
+                // Smoothly animate cube assembly based on scroll
+                cubeAssemblyTimeline.progress(assemblyProgress);
+                
+                // Handle problem/solution visibility
+                if (self.progress > 0.3) {
+                    gsap.set(problemSection, { opacity: 0 });
                 } else {
-                    clearInterval(dataFlowInterval);
-                    clearInterval(insightCardInterval);
-                    dataFlowInterval = null;
-                    insightCardInterval = null;
+                    gsap.set(problemSection, { opacity: 1 });
+                    // Clear intervals when scrolling back up
+                    if (dataFlowInterval) {
+                        clearInterval(dataFlowInterval);
+                        dataFlowInterval = null;
+                    }
+                    if (insightCardInterval) {
+                        clearInterval(insightCardInterval);
+                        insightCardInterval = null;
+                    }
+                    cubeContainer.classList.remove('cube-assembled');
                 }
             },
             onEnter: () => {
@@ -196,6 +273,7 @@ function initBlockchainCubeAnimation() {
                 clearInterval(insightCardInterval);
                 dataFlowInterval = null;
                 insightCardInterval = null;
+                cubeContainer.classList.remove('cube-assembled');
                 initProblemStatsCarousel();
             }
         }
@@ -205,32 +283,20 @@ function initBlockchainCubeAnimation() {
         .to('.problem-stats-container', {
             opacity: 0,
             scale: 0.8,
-            duration: 2.5,
+            duration: 1.5,
             ease: 'power2.in'
-        }, "start")
-        .to('.cube-face', {
-            x: 0, y: 0, scale: 1, rotationZ: 0,
-            duration: 4,
-            stagger: 0.1,
-            ease: 'power3.inOut'
         }, "start")
         .to(solutionSection, {
             opacity: 1,
-            duration: 3,
+            duration: 2,
             ease: 'power2.inOut'
-        }, "start+=1")
+        }, "start+=0.5")
         .to(['.solution-text-top-left', '.solution-text-bottom-right'], {
             opacity: 1,
-            duration: 2,
+            duration: 1.5,
             ease: 'power2.out',
-            stagger: 0.3
-        }, "start+=2")
-        .call(() => {
-            cubeContainer.classList.remove('cube-assembled');
-        }, [], "start+=3.9")
-        .call(() => {
-            cubeContainer.classList.add('cube-assembled');
-        }, [], "start+=4");
+            stagger: 0.2
+        }, "start+=1")
 
     const dataContainer = document.getElementById('data-arrays-container');
     const createDataArray = () => {
@@ -248,10 +314,10 @@ function initBlockchainCubeAnimation() {
             {
                 x: cubeRect.left - 150,
                 opacity: 1,
-                duration: 1.5 + Math.random() * 1.5,
-                ease: 'power1.in',
+                duration: 0.8 + Math.random() * 0.4,
+                ease: 'power2.out',
                 onComplete: () => {
-                    gsap.to(arrayEl, { opacity: 0, duration: 0.3, onComplete: () => arrayEl.remove() });
+                    gsap.to(arrayEl, { opacity: 0, duration: 0.2, onComplete: () => arrayEl.remove() });
                 }
             }
         );

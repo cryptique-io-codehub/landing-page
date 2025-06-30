@@ -54,7 +54,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="hero-cursor"></div>
+                <div class="hero-cursor">
+                    <div class="cursor-cube">
+                        <div class="cursor-face cursor-front"></div>
+                        <div class="cursor-face cursor-back"></div>
+                        <div class="cursor-face cursor-right"></div>
+                        <div class="cursor-face cursor-left"></div>
+                        <div class="cursor-face cursor-top"></div>
+                        <div class="cursor-face cursor-bottom"></div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="hero-buttons">
@@ -174,8 +183,8 @@
             <div class="content-section solution-section">
                 <div class="solution-content-wrapper">
                     <div class="solution-text-container">
-                        <h3 class="solution-text-top-left">We do not just bridge Off-chain user behavior and on chain actions</h3>
-                        <h3 class="solution-text-bottom-right">We <span class="highlight">Amplify</span> this <span class="highlight">Intelligence</span> for your Adoption</h3>
+                        <h3 class="solution-text-top-left">Cryptique bridges Offchain user behavior and onchain actions</h3>
+                        <h3 class="solution-text-bottom-right">To <span class="highlight">Amplify</span> your conversions, <span class="highlight">Intelligently</span></h3>
                     </div>
                     <div id="data-arrays-container"></div>
                     <div id="insight-cards-container"></div>
@@ -537,10 +546,7 @@
                                             <span class="wallet-stat-label">Protocols Used</span>
                                             <span class="wallet-stat-value">23</span>
                                         </div>
-                                    </div>
-                                    
-                                    <div class="user-classification">
-                                        <div class="classification-badge whale">
+                                        <div class="wallet-stat whale-classification">
                                             <div class="classification-icon">🐋</div>
                                             <div class="classification-info">
                                                 <span class="classification-type">WHALE</span>
@@ -586,31 +592,6 @@
                                     </div>
                                     
                                     <div class="categorization-content">
-                                        <div class="primary-classification">
-                                            <div class="classification-card whale">
-                                                <div class="classification-header">
-                                                    <div class="classification-icon-large">🐋</div>
-                                                    <div class="classification-details">
-                                                        <h4>WHALE</h4>
-                                                        <div class="classification-metrics">
-                                                            <div class="metric-row">
-                                                                <span>Portfolio Value: $45,678 (Top 5%)</span>
-                                                            </div>
-                                                            <div class="metric-row">
-                                                                <span>Transaction Volume: High</span>
-                                                            </div>
-                                                            <div class="metric-row">
-                                                                <span>Activity: Very Active (Daily)</span>
-                                                            </div>
-                                                            <div class="metric-row">
-                                                                <span>Risk Level: Low</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
                                         <div class="behavioral-patterns">
                                             <h4>Behavioral Patterns:</h4>
                                             <div class="pattern-list">
@@ -754,9 +735,9 @@
                 <div class="feature-visual-scrolling">
                     <div class="cq-intelligence-dashboard">
                         <div class="container">
-                            <!-- Beat 1: Chat Interface & Prompt -->
+                            <!-- Unified Chat Interface -->
                             <div class="cqi-section" data-aos="fade-up" data-aos-delay="100">
-                                <div class="cqi-chat-container">
+                                <div class="cqi-chat-container unified-chat">
                                     <div class="chat-header">
                                         <h3>🤖 CQ Intelligence™</h3>
                                         <div class="chat-status">
@@ -766,6 +747,7 @@
                                                             </div>
                                     
                                     <div class="chat-messages">
+                                        <!-- User Question -->
                                         <div class="message user-message">
                                             <div class="message-content">
                                                 Show me how effective my last <strong>Launch-Day</strong> campaign was. I care about new vs returning users and total on-chain conversions.
@@ -773,6 +755,7 @@
                                             <div class="message-time">Just now</div>
                                                             </div>
                                         
+                                        <!-- AI Typing Indicator -->
                                         <div class="message ai-message">
                                             <div class="message-avatar">🤖</div>
                                             <div class="message-content">
@@ -780,18 +763,16 @@
                                                     <span></span><span></span><span></span>
                                                         </div>
                                                 Analyzing your Launch-Day campaign data across all channels and chains...
-                                                            </div>
-                                        </div>
-                                                        </div>
                                                     </div>
                                                 </div>
                                                 
-                            <!-- Beat 2: Executive Summary Card -->
-                            <div class="cqi-section" data-aos="fade-up" data-aos-delay="200">
+                                        <!-- AI Response with Executive Summary -->
+                                        <div class="message ai-message">
+                                            <div class="message-avatar">🤖</div>
+                                            <div class="message-content">
                                 <div class="insight-canvas-card">
                                     <div class="card-header">
                                         <h3>⚡ Launch-Day Campaign – Executive Summary</h3>
-                                        <div class="loading-skeleton"></div>
                                                             </div>
                                     <div class="summary-metrics">
                                         <div class="metric-row">
@@ -817,13 +798,16 @@
                                         <div class="metric-row highlight">
                                             <span class="metric-label">ROI Est.</span>
                                             <span class="metric-value">$214K <span class="metric-secondary">(2.8× spend)</span></span>
+                                                        </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Beat 3: Multi-Source Performance Plot -->
-                            <div class="cqi-section" data-aos="fade-up" data-aos-delay="300">
+                                        <!-- AI Response with Timeline Chart -->
+                                        <div class="message ai-message">
+                                            <div class="message-avatar">🤖</div>
+                                            <div class="message-content">
                                 <div class="performance-chart-container">
                                     <div class="chart-header">
                                         <h3>Launch-Day Campaign Timeline</h3>
@@ -848,13 +832,16 @@
                                         <div class="legend-item">
                                             <div class="legend-color area"></div>
                                             <span>Website Visitors</span>
+                                                        </div>
                                         </div>
                                                 </div>
                                             </div>
                                         </div>
                                         
-                            <!-- Beat 4: Attribution Matrix & Analytics Grid -->
-                            <div class="cqi-section" data-aos="fade-up" data-aos-delay="400">
+                                        <!-- AI Response with Attribution Data -->
+                                        <div class="message ai-message">
+                                            <div class="message-avatar">🤖</div>
+                                            <div class="message-content">
                                 <div class="analytics-grid-container">
                                     <div class="attribution-table-wrapper">
                                         <h4>Traffic Source Attribution</h4>
@@ -927,14 +914,17 @@
                                             <div class="chain-stat">
                                                 <div class="chain-color others"></div>
                                                 <span>Others 7%</span>
+                                                            </div>
                                             </div>
                                         </div>
                                     </div>
                                             </div>
                                         </div>
                                         
-                            <!-- Beat 5: AI Insights & Recommendations -->
-                            <div class="cqi-section" data-aos="fade-up" data-aos-delay="500">
+                                        <!-- AI Response with Key Insights -->
+                                        <div class="message ai-message">
+                                            <div class="message-avatar">🤖</div>
+                                            <div class="message-content">
                                 <div class="ai-insights-container">
                                     <div class="insights-header">
                                         <h3>🧠 Key Findings & Recommendations</h3>
@@ -980,17 +970,17 @@
                                         <button class="action-chip primary">Create Look-alike Audience</button>
                                         <button class="action-chip secondary">Schedule Re-engagement Email</button>
                                         <button class="action-chip tertiary">Export CSV</button>
+                                                    </div>
                     </div>
                 </div>
                             </div>
 
-                            <!-- Beat 6: Follow-up Chat -->
-                            <div class="cqi-section" data-aos="fade-up" data-aos-delay="600">
-                                <div class="chat-followup">
+                                        <!-- Final AI Response -->
                                     <div class="message ai-message">
                                         <div class="message-avatar">🤖</div>
                                         <div class="message-content">
                                             Analysis complete! Would you like me to dive deeper into any specific metric, or shall we explore optimization strategies for your next campaign?
+                                            </div>
                                         </div>
                                     </div>
                                     
@@ -1016,12 +1006,20 @@
                     <div class="testimonial-card">
                         <div class="testimonial-inner">
                             <div class="testimonial-front">
-                        <div class="testimonial-content">
-                                    <p>"In the complex world of B2B Web3 adoption, understanding the full journey from initial enterprise contact to on-chain value creation is paramount. Before Cryptique, we had many data points, but connecting them into a coherent, actionable strategy was a significant challenge. Cryptique, with its powerful CQ Intelligence, has provided us with unprecedented clarity. We now see exactly which B2B marketing initiatives drive meaningful carrier onboarding and $ZBU utility. It's not just an analytics tool; it's a strategic growth engine that allows us to be far more precise and effective, directly impacting our ecosystem's velocity."</p>
-                            <div class="testimonial-author">
-                                        <h4>Dr. Raghavendra Husangi</h4>
-                                        <span>CMO, Zeebu</span>
+                                <div class="message-header">
+                                    <div class="message-avatar">
+                                        <img src="Public/Images/raghav-zeebu.jpeg" alt="Dr. Raghavendra Husangi">
                                     </div>
+                                    <div class="message-info">
+                                        <h4 class="message-author">Dr. Raghavendra Husangi</h4>
+                                        <p class="message-role">CMO, Zeebu</p>
+                                    </div>
+                                    <div class="message-timestamp">2:47 PM</div>
+                                </div>
+                                <div class="testimonial-content">
+                                    <p>Hey team! Cryptique has been absolutely game-changing for us. In B2B Web3, understanding the full journey from enterprise contact to on-chain value creation is crucial. Before Cryptique, we had scattered data points but no coherent strategy.
+
+CQ Intelligence gave us unprecedented clarity on which B2B marketing initiatives drive meaningful carrier onboarding and $ZBU utility. It's not just analytics; it's a strategic growth engine that makes us far more precise and effective.</p>
                                 </div>
                             </div>
                             <div class="testimonial-back">
@@ -1035,12 +1033,20 @@
                     <div class="testimonial-card">
                         <div class="testimonial-inner">
                             <div class="testimonial-front">
-                        <div class="testimonial-content">
-                                    <p>"For a mobile-first project like ours, the biggest challenge was bridging the gap between an app store download and a user's first meaningful on-chain transaction. Cryptique became our essential tool for mapping that entire journey. We were able to identify the exact off-chain channels that brought us not just users, but active participants. The ability to segment our mobile user base based on their eventual on-chain behavior allowed us to slash our customer acquisition costs and focus our efforts on building real, sustainable engagement. It has been fundamental to our growth."</p>
-                            <div class="testimonial-author">
-                                        <h4>Gerald Chenyi</h4>
-                                        <span>CEO, MWT</span>
+                                <div class="message-header">
+                                    <div class="message-avatar">
+                                        <img src="Public/Images/gerald-MWT.jpg" alt="Gerald Chenyi">
                                     </div>
+                                    <div class="message-info">
+                                        <h4 class="message-author">Gerald Chenyi</h4>
+                                        <p class="message-role">CEO, MWT</p>
+                                    </div>
+                                    <div class="message-timestamp">3:12 PM</div>
+                                </div>
+                                <div class="testimonial-content">
+                                    <p>This is incredible! For our mobile-first project, the biggest challenge was bridging the gap between app store downloads and meaningful on-chain transactions. Cryptique became our essential tool for mapping that entire journey.
+
+We identified the exact off-chain channels that brought us active participants, not just users. The ability to segment our mobile user base based on eventual on-chain behavior allowed us to slash acquisition costs and focus on sustainable engagement.</p>
                                 </div>
                             </div>
                             <div class="testimonial-back">
@@ -1054,12 +1060,20 @@
                     <div class="testimonial-card">
                         <div class="testimonial-inner">
                             <div class="testimonial-front">
-                        <div class="testimonial-content">
-                                    <p>"Cryptique's AI-driven segmentation is, simply put, a game-changer. We moved beyond surface-level metrics and could finally distinguish between speculators, genuine users, and our true power users. CQ Intelligence uncovered patterns in behavior that we never would have seen manually, allowing us to identify a high-potential segment that was at risk of churning. A single proactive campaign targeted at that segment, based on Cryptique's recommendation, increased its retention by over 50%. That's the kind of actionable intelligence that defines the next generation of Web3 platforms."</p>
-                            <div class="testimonial-author">
-                                        <h4>Jitesh Kumar</h4>
-                                        <span>CEO, Cubane</span>
+                                <div class="message-header">
+                                    <div class="message-avatar">
+                                        <img src="Public/Images/jitesh-cubane.jpeg" alt="Jitesh Kumar">
                                     </div>
+                                    <div class="message-info">
+                                        <h4 class="message-author">Jitesh Kumar</h4>
+                                        <p class="message-role">CEO, Cubane</p>
+                                    </div>
+                                    <div class="message-timestamp">4:25 PM</div>
+                                </div>
+                                <div class="testimonial-content">
+                                    <p>Guys, Cryptique's AI-driven segmentation is simply a game-changer! We moved beyond surface-level metrics and could finally distinguish between speculators, genuine users, and power users.
+
+CQ Intelligence uncovered behavioral patterns we never would have seen manually. A single proactive campaign targeted at a high-potential segment increased retention by over 50%. That's the actionable intelligence that defines next-gen Web3 platforms!</p>
                                 </div>
                             </div>
                             <div class="testimonial-back">
@@ -1073,12 +1087,20 @@
                     <div class="testimonial-card">
                         <div class="testimonial-inner">
                             <div class="testimonial-front">
-                        <div class="testimonial-content">
-                                    <p>"In the NFT space, community is everything, but correlating vibrant Discord chatter with mint-day conversions has always been a challenge. Cryptique gave us the ability to see exactly which community segments were most likely to convert. For our last launch, we used Cryptique to analyze pre-launch engagement and on-chain history, allowing us to target our marketing with surgical precision. The result was our most successful mint to date, with a significantly higher conversion rate from our core community. Cryptique turns community sentiment into measurable ROI."</p>
-                            <div class="testimonial-author">
-                                        <h4>Masud Farshori</h4>
-                                        <span>CEO, Vingt</span>
+                                <div class="message-header">
+                                    <div class="message-avatar">
+                                        <img src="Public/Images/masud-vingt.jpeg" alt="Masud Farshori">
                                     </div>
+                                    <div class="message-info">
+                                        <h4 class="message-author">Masud Farshori</h4>
+                                        <p class="message-role">CEO, Vingt</p>
+                                    </div>
+                                    <div class="message-timestamp">5:18 PM</div>
+                                </div>
+                                <div class="testimonial-content">
+                                    <p>Amazing results! In the NFT space, community is everything, but correlating Discord chatter with mint-day conversions was always a challenge. Cryptique gave us the ability to see exactly which community segments were most likely to convert.
+
+For our last launch, we analyzed pre-launch engagement and on-chain history, allowing surgical precision in our marketing. The result was our most successful mint to date with significantly higher conversion rates. Cryptique turns community sentiment into measurable ROI!</p>
                                 </div>
                             </div>
                             <div class="testimonial-back">
@@ -1093,12 +1115,20 @@
                     <div class="testimonial-card">
                         <div class="testimonial-inner">
                             <div class="testimonial-front">
-                        <div class="testimonial-content">
-                                    <p>"In the complex world of B2B Web3 adoption, understanding the full journey from initial enterprise contact to on-chain value creation is paramount. Before Cryptique, we had many data points, but connecting them into a coherent, actionable strategy was a significant challenge. Cryptique, with its powerful CQ Intelligence, has provided us with unprecedented clarity. We now see exactly which B2B marketing initiatives drive meaningful carrier onboarding and $ZBU utility. It's not just an analytics tool; it's a strategic growth engine that allows us to be far more precise and effective, directly impacting our ecosystem's velocity."</p>
-                            <div class="testimonial-author">
-                                        <h4>Dr. Raghavendra Husangi</h4>
-                                        <span>CMO, Zeebu</span>
+                                <div class="message-header">
+                                    <div class="message-avatar">
+                                        <img src="Public/Images/raghav-zeebu.jpeg" alt="Dr. Raghavendra Husangi">
                                     </div>
+                                    <div class="message-info">
+                                        <h4 class="message-author">Dr. Raghavendra Husangi</h4>
+                                        <p class="message-role">CMO, Zeebu</p>
+                                    </div>
+                                    <div class="message-timestamp">2:47 PM</div>
+                                </div>
+                                <div class="testimonial-content">
+                                    <p>Hey team! Cryptique has been absolutely game-changing for us. In B2B Web3, understanding the full journey from enterprise contact to on-chain value creation is crucial. Before Cryptique, we had scattered data points but no coherent strategy.
+
+CQ Intelligence gave us unprecedented clarity on which B2B marketing initiatives drive meaningful carrier onboarding and $ZBU utility. It's not just analytics; it's a strategic growth engine that makes us far more precise and effective.</p>
                                 </div>
                             </div>
                             <div class="testimonial-back">
@@ -1112,12 +1142,20 @@
                     <div class="testimonial-card">
                         <div class="testimonial-inner">
                             <div class="testimonial-front">
-                        <div class="testimonial-content">
-                                    <p>"For a mobile-first project like ours, the biggest challenge was bridging the gap between an app store download and a user's first meaningful on-chain transaction. Cryptique became our essential tool for mapping that entire journey. We were able to identify the exact off-chain channels that brought us not just users, but active participants. The ability to segment our mobile user base based on their eventual on-chain behavior allowed us to slash our customer acquisition costs and focus our efforts on building real, sustainable engagement. It has been fundamental to our growth."</p>
-                            <div class="testimonial-author">
-                                        <h4>Gerald Chenyi</h4>
-                                        <span>CEO, MWT</span>
+                                <div class="message-header">
+                                    <div class="message-avatar">
+                                        <img src="Public/Images/bailey-THAT.jpeg" alt="Gerald Chenyi">
                                     </div>
+                                    <div class="message-info">
+                                        <h4 class="message-author">Gerald Chenyi</h4>
+                                        <p class="message-role">CEO, MWT</p>
+                                    </div>
+                                    <div class="message-timestamp">3:12 PM</div>
+                                </div>
+                                <div class="testimonial-content">
+                                    <p>This is incredible! For our mobile-first project, the biggest challenge was bridging the gap between app store downloads and meaningful on-chain transactions. Cryptique became our essential tool for mapping that entire journey.
+
+We identified the exact off-chain channels that brought us active participants, not just users. The ability to segment our mobile user base based on eventual on-chain behavior allowed us to slash acquisition costs and focus on sustainable engagement.</p>
                                 </div>
                             </div>
                             <div class="testimonial-back">
@@ -1131,12 +1169,20 @@
                     <div class="testimonial-card">
                         <div class="testimonial-inner">
                             <div class="testimonial-front">
-                        <div class="testimonial-content">
-                                    <p>"Cryptique's AI-driven segmentation is, simply put, a game-changer. We moved beyond surface-level metrics and could finally distinguish between speculators, genuine users, and our true power users. CQ Intelligence uncovered patterns in behavior that we never would have seen manually, allowing us to identify a high-potential segment that was at risk of churning. A single proactive campaign targeted at that segment, based on Cryptique's recommendation, increased its retention by over 50%. That's the kind of actionable intelligence that defines the next generation of Web3 platforms."</p>
-                            <div class="testimonial-author">
-                                        <h4>Jitesh Kumar</h4>
-                                        <span>CEO, Cubane</span>
+                                <div class="message-header">
+                                    <div class="message-avatar">
+                                        <img src="Public/Images/jitesh-cubane.jpeg" alt="Jitesh Kumar">
                                     </div>
+                                    <div class="message-info">
+                                        <h4 class="message-author">Jitesh Kumar</h4>
+                                        <p class="message-role">CEO, Cubane</p>
+                                    </div>
+                                    <div class="message-timestamp">4:25 PM</div>
+                                </div>
+                                <div class="testimonial-content">
+                                    <p>Guys, Cryptique's AI-driven segmentation is simply a game-changer! We moved beyond surface-level metrics and could finally distinguish between speculators, genuine users, and power users.
+
+CQ Intelligence uncovered behavioral patterns we never would have seen manually. A single proactive campaign targeted at a high-potential segment increased retention by over 50%. That's the actionable intelligence that defines next-gen Web3 platforms!</p>
                                 </div>
                             </div>
                             <div class="testimonial-back">
@@ -1150,12 +1196,20 @@
                     <div class="testimonial-card">
                         <div class="testimonial-inner">
                             <div class="testimonial-front">
-                        <div class="testimonial-content">
-                                    <p>"In the NFT space, community is everything, but correlating vibrant Discord chatter with mint-day conversions has always been a challenge. Cryptique gave us the ability to see exactly which community segments were most likely to convert. For our last launch, we used Cryptique to analyze pre-launch engagement and on-chain history, allowing us to target our marketing with surgical precision. The result was our most successful mint to date, with a significantly higher conversion rate from our core community. Cryptique turns community sentiment into measurable ROI."</p>
-                            <div class="testimonial-author">
-                                        <h4>Masud Farshori</h4>
-                                        <span>CEO, Vingt</span>
+                                <div class="message-header">
+                                    <div class="message-avatar">
+                                        <img src="Public/Images/masud-vingt.jpeg" alt="Masud Farshori">
                                     </div>
+                                    <div class="message-info">
+                                        <h4 class="message-author">Masud Farshori</h4>
+                                        <p class="message-role">CEO, Vingt</p>
+                                    </div>
+                                    <div class="message-timestamp">5:18 PM</div>
+                                </div>
+                                <div class="testimonial-content">
+                                    <p>Amazing results! In the NFT space, community is everything, but correlating Discord chatter with mint-day conversions was always a challenge. Cryptique gave us the ability to see exactly which community segments were most likely to convert.
+
+For our last launch, we analyzed pre-launch engagement and on-chain history, allowing surgical precision in our marketing. The result was our most successful mint to date with significantly higher conversion rates. Cryptique turns community sentiment into measurable ROI!</p>
                                 </div>
                             </div>
                             <div class="testimonial-back">
