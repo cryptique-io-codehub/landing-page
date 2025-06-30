@@ -3642,8 +3642,15 @@ body {
     box-shadow: 0 4px 12px rgba(29, 12, 70, 0.3);
 }
 
+.timeline-content {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
 .timeline-session {
-    margin-bottom: 20px;
+    flex: 1;
+    margin-bottom: 0;
     border: 1px solid #e9ecef;
     border-radius: 12px;
     overflow: hidden;
@@ -4515,6 +4522,15 @@ body {
     
     .timeline-controls {
         justify-content: center;
+    }
+    
+    .timeline-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .timeline-session {
+        margin-bottom: 20px;
     }
 }
 

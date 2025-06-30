@@ -9,10 +9,21 @@ class HeroAnimation {
         this.mouse = { x: 0, y: 0 };
         this.targetRotation = { x: 0, y: 0 };
         this.currentRotation = { x: 0, y: 0 };
+        // Connection handling properties
+        this.connections = [];
+        this.pendingConnections = [];
+        this.connectionIndex = 0;
+        this.lastConnectionTime = 0;
+        this.connectionInterval = 800; // milliseconds between connection creation
+        this.connectionCycleDelay = 1500; // wait before restarting cycle
+        this.cycleCompleted = false;
+        this.cycleCompletedTime = 0;
         
         this.init();
         this.createGlobe();
         this.createFloatingCubes();
+        // Prepare sequence of connections between cubes
+        this.prepareConnections();
         this.setupEventListeners();
         this.animate();
     }
@@ -131,49 +142,40 @@ class HeroAnimation {
             // Random cube size
             const size = Math.random() * 0.8 + 0.4;
             
-            // Create wireframe cube
+            // Create filled cube geometry
             const geometry = new THREE.BoxGeometry(size, size, size);
-            const edges = new THREE.EdgesGeometry(geometry);
-            const material = new THREE.LineBasicMaterial({
+
+            // Glass-morphism material for semi-transparent blocks
+            const cubeMaterial = new THREE.MeshPhysicalMaterial({
                 color: 0xCAA968,
+                metalness: 0,
+                roughness: 0,
+                transmission: 0.9, // enables real-time refraction
+                thickness: 0.4,     // volume thickness for refraction
+                ior: 1.5,           // index of refraction
                 transparent: true,
-                opacity: 0.6,
-                linewidth: 2
+                opacity: 0.25,      // overall opacity
+                envMapIntensity: 1,
+                clearcoat: 1,
+                clearcoatRoughness: 0
             });
-            
-            const wireframe = new THREE.LineSegments(edges, material);
-            cubeGroup.add(wireframe);
-            
-            // Add particle corners
-            const cornerGeometry = new THREE.BufferGeometry();
-            const cornerPositions = new Float32Array(8 * 3);
-            const half = size / 2;
-            
-            const corners = [
-                [-half, -half, -half], [half, -half, -half],
-                [-half, half, -half], [half, half, -half],
-                [-half, -half, half], [half, -half, half],
-                [-half, half, half], [half, half, half]
-            ];
-            
-            corners.forEach((corner, index) => {
-                cornerPositions[index * 3] = corner[0];
-                cornerPositions[index * 3 + 1] = corner[1];
-                cornerPositions[index * 3 + 2] = corner[2];
-            });
-            
-            cornerGeometry.setAttribute('position', new THREE.BufferAttribute(cornerPositions, 3));
-            
-            const cornerMaterial = new THREE.PointsMaterial({
-                color: 0xCAA968,
-                size: 0.1,
+            const cubeMesh = new THREE.Mesh(geometry, cubeMaterial);
+            cubeMesh.renderOrder = -2;
+            cubeMaterial.depthWrite = false;
+            cubeGroup.add(cubeMesh);
+
+            // Subtle edge outline to highlight block shape
+            const edges = new THREE.EdgesGeometry(geometry);
+            const edgeMaterial = new THREE.LineBasicMaterial({
+                color: 0x1D0C46,
                 transparent: true,
                 opacity: 0.8,
-                blending: THREE.AdditiveBlending
+                linewidth: 2
             });
-            
-            const cornerParticles = new THREE.Points(cornerGeometry, cornerMaterial);
-            cubeGroup.add(cornerParticles);
+            const edgeLines = new THREE.LineSegments(edges, edgeMaterial);
+            edgeLines.renderOrder = -2;
+            edgeMaterial.depthWrite = false;
+            cubeGroup.add(edgeLines);
             
             // Position cube randomly around globe
             const angle = (i / cubeCount) * Math.PI * 2 + Math.random() * 0.5;
@@ -205,6 +207,38 @@ class HeroAnimation {
             this.cubes.push(cubeGroup);
             this.scene.add(cubeGroup);
         }
+    }
+
+    // Prepare a linear chain of cube-to-cube connections
+    prepareConnections() {
+        // Connect each cube to the next one in the array, ensuring max 2 connections per cube
+        for (let i = 0; i < this.cubes.length - 1; i++) {
+            this.pendingConnections.push([this.cubes[i], this.cubes[i + 1]]);
+        }
+    }
+
+    // Create a visual connection between two cubes
+    addConnection(cube1, cube2) {
+        const geometry = new THREE.BufferGeometry();
+        const positions = new Float32Array(6); // two points (cube1, cube2)
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+        const material = new THREE.LineBasicMaterial({
+            color: 0x1D0C46,
+            transparent: true,
+            opacity: 0.6,
+            linewidth: 5, // thicker beam
+            blending: THREE.AdditiveBlending,
+            depthWrite: false
+        });
+
+        const line = new THREE.Line(geometry, material);
+        line.renderOrder = -3;
+        this.scene.add(line);
+
+        // Ensure connections sit behind cubes visually
+        line.material.depthWrite = false;
+        this.connections.push({ cube1, cube2, geometry, line });
     }
 
     setupEventListeners() {
@@ -263,6 +297,45 @@ class HeroAnimation {
         this.camera.position.y = 2 + this.currentRotation.x * 2;
         this.camera.position.z = Math.cos(this.currentRotation.y) * 8;
         this.camera.lookAt(0, 0, 0);
+        
+        // Sequentially create connections between cubes
+        if (this.connectionIndex < this.pendingConnections.length && Date.now() - this.lastConnectionTime > this.connectionInterval) {
+            const [cube1, cube2] = this.pendingConnections[this.connectionIndex];
+            this.addConnection(cube1, cube2);
+            this.connectionIndex++;
+            this.lastConnectionTime = Date.now();
+        }
+
+        // Detect completion of a connection cycle
+        if (this.connectionIndex === this.pendingConnections.length && !this.cycleCompleted) {
+            this.cycleCompleted = true;
+            this.cycleCompletedTime = Date.now();
+        }
+
+        // After delay, clear connections and restart
+        if (this.cycleCompleted && Date.now() - this.cycleCompletedTime > this.connectionCycleDelay) {
+            // Remove all connection lines from scene
+            this.connections.forEach(({ line, geometry }) => {
+                this.scene.remove(line);
+                geometry.dispose();
+            });
+            this.connections = [];
+            this.connectionIndex = 0;
+            this.lastConnectionTime = Date.now();
+            this.cycleCompleted = false;
+        }
+
+        // Update existing connection line positions
+        this.connections.forEach((conn) => {
+            const positions = conn.geometry.attributes.position.array;
+            positions[0] = conn.cube1.position.x;
+            positions[1] = conn.cube1.position.y;
+            positions[2] = conn.cube1.position.z;
+            positions[3] = conn.cube2.position.x;
+            positions[4] = conn.cube2.position.y;
+            positions[5] = conn.cube2.position.z;
+            conn.geometry.attributes.position.needsUpdate = true;
+        });
         
         this.renderer.render(this.scene, this.camera);
     }
