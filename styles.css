@@ -5620,17 +5620,18 @@ body {
     .solution-text-top-left,
     .solution-text-bottom-right {
         position: absolute;
-        max-width: 45%;
+        max-width: 48%;
         text-align: left;
-        font-size: 1rem;
-        line-height: 1.3;
-        padding: 10px;
+        font-size: 1.2rem;
+        line-height: 1.4;
+        padding: 0;
         margin: 0;
-        background: rgba(255, 255, 255, 0.75);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        background: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        border-radius: 0;
+        box-shadow: none;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
     }
 
     .solution-text-top-left {
@@ -6004,8 +6005,8 @@ body {
     .solution-text-top-left,
     .solution-text-bottom-right {
         max-width: 48%;
-        font-size: 0.8rem;
-        padding: 8px;
+        font-size: 1rem;
+        padding: 0;
     }
 
     .solution-text-top-left {
