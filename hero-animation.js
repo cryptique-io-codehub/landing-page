@@ -31,13 +31,24 @@ class HeroAnimation {
         this.camera.position.set(0, -3, 8);
         this.camera.lookAt(0, 0, 0);
         
+        // Mobile adjustment: center camera vertically on small screens
+        if (window.innerWidth <= 768) {
+            this.camera.position.set(0, 0, 8);
+            this.camera.lookAt(0, 0, 0);
+        }
+        
         // Renderer setup
         this.renderer = new THREE.WebGLRenderer({
             canvas: this.canvas,
             alpha: true,
             antialias: true
         });
-        this.renderer.setSize(window.innerWidth - 20, window.innerHeight - 20);
+        // Ensure full-width rendering on mobile for perfect centering
+        if (window.innerWidth <= 768) {
+            this.renderer.setSize(window.innerWidth, window.innerHeight);
+        } else {
+            this.renderer.setSize(window.innerWidth - 20, window.innerHeight - 20);
+        }
         this.renderer.setClearColor(0x000000, 0);
         this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         
@@ -101,7 +112,13 @@ class HeroAnimation {
         globeGroup.add(glowSphere);
         
         this.globe = globeGroup;
-        this.globe.position.y = -1; // Move the globe down
+        // Default vertical offset for desktop
+        this.globe.position.y = -1;
+
+        // Center the globe vertically on mobile screens
+        if (window.innerWidth <= 768) {
+            this.globe.position.y = 0;
+        }
         this.scene.add(this.globe);
     }
 
@@ -204,7 +221,11 @@ class HeroAnimation {
         window.addEventListener('resize', () => {
             this.camera.aspect = window.innerWidth / window.innerHeight;
             this.camera.updateProjectionMatrix();
-            this.renderer.setSize(window.innerWidth - 20, window.innerHeight - 20);
+            if (window.innerWidth <= 768) {
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+            } else {
+                this.renderer.setSize(window.innerWidth - 20, window.innerHeight - 20);
+            }
         });
     }
 
