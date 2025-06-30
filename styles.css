@@ -23,58 +23,98 @@ body {
     padding: 0 20px;
 }
 
-/* Floating Navigation Bar */
+/* Smart Navigation Bar */
 .navbar {
     position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%) translateY(-100px);
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 1000;
-    width: calc(100% - 40px);
-    max-width: 1200px;
-    opacity: 0;
-    visibility: hidden;
+    width: 100%;
+    max-width: none;
+    padding: 0 20px;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
 }
 
-.navbar.visible {
+/* Hidden state when scrolling down */
+.navbar.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Floating state when scrolling up (not at top) */
+.navbar.floating {
+    top: 20px;
+    left: 50%;
+    right: auto;
+    width: calc(100% - 40px);
+    max-width: 1200px;
+    padding: 0;
     transform: translateX(-50%) translateY(0);
     opacity: 1;
     visibility: visible;
 }
 
+/* Floating state hidden */
+.navbar.floating.hidden {
+    transform: translateX(-50%) translateY(-100px);
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* --- NAVBAR REFACTOR FOR THINNER INLINE LAYOUT --- */
+.navbar {
+    /* ... existing code ... */
+}
+
+/* Override nav-container to be a single thin row */
 .nav-container {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 30px;
-    padding: 15px 30px;
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+    padding: 6px 24px;            /* thinner vertical padding */
+    background: transparent;      /* pinned (default) state */
+    border: none;
+    box-shadow: none;
+}
+
+/* Keep glassmorphism only when floating */
+.navbar.floating .nav-container {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(30px);
+    border: 0.5px solid rgba(255, 255, 255, 0.08);
+    border-radius: 22px;
+    padding: 8px 24px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* NAVIGATION GROUPING */
+.nav-menu {
+    flex: 1 1 auto;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.nav-actions {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 
-                inset 0 1px 0 rgba(255, 255, 255, 0.1),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.02);
-    position: relative;
-    overflow: hidden;
+    gap: 20px;
+    margin-left: auto;
 }
 
-.nav-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-    animation: nav-shine 8s infinite;
-}
-
-@keyframes nav-shine {
-    0% { left: -100%; }
-    50% { left: -100%; }
-    100% { left: 100%; }
+/* Remove previous override rules referencing nth-child(5/6) */
+.nav-menu li:nth-child(5),
+.nav-menu li:nth-child(6) {
+    margin-left: 0 !important;
+    position: static !important;
+    right: auto !important;
 }
 
 .nav-logo img {
@@ -85,8 +125,19 @@ body {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 30px;
     align-items: center;
+    justify-content: center;
+    gap: 30px;
+    grid-column: 1 / -1;
+    position: relative;
+}
+
+/* First 4 items (Home, About Us, Features, Docs) - main navigation */
+.nav-menu li:nth-child(1),
+.nav-menu li:nth-child(2),
+.nav-menu li:nth-child(3),
+.nav-menu li:nth-child(4) {
+    /* Main navigation items */
 }
 
 .nav-link {
@@ -106,7 +157,7 @@ body {
 }
 
 .login-btn {
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border: none;
 }
 
 .cta-btn {
@@ -125,6 +176,8 @@ body {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    grid-column: 3;
+    justify-self: end;
 }
 
 .hamburger span {
@@ -2284,12 +2337,34 @@ body {
 
 @media (max-width: 480px) {
     .navbar {
+        padding: 10px;
+    }
+    
+    .navbar.floating {
         top: 10px;
         width: calc(100% - 20px);
     }
     
     .nav-container {
-        padding: 10px 20px;
+        padding: 8px 15px;
+        grid-template-columns: auto auto;
+        gap: 15px;
+    }
+    
+    .navbar.floating .nav-container {
+        padding: 8px 15px;
+        border-radius: 18px;
+        border: 0.5px solid rgba(255, 255, 255, 0.08);
+    }
+    
+    .nav-menu {
+        grid-column: 1;
+    }
+    
+    .nav-menu li:nth-child(5),
+    .nav-menu li:nth-child(6) {
+        position: static;
+        right: auto;
     }
     
     .hero {
@@ -5584,14 +5659,35 @@ body {
 @media (max-width: 768px) {
     /* Improved navigation */
     .navbar {
-        top: 10px;
-        width: calc(100% - 20px);
+        padding: 10px;
         max-width: none;
     }
     
+    .navbar.floating {
+        top: 10px;
+        width: calc(100% - 20px);
+    }
+    
     .nav-container {
-        padding: 12px 20px;
-        border-radius: 25px;
+        padding: 10px 20px;
+        grid-template-columns: auto auto;
+        gap: 20px;
+    }
+    
+    .navbar.floating .nav-container {
+        padding: 10px 20px;
+        border-radius: 20px;
+        border: 0.5px solid rgba(255, 255, 255, 0.08);
+    }
+    
+    .nav-menu {
+        grid-column: 1;
+    }
+    
+    .nav-menu li:nth-child(5),
+    .nav-menu li:nth-child(6) {
+        position: static;
+        right: auto;
     }
     
     .nav-logo img {
@@ -6388,3 +6484,55 @@ body {
     background: #f8f9fa;
     border-radius: 0 0 16px 16px;
 }
+
+/* === FEATURE 2 USER CLASSIFICATION LAYOUT OPTIMISATION === */
+.categorization-content {
+    display: flex;
+    flex-wrap: wrap; /* allow wrapping if not enough space */
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.categorization-content .behavioral-patterns,
+.categorization-content .chain-activity-map {
+    flex: 1 1 300px; /* allow them to shrink but keep min reasonable */
+}
+
+/* Remove extra bottom margin when displayed side-by-side */
+.categorization-content .behavioral-patterns {
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .categorization-content {
+        flex-direction: column; /* stack on small screens */
+    }
+
+    .categorization-content .behavioral-patterns {
+        margin-bottom: 32px; /* restore spacing in column layout */
+    }
+}
+/* === END OPTIMISATION === */
+
+/* === CQ INTELLIGENCE INSIGHTS SPACING OPTIMISATION === */
+.ai-insights-container .insights-list {
+    gap: 10px; /* reduced from 16px */
+    margin-bottom: 24px; /* slightly tighter */
+}
+
+.ai-insights-container .insight-item {
+    padding: 12px 14px; /* reduced inner padding */
+    gap: 12px; /* tighter icon-text gap */
+}
+
+.ai-insights-container .insight-content {
+    line-height: 1.35; /* more compact line spacing */
+}
+/* === END OPTIMISATION === */
+
+/* === EXECUTIVE SUMMARY SPEND VISIBILITY === */
+.metric-row.highlight .metric-secondary {
+    color: #10b981; /* bright green */
+    font-weight: 600;
+}
+/* === END SPEND VISIBILITY === */

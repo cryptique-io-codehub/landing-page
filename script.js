@@ -67,22 +67,44 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar visibility and background on scroll
-window.addEventListener('scroll', () => {
+// Smart Navbar behavior on scroll
+let lastScrollTop = 0;
+let scrollDirection = 'up';
+let ticking = false;
+
+function updateNavbar() {
     const navbar = document.querySelector('.navbar');
     const ctaSection = document.querySelector('.cta');
-    const scrollThreshold = 50;
+    const currentScrollTop = window.scrollY;
     
-    if (window.scrollY > scrollThreshold) {
-        navbar.classList.add('visible');
-        if (window.scrollY > 100) {
-            navbar.classList.add('scrolled');
-        }
-    } else {
-        navbar.classList.remove('visible');
-        navbar.classList.remove('scrolled');
+    // Determine scroll direction
+    if (currentScrollTop > lastScrollTop) {
+        scrollDirection = 'down';
+    } else if (currentScrollTop < lastScrollTop) {
+        scrollDirection = 'up';
     }
-
+    
+    // Determine if we're at the very top (small threshold for immediate disappearance)
+    const scrollThreshold = 50; // Small threshold for immediate response
+    const isAtTop = currentScrollTop <= scrollThreshold;
+    
+    // Apply navbar behavior based on position and scroll direction
+    if (isAtTop) {
+        // At the very top - show pinned navbar
+        navbar.classList.remove('floating', 'hidden');
+    } else {
+        // Past threshold - use floating navbar with show/hide behavior
+        navbar.classList.add('floating');
+        
+        if (scrollDirection === 'down') {
+            // Scrolling down - hide navbar
+            navbar.classList.add('hidden');
+        } else if (scrollDirection === 'up') {
+            // Scrolling up - show floating navbar
+            navbar.classList.remove('hidden');
+        }
+    }
+    
     // Check if navbar is over CTA section (dark background)
     if (ctaSection) {
         const ctaRect = ctaSection.getBoundingClientRect();
@@ -96,6 +118,28 @@ window.addEventListener('scroll', () => {
         } else {
             navbar.classList.remove('over-dark-section');
         }
+    }
+    
+    lastScrollTop = currentScrollTop;
+    ticking = false;
+}
+
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        requestAnimationFrame(updateNavbar);
+        ticking = true;
+    }
+});
+
+// Initialize navbar state on page load
+document.addEventListener('DOMContentLoaded', () => {
+    // Ensure navbar starts in the correct state
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+        // Remove any existing classes to start fresh
+        navbar.classList.remove('floating', 'hidden');
+        // Force initial state update
+        updateNavbar();
     }
 });
 
