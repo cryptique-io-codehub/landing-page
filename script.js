@@ -13,45 +13,6 @@ document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', 
         navMenu?.classList.remove('active');
 }));
 
-// Custom Cursor for Hero Section
-const heroCursor = document.querySelector('.hero-cursor');
-const heroSection = document.querySelector('.hero');
-
-if (heroCursor && heroSection) {
-    const cursorCube = heroCursor.querySelector('.cursor-cube');
-    
-    heroSection.addEventListener('mousemove', (e) => {
-        const rect = heroSection.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        heroCursor.style.left = e.clientX + 'px';
-        heroCursor.style.top = e.clientY + 'px';
-        heroCursor.style.opacity = '1';
-    });
-    
-    heroSection.addEventListener('mouseleave', () => {
-        heroCursor.style.opacity = '0';
-    });
-
-    // Add interactive rotation based on mouse movement
-    heroSection.addEventListener('mousemove', (e) => {
-        if (cursorCube) {
-            const rect = heroSection.getBoundingClientRect();
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
-            
-            const mouseX = (e.clientX - centerX) / rect.width;
-            const mouseY = (e.clientY - centerY) / rect.height;
-            
-            // Add subtle rotation based on mouse position
-            const rotationX = mouseY * 20;
-            const rotationY = mouseX * 20;
-            
-            cursorCube.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
-        }
-    });
-}
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
