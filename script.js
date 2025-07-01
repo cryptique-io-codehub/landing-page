@@ -9,8 +9,8 @@ hamburger?.addEventListener('click', () => {
 
 // Close mobile menu when clicking on a link
 document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
-    hamburger?.classList.remove('active');
-    navMenu?.classList.remove('active');
+        hamburger?.classList.remove('active');
+        navMenu?.classList.remove('active');
 }));
 
 // Custom Cursor for Hero Section
@@ -179,69 +179,69 @@ if (newsletterForm) {
 
 let statsInterval;
 
-const problemStats = [
-    { number: "$12B", description: "spent on Web3 marketing, yet most projects can't track if off-chain leads convert to on-chain actions." },
-    { number: "70%", description: "of marketing efficiency is lost because teams cannot connect leads to on-chain conversions." }
-];
-let currentStatIndex = 0;
+    const problemStats = [
+        { number: "$12B", description: "spent on Web3 marketing, yet most projects can't track if off-chain leads convert to on-chain actions." },
+        { number: "70%", description: "of marketing efficiency is lost because teams cannot connect leads to on-chain conversions." }
+    ];
+    let currentStatIndex = 0;
 
-function initProblemStatsCarousel() {
-    const numberEl = document.querySelector('.stat-number');
-    const descriptionEl = document.querySelector('.stat-description');
-    const cubeEl = document.querySelector('.blockchain-cube');
+    function initProblemStatsCarousel() {
+        const numberEl = document.querySelector('.stat-number');
+        const descriptionEl = document.querySelector('.stat-description');
+        const cubeEl = document.querySelector('.blockchain-cube');
 
-    if (!numberEl || !descriptionEl || !cubeEl) return;
+        if (!numberEl || !descriptionEl || !cubeEl) return;
 
-    const updateStat = () => {
-        currentStatIndex = (currentStatIndex + 1) % problemStats.length;
-        
-        gsap.timeline()
-            .to([numberEl, descriptionEl], {
-                opacity: 0,
+        const updateStat = () => {
+            currentStatIndex = (currentStatIndex + 1) % problemStats.length;
+            
+                gsap.timeline()
+                    .to([numberEl, descriptionEl], {
+                        opacity: 0,
                 y: -10,
                 duration: 0.4,
-                ease: 'power2.in',
-                onComplete: () => {
-                    numberEl.textContent = problemStats[currentStatIndex].number;
-                    descriptionEl.textContent = problemStats[currentStatIndex].description;
-                }
-            })
-            .to([numberEl, descriptionEl], {
-                opacity: 1,
-                y: 0,
+                        ease: 'power2.in',
+                        onComplete: () => {
+                            numberEl.textContent = problemStats[currentStatIndex].number;
+                            descriptionEl.textContent = problemStats[currentStatIndex].description;
+                        }
+                    })
+                    .to([numberEl, descriptionEl], {
+                        opacity: 1,
+                        y: 0,
                 duration: 0.4,
-                ease: 'power2.out'
-            });
+                        ease: 'power2.out'
+                    });
 
-        gsap.to(cubeEl, {
+                gsap.to(cubeEl, {
             rotationY: `+=${20 + Math.random() * 20}`,
             rotationX: `+=${10 + Math.random() * 10}`,
             duration: 1.5,
-            ease: 'power3.inOut'
-        });
+                    ease: 'power3.inOut'
+                });
     };
 
-    numberEl.textContent = problemStats[0].number;
-    descriptionEl.textContent = problemStats[0].description;
+        numberEl.textContent = problemStats[0].number;
+        descriptionEl.textContent = problemStats[0].description;
     gsap.set([numberEl, descriptionEl], { opacity: 1 });
 
-    if (statsInterval) clearInterval(statsInterval);
+        if (statsInterval) clearInterval(statsInterval);
     statsInterval = setInterval(updateStat, 1500);
-}
+    }
 
-function initBlockchainCubeAnimation() {
-    gsap.registerPlugin(ScrollTrigger);
+    function initBlockchainCubeAnimation() {
+            gsap.registerPlugin(ScrollTrigger);
 
-    const visualSection = document.querySelector('.blockchain-visual-section');
-    const cubeContainer = document.querySelector('.blockchain-cube-container');
-    const problemSection = document.querySelector('.problem-section');
-    const solutionSection = document.querySelector('.solution-section');
+        const visualSection = document.querySelector('.blockchain-visual-section');
+        const cubeContainer = document.querySelector('.blockchain-cube-container');
+        const problemSection = document.querySelector('.problem-section');
+        const solutionSection = document.querySelector('.solution-section');
 
-    if (!visualSection || !cubeContainer || !problemSection || !solutionSection) return;
+        if (!visualSection || !cubeContainer || !problemSection || !solutionSection) return;
 
     // Initialize states
-    gsap.set(solutionSection, { opacity: 0 });
-    gsap.set(problemSection, { opacity: 1 });
+            gsap.set(solutionSection, { opacity: 0 });
+            gsap.set(problemSection, { opacity: 1 });
     gsap.set(['.solution-text-top-left', '.solution-text-bottom-right'], { opacity: 0 });
 
     let dataFlowInterval;
@@ -294,7 +294,7 @@ function initBlockchainCubeAnimation() {
                 // Handle problem/solution visibility
                 if (self.progress > 0.3) {
                     gsap.set(problemSection, { opacity: 0 });
-                } else {
+                    } else {
                     gsap.set(problemSection, { opacity: 1 });
                     // Clear intervals when scrolling back up
                     if (dataFlowInterval) {
@@ -548,10 +548,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Mobile touch improvements
-    if ('ontouchstart' in window) {
+if ('ontouchstart' in window) {
         // Add touch class for mobile-specific styles
-        document.body.classList.add('touch-device');
-        
+    document.body.classList.add('touch-device');
+    
         // Improve scroll performance on mobile
         let ticking = false;
         

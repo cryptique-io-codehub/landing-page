@@ -2061,9 +2061,75 @@ body {
 }
 
 .social-link img {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     filter: brightness(0) invert(1);
+    object-fit: contain;
+}
+
+/* Special styling for X logo */
+.social-link[href*="x.com"] img {
+    width: 18px;
+    height: 18px;
+    filter: brightness(0) invert(1);
+}
+
+.social-link[href*="x.com"] {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.social-link[href*="x.com"]:hover {
+    background: #caa968;
+}
+
+.social-link[href*="x.com"]:hover img {
+    filter: brightness(0) invert(1);
+}
+
+/* Founder social links */
+.social-links-founder .social-link {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.social-links-founder .social-link img {
+    width: 16px;
+    height: 16px;
+    filter: brightness(0) invert(1);
+}
+
+.social-links-founder .social-link i {
+    font-size: 18px;
+}
+
+.social-links-founder .social-link:hover {
+    transform: translateY(-2px);
+    background: #caa968;
+}
+
+.social-links-founder .social-link[href*="x.com"] {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.social-links-founder .social-link[href*="x.com"]:hover {
+    background: #caa968;
+}
+
+.social-links-founder .social-link[href*="linkedin"] {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.social-links-founder .social-link[href*="linkedin"]:hover {
+    background: #caa968;
 }
 
 .social-link.youtube-icon {
@@ -5521,13 +5587,34 @@ body {
     backdrop-filter: blur(10px);
 }
 
-.social-links-founder .social-link:hover {
-    background: #caa968;
-    transform: translateY(-2px);
+.social-links-founder .social-link img {
+    width: 16px;
+    height: 16px;
+    filter: brightness(0) invert(1);
 }
 
 .social-links-founder .social-link i {
     font-size: 18px;
+}
+
+.social-links-founder .social-link:hover {
+    transform: translateY(-2px);
+}
+
+.social-links-founder .social-link[href*="x.com"] {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.social-links-founder .social-link[href*="x.com"]:hover {
+    background: #caa968;
+}
+
+.social-links-founder .social-link[href*="linkedin"] {
+    background: rgba(10, 102, 194, 0.8);
+}
+
+.social-links-founder .social-link[href*="linkedin"]:hover {
+    background: #caa968;
 }
 
 .founder-info {
@@ -6536,3 +6623,19 @@ body {
     font-weight: 600;
 }
 /* === END SPEND VISIBILITY === */
+
+/* Special styling for Discord logo */
+.social-link[href*="discord"] img {
+    width: 28px;
+    height: 28px;
+    filter: brightness(0) invert(1);
+}
+
+.social-link[href*="discord"]:hover {
+    background: #5865F2;
+}
+
+.social-link[href*="discord"]:hover img {
+    filter: brightness(0) invert(1);
+    transform: scale(1.1);
+}
