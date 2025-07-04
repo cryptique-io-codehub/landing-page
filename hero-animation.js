@@ -1,6 +1,10 @@
 class HeroAnimation {
     constructor() {
         this.canvas = document.getElementById('hero-canvas');
+        if (!this.canvas) {
+            throw new Error('Hero canvas not found');
+        }
+        
         this.scene = null;
         this.camera = null;
         this.renderer = null;
@@ -18,6 +22,9 @@ class HeroAnimation {
         this.connectionCycleDelay = 1500; // wait before restarting cycle
         this.cycleCompleted = false;
         this.cycleCompletedTime = 0;
+        this.isMobile = window.innerWidth <= 768;
+        
+        console.log('HeroAnimation initializing for', this.isMobile ? 'mobile' : 'desktop');
         
         this.init();
         this.createGlobe();
@@ -26,27 +33,35 @@ class HeroAnimation {
         this.prepareConnections();
         this.setupEventListeners();
         this.animate();
+        
+        console.log('HeroAnimation initialized successfully');
     }
 
     init() {
+        // Check WebGL support
+        if (!this.canvas.getContext('webgl') && !this.canvas.getContext('experimental-webgl')) {
+            throw new Error('WebGL not supported');
+        }
+        
         // Scene setup
         this.scene = new THREE.Scene();
         
         // Camera setup
+        const fov = this.isMobile ? 90 : 75; // Wider field of view for mobile
         this.camera = new THREE.PerspectiveCamera(
-            75,
+            fov,
             window.innerWidth / window.innerHeight,
             0.1,
             1000
         );
-        this.camera.position.set(0, -3, 8);
-        this.camera.lookAt(0, 0, 0);
         
-        // Mobile adjustment: center camera vertically on small screens
-        if (window.innerWidth <= 768) {
-            this.camera.position.set(0, 0, 8);
-            this.camera.lookAt(0, 0, 0);
+        // Mobile adjustment: position camera closer and higher for better visibility
+        if (this.isMobile) {
+            this.camera.position.set(0, 0, 6);
+        } else {
+            this.camera.position.set(0, -3, 8);
         }
+        this.camera.lookAt(0, 0, 0);
         
         // Renderer setup
         this.renderer = new THREE.WebGLRenderer({
@@ -54,8 +69,9 @@ class HeroAnimation {
             alpha: true,
             antialias: true
         });
+        
         // Ensure full-width rendering on mobile for perfect centering
-        if (window.innerWidth <= 768) {
+        if (this.isMobile) {
             this.renderer.setSize(window.innerWidth, window.innerHeight);
         } else {
             this.renderer.setSize(window.innerWidth - 20, window.innerHeight - 20);
@@ -75,7 +91,8 @@ class HeroAnimation {
     createGlobe() {
         const globeGroup = new THREE.Group();
         const particleCount = 2000;
-        const radius = 3;
+        // Smaller radius for mobile to fit in viewport
+        const radius = this.isMobile ? 2.2 : 3;
         
         // Create particle geometry
         const geometry = new THREE.BufferGeometry();
@@ -123,24 +140,28 @@ class HeroAnimation {
         globeGroup.add(glowSphere);
         
         this.globe = globeGroup;
-        // Default vertical offset for desktop
-        this.globe.position.y = -1;
-
-        // Center the globe vertically on mobile screens
-        if (window.innerWidth <= 768) {
+        
+        // Position the globe for better visibility
+        if (this.isMobile) {
             this.globe.position.y = 0;
+        } else {
+            this.globe.position.y = -1;
         }
+        
         this.scene.add(this.globe);
     }
 
     createFloatingCubes() {
-        const cubeCount = 20;
+        // Fewer cubes on mobile for better performance
+        const cubeCount = this.isMobile ? 12 : 20;
         
         for (let i = 0; i < cubeCount; i++) {
             const cubeGroup = new THREE.Group();
             
-            // Random cube size
-            const size = Math.random() * 0.8 + 0.4;
+            // Random cube size, slightly smaller on mobile
+            const size = this.isMobile ? 
+                Math.random() * 0.6 + 0.3 : 
+                Math.random() * 0.8 + 0.4;
             
             // Create filled cube geometry
             const geometry = new THREE.BoxGeometry(size, size, size);
@@ -178,9 +199,14 @@ class HeroAnimation {
             cubeGroup.add(edgeLines);
             
             // Position cube randomly around globe
+            // Keep cubes closer to center on mobile
             const angle = (i / cubeCount) * Math.PI * 2 + Math.random() * 0.5;
-            const distance = 5 + Math.random() * 4;
-            const height = (Math.random() - 0.5) * 6;
+            const distance = this.isMobile ? 
+                3.5 + Math.random() * 2 : 
+                5 + Math.random() * 4;
+            const height = this.isMobile ? 
+                (Math.random() - 0.5) * 4 : 
+                (Math.random() - 0.5) * 6;
             
             cubeGroup.position.set(
                 Math.cos(angle) * distance,
@@ -253,9 +279,24 @@ class HeroAnimation {
         
         // Resize handler
         window.addEventListener('resize', () => {
+            // Update mobile status
+            this.isMobile = window.innerWidth <= 768;
+            
+            // Update camera aspect and position
             this.camera.aspect = window.innerWidth / window.innerHeight;
+            
+            // Adjust field of view for mobile
+            if (this.isMobile) {
+                this.camera.fov = 90;
+                this.camera.position.set(0, 0, 6);
+            } else {
+                this.camera.fov = 75;
+                this.camera.position.set(0, -3, 8);
+            }
+            
             this.camera.updateProjectionMatrix();
-            if (window.innerWidth <= 768) {
+            
+            if (this.isMobile) {
                 this.renderer.setSize(window.innerWidth, window.innerHeight);
             } else {
                 this.renderer.setSize(window.innerWidth - 20, window.innerHeight - 20);
@@ -293,9 +334,17 @@ class HeroAnimation {
         this.currentRotation.x += (this.targetRotation.x - this.currentRotation.x) * 0.05;
         this.currentRotation.y += (this.targetRotation.y - this.currentRotation.y) * 0.05;
         
-        this.camera.position.x = Math.sin(this.currentRotation.y) * 8;
-        this.camera.position.y = 2 + this.currentRotation.x * 2;
-        this.camera.position.z = Math.cos(this.currentRotation.y) * 8;
+        // Adjust camera movement range for mobile
+        if (this.isMobile) {
+            this.camera.position.x = Math.sin(this.currentRotation.y) * 6;
+            this.camera.position.y = this.currentRotation.x * 2;
+            this.camera.position.z = Math.cos(this.currentRotation.y) * 6;
+        } else {
+            this.camera.position.x = Math.sin(this.currentRotation.y) * 8;
+            this.camera.position.y = 2 + this.currentRotation.x * 2;
+            this.camera.position.z = Math.cos(this.currentRotation.y) * 8;
+        }
+        
         this.camera.lookAt(0, 0, 0);
         
         // Sequentially create connections between cubes
@@ -345,9 +394,42 @@ class HeroAnimation {
 document.addEventListener('DOMContentLoaded', () => {
     // Wait for Three.js to load
     if (typeof THREE !== 'undefined') {
-        new HeroAnimation();
+        try {
+            new HeroAnimation();
+        } catch (error) {
+            console.warn('3D animation failed to initialize:', error);
+            showFallbackElements();
+        }
     } else {
         // Fallback if Three.js doesn't load
-        console.warn('Three.js not loaded, skipping 3D animation');
+        console.warn('Three.js not loaded, showing fallback animation');
+        showFallbackElements();
     }
-}); 
+});
+
+// Fallback animation for devices that don't support WebGL or Three.js
+function showFallbackElements() {
+    const heroSection = document.querySelector('.hero');
+    if (!heroSection) return;
+    
+    // Create fallback container
+    const fallbackContainer = document.createElement('div');
+    fallbackContainer.className = 'hero-fallback-elements active';
+    
+    // Create fallback sphere
+    const sphere = document.createElement('div');
+    sphere.className = 'fallback-sphere';
+    fallbackContainer.appendChild(sphere);
+    
+    // Create fallback cubes
+    for (let i = 0; i < 5; i++) {
+        const cube = document.createElement('div');
+        cube.className = 'fallback-cube';
+        fallbackContainer.appendChild(cube);
+    }
+    
+    // Add to hero section
+    heroSection.appendChild(fallbackContainer);
+    
+    console.log('Fallback animation elements added for mobile');
+} 

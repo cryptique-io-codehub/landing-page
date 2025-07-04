@@ -5477,6 +5477,12 @@ body {
 @media (max-width: 768px) {
     .analytics-grid-container {
         grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .attribution-table-wrapper,
+    .chain-split-container {
+        margin-bottom: 20px;
     }
     
     .chart-controls {
@@ -5487,6 +5493,7 @@ body {
     .action-chips,
     .quick-actions {
         flex-direction: column;
+        gap: 8px;
     }
     
     .attribution-table {
@@ -5496,6 +5503,93 @@ body {
     .attribution-table th,
     .attribution-table td {
         padding: 8px 4px;
+    }
+    
+    /* Ensure proper spacing for mobile */
+    .chain-donut-wrapper {
+        height: 180px;
+        margin: 16px 0;
+    }
+    
+    .chain-stats {
+        gap: 8px;
+    }
+    
+    /* CQ Intelligence mobile optimization */
+    .performance-chart-container {
+        margin-bottom: 20px;
+    }
+    
+    .dual-axis-chart {
+        height: 300px;
+    }
+    
+    .dual-axis-chart canvas {
+        height: 300px !important;
+    }
+    
+    .chart-legend {
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+    }
+    
+    .ai-insights-container {
+        padding: 20px;
+    }
+    
+    .insights-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .insight-item {
+        flex-direction: column;
+        gap: 8px;
+        text-align: left;
+    }
+    
+    .insight-icon {
+        align-self: flex-start;
+    }
+    
+    /* Chat interface mobile optimization */
+    .cqi-chat-container.unified-chat .message {
+        margin-bottom: 16px;
+    }
+    
+    .cqi-chat-container.unified-chat .message-content {
+        padding: 16px;
+    }
+    
+    .insight-canvas-card {
+        padding: 16px;
+    }
+    
+    .summary-metrics {
+        gap: 8px;
+    }
+    
+    .metric-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        padding: 8px 0;
+    }
+    
+    .metric-label {
+        font-size: 12px;
+    }
+    
+    .metric-value {
+        font-size: 14px;
+    }
+    
+    /* CRITICAL: Override unified chat analytics grid for mobile */
+    .cqi-chat-container.unified-chat .analytics-grid-container {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
     }
 }
 /* === END CQ INTELLIGENCE STYLES === */
@@ -6421,16 +6515,28 @@ body {
 /* Extra small mobile devices */
 @media (max-width: 480px) {
     .navbar {
-        top: 5px;
-        width: calc(100% - 10px);
+        padding: 10px 0;
     }
     
     .nav-container {
-        padding: 10px 15px;
+        padding: 0 15px;
     }
     
     .hero {
         padding: 70px 10px 0;
+    }
+    
+    .hero-canvas {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+        z-index: 1;
+        border-radius: 20px;
     }
     
     .hero-title-main {
@@ -6439,6 +6545,15 @@ body {
     
     .hero-title-sub {
         font-size: clamp(1rem, 6vw, 1.8rem);
+    }
+    
+    .hero-logo-container {
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin-top: 0;
+        z-index: 5;
     }
     
     .logo-3d-image {
@@ -6785,4 +6900,99 @@ body {
 .social-link[href*="discord"]:hover img {
     filter: brightness(0) invert(1);
     transform: scale(1.1);
+}
+
+/* Fallback floating elements for mobile/devices without WebGL */
+.hero-fallback-elements {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .hero-fallback-elements {
+        display: block;
+    }
+    
+    .hero-fallback-elements.active {
+        display: block;
+    }
+    
+    .fallback-sphere {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, rgba(202, 169, 104, 0.3), rgba(29, 12, 70, 0.1));
+        border: 2px solid rgba(202, 169, 104, 0.2);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: spherePulse 4s ease-in-out infinite;
+    }
+    
+    .fallback-cube {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background: rgba(202, 169, 104, 0.2);
+        border: 1px solid rgba(29, 12, 70, 0.3);
+        border-radius: 4px;
+        animation: cubeFloat 6s ease-in-out infinite;
+    }
+    
+    .fallback-cube:nth-child(2) {
+        top: 20%;
+        left: 15%;
+        animation-delay: -1s;
+    }
+    
+    .fallback-cube:nth-child(3) {
+        top: 30%;
+        right: 20%;
+        animation-delay: -2s;
+    }
+    
+    .fallback-cube:nth-child(4) {
+        bottom: 30%;
+        left: 25%;
+        animation-delay: -3s;
+    }
+    
+    .fallback-cube:nth-child(5) {
+        bottom: 25%;
+        right: 15%;
+        animation-delay: -4s;
+    }
+    
+    .fallback-cube:nth-child(6) {
+        top: 60%;
+        left: 10%;
+        animation-delay: -5s;
+    }
+    
+    @keyframes spherePulse {
+        0%, 100% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.6;
+        }
+        50% {
+            transform: translate(-50%, -50%) scale(1.1);
+            opacity: 0.8;
+        }
+    }
+    
+    @keyframes cubeFloat {
+        0%, 100% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 0.4;
+        }
+        50% {
+            transform: translateY(-20px) rotate(180deg);
+            opacity: 0.7;
+        }
+    }
 }
