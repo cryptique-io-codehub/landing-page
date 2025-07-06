@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Cryptique</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="chat-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <style>
+        /* About Page Specific Styles */
+        .about-hero {
+            padding: 120px 0 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 60px; /* Add margin to account for fixed header */
+        }
+
+        .about-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #1d0c46, #caa968);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .about-hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 60px;
+            line-height: 1.6;
+        }
+
+        .mission-section, .team-section, .join-section {
+            padding: 80px 0;
+            position: relative;
+            scroll-margin-top: 100px; /* Add space for fixed header when scrolling */
+        }
+        
+        .mission-section {
+            padding: 60px 20px 80px;
+            text-align: left;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .mission-content {
+            max-width: 100%;
+            width: 100%;
+            text-align: left;
+            padding: 0;
+        }
+
+        .mission-content p:first-child {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-color);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #1d0c46, #caa968);
+        }
+
+        .mission-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .mission-content p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .highlight-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 25px 0;
+            font-style: italic;
+            position: relative;
+            padding: 15px 0;
+        }
+
+        .highlight-text::before,
+        .highlight-text::after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--primary);
+            opacity: 0.3;
+            position: absolute;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .highlight-text::before {
+            top: -10px;
+            left: -30px;
+        }
+
+        .highlight-text::after {
+            bottom: -30px;
+            right: -30px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .team-member {
+            background: var(--bg-color-secondary);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-height: 780px;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .member-image {
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 30px;
+            box-sizing: border-box;
+        }
+        
+        .member-image img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            object-position: center top;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .team-member:hover .member-image img {
+            transform: scale(1.05);
+        }
+
+        .member-info {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .member-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            gap: 20px;
+        }
+
+        .member-header > div:first-child {
+            flex-grow: 1;
+        }
+
+        .member-info .social-links {
+            margin: 0;
+            flex-shrink: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .member-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+
+        .member-role {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .member-bio {
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--bg-color-secondary);
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-link i {
+            font-size: 16px;
+            margin: 0;
+        }
+
+        .social-link i {
+            margin-right: 8px;
+        }
+
+        .social-link:hover {
+            color: var(--text-color);
+        }
+
+        .join-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .join-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+
+        .cta-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .cta-card {
+            background: var(--bg-color-secondary);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .cta-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .cta-card p {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        .cta-card .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .member-image {
+                height: 300px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+
+            .member-image {
+                height: 300px;
+            }
+        }
+
+        /* Dark mode adjustments */
+        [data-theme="dark"] .cta-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+
+        [data-theme="dark"] .team-member {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/cryptique-logo-navbar-light-mode.png" alt="Cryptique Logo" class="logo-light">
+                <img src="images/cryptique-logo-navbar-dark-mode.png" alt="Cryptique Logo" class="logo-dark">
+            </div>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/#interactive-features" class="nav-link">Why Us</a>
+                <a href="https://cryptique.gitbook.io/cryptique/" target="_blank" rel="noopener noreferrer" class="nav-link">Docs</a>
+                <a href="https://blogs.cryptique.io" target="_blank" rel="noopener noreferrer" class="nav-link">Blogs</a>
+            </div>
+            <div class="nav-buttons">
+                <a href="https://app.cryptique.io/login" class="btn btn-login">Log In</a>
+                <a href="https://calendly.com/founders-cryptique/book-a-demo" target="_blank" rel="noopener noreferrer" class="btn btn-demo">Request a Demo</a>
+                <div class="theme-toggle nav-theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </div>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <a href="/" class="mobile-nav-link">Home</a>
+        <a href="/#interactive-features" class="mobile-nav-link">Why Us</a>
+        <a href="https://cryptique.gitbook.io/cryptique/" target="_blank" rel="noopener noreferrer" class="mobile-nav-link">Docs</a>
+        <a href="https://blogs.cryptique.io" target="_blank" rel="noopener noreferrer" class="mobile-nav-link">Blogs</a>
+        <div class="mobile-theme-toggle">
+            <div class="theme-toggle" id="mobileThemeToggle">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+            </div>
+            <span>Toggle Theme</span>
+        </div>
+        <div class="mobile-buttons">
+            <a href="https://app.cryptique.io/login" class="btn btn-login">Log In</a>
+            <a href="https://calendly.com/founders-cryptique/book-a-demo" target="_blank" rel="noopener noreferrer" class="btn btn-demo">Request a Demo</a>
+        </div>
+    </div>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <div class="container">
+            <h2 class="section-title">Our Mission</h2>
+            <div class="mission-content">
+                <p>Providing the Intelligence Layer for the New Internet</p>
+                <p>The decentralized web is one of the most significant technological shifts of our generation, offering unparalleled transparency and user ownership. However, this new frontier operates in a state of data chaos.</p>
+                <p>At Cryptique, our mission is to bring clarity and intelligence to this ecosystem. We are building the foundational platform that transforms fragmented data into actionable growth strategies, empowering the next generation of Web3 builders to succeed on a global scale.</p>
+                <div class="highlight-text">
+                    We're not just analyzing the new internet; we're giving you the tools to command your corner of it.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title">The Founding Team</h2>
+            <p style="text-align: center; margin-bottom: 40px; color: var(--text-secondary);">Cryptique was founded by a team with a synergistic blend of deep technical expertise and proven Web3 growth leadership.</p>
+            
+            <div class="team-grid">
+                <!-- Parth Agarwal -->
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="images/parth.JPG" alt="Parth Agarwal">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-header">
+                            <div>
+                                <h3 class="member-name">Parth Agarwal</h3>
+                                <span class="member-role">Co-founder & CEO</span>
+                            </div>
+                            <div class="social-links">
+                                <a href="https://x.com/thecryptiquebro" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="X (Twitter)">
+                                    <i class="fab fa-x-twitter"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/parthagarwall/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <p class="member-bio">Parth provides the strategic vision and go-to-market leadership for Cryptique. His experience is deeply rooted in the practical realities of scaling Web3 ventures. Previously, he was instrumental in scaling a crypto project from its inception to over $5 billion in cumulative transaction volume and built a vibrant Web3 community of over 5,000 members.</p>
+                        <p class="member-bio">His time as an early-stage Deep Tech venture capital investor gives him a unique perspective on identifying market-defining technologies and building sustainable business models that resonate with institutional partners.</p>
+                    </div>
+                </div>
+
+                <!-- Akshit Varsani -->
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="images/akshit.JPG" alt="Akshit Varsani">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-header">
+                            <div>
+                                <h3 class="member-name">Akshit Varsani</h3>
+                                <span class="member-role">Co-founder & CTO</span>
+                            </div>
+                            <div class="social-links">
+                                <a href="https://x.com/akshit_varsani_" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="X (Twitter)">
+                                    <i class="fab fa-x-twitter"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/akshit-varsani/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <p class="member-bio">Akshit brings proven entrepreneurial execution and deep expertise in scalable B2B technical infrastructure. As a second-time founder, Akshit built his tech services firm, AV IT Solutions, to over $500,000 in revenue by delivering mission-critical IT solutions.</p>
+                        <p class="member-bio">He has led large-scale deployments of data pipelines and server infrastructure for major enterprise clients, including Denton Lawyers and ANZ Bank. His hands-on experience managing teams and delivering reliable technical infrastructure is foundational to Cryptique's architecture, security, and enterprise-grade service delivery.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Section -->
+    <section class="join-section">
+        <div class="container">
+            <h2 class="section-title">Join Us in Building the Future of Web3 Intelligence</h2>
+            <div class="join-content">
+                <p>The future of the decentralized web will be defined by those who can navigate its complexity with clarity and intelligence. We are always looking for passionate builders, data scientists, and community leaders to join us on our mission.</p>
+                
+                <div class="cta-cards">
+                    <div class="cta-card">
+                        <h3>Partnerships & Inquiries</h3>
+                        <p>Let's build the future together</p>
+                        <a href="mailto:partnerships@cryptique.io" class="btn btn-secondary">partnerships@cryptique.io</a>
+                    </div>
+                    <div class="cta-card">
+                        <h3>Follow Our Journey</h3>
+                        <p>Stay updated with our latest developments</p>
+                        <a href="https://x.com/Cryptiqueio" target="_blank" rel="noopener noreferrer" class="btn btn-outline">@Cryptiqueio</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer with Blockchain Background -->
+    <div class="footer-divider"></div>
+    <div class="blockchain-bg">
+        <div class="blockchain-pattern"></div>
+    </div>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Company Info -->
+                <div class="footer-company">
+                    <div class="footer-logo">
+                        <img src="images/cryptique-logo-navbar-light-mode.png" alt="Cryptique Logo" class="logo-light">
+                        <img src="images/cryptique-logo-navbar-dark-mode.png" alt="Cryptique Logo" class="logo-dark">
+                    </div>
+                    <p class="company-description">Your Intelligent Hub, For The New Internet.</p>
+                    <div class="social-links">
+                        <a href="https://x.com/Cryptiqueio" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                            <i class="fab fa-x-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/cryptique-io" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://discord.com/invite/H38UGQ6u" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h3>Cryptique</h3>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/about.html">About Us</a></li>
+                            <li><a href="https://www.linkedin.com/company/cryptique-io/jobs" target="_blank" rel="noopener noreferrer">Careers</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="https://cryptique.gitbook.io/cryptique/" target="_blank" rel="noopener noreferrer">Docs</a></li>
+                            <li><a href="https://blogs.cryptique.io" target="_blank" rel="noopener noreferrer">Blogs</a></li>
+                            <li><a href="#">Technical Whitepaper</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Legal</h3>
+                        <ul>
+                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="terms-of-service.html">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Cryptique. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle Script -->
+    <script src="theme.js"></script>
+
+    <!-- Three.js and related libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/math/ConvexHull.js"></script>
+    
+    <!-- Main Scripts -->
+    <script src="interactive-features.js"></script>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+        
+        // Function to set theme
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            updateThemeToggleIcon(theme);
+        }
+
+        // Function to update theme toggle icon
+        function updateThemeToggleIcon(theme) {
+            const sunIcons = document.querySelectorAll('.fa-sun');
+            const moonIcons = document.querySelectorAll('.fa-moon');
+            
+            if (theme === 'dark') {
+                sunIcons.forEach(icon => icon.style.display = 'block');
+                moonIcons.forEach(icon => icon.style.display = 'none');
+            } else {
+                sunIcons.forEach(icon => icon.style.display = 'none');
+                moonIcons.forEach(icon => icon.style.display = 'block');
+            }
+        }
+
+        // Theme toggle event listeners
+        function setupThemeToggle(element) {
+            if (!element) return;
+            
+            element.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                setTheme(newTheme);
+            });
+        }
+
+        // Initialize theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        setTheme(savedTheme);
+
+        // Setup theme toggles
+        setupThemeToggle(themeToggle);
+        setupThemeToggle(mobileThemeToggle);
+    </script>
+</body>
+</html>

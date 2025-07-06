@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptique - Your Intelligent Hub, For The New Internet.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="chat-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/cryptique-logo-navbar-light-mode.png" alt="Cryptique Logo" class="logo-light">
+                <img src="images/cryptique-logo-navbar-dark-mode.png" alt="Cryptique Logo" class="logo-dark">
+            </div>
+            <div class="nav-links">
+                <a href="/" class="nav-link active">Home</a>
+                <a href="#interactive-features" class="nav-link">Why Us</a>
+                <a href="https://cryptique.gitbook.io/cryptique/" target="_blank" rel="noopener noreferrer" class="nav-link">Docs</a>
+                <a href="https://blogs.cryptique.io" target="_blank" rel="noopener noreferrer" class="nav-link">Blogs</a>
+            </div>
+            <div class="nav-buttons">
+                <a href="https://app.cryptique.io/login" class="btn btn-login">Log In</a>
+                <a href="https://calendly.com/founders-cryptique/book-a-demo" target="_blank" rel="noopener noreferrer" class="btn btn-demo">Request a Demo</a>
+                <div class="theme-toggle nav-theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </div>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <a href="/" class="mobile-nav-link active">Home</a>
+        <a href="#interactive-features" class="mobile-nav-link">Why Us</a>
+        <a href="https://cryptique.gitbook.io/cryptique/" target="_blank" rel="noopener noreferrer" class="mobile-nav-link">Docs</a>
+        <a href="https://blogs.cryptique.io" target="_blank" rel="noopener noreferrer" class="mobile-nav-link">Blogs</a>
+        <div class="mobile-theme-toggle">
+            <div class="theme-toggle" id="mobileThemeToggle">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+            </div>
+            <span>Toggle Theme</span>
+        </div>
+        <div class="mobile-buttons">
+            <a href="https://app.cryptique.io/login" class="btn btn-login">Log In</a>
+            <a href="https://calendly.com/founders-cryptique/book-a-demo" target="_blank" rel="noopener noreferrer" class="btn btn-demo">Request a Demo</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Your Intelligent Hub<br><span class="gradient-text">For the New Internet</span></h1>
+                <div class="cta-buttons">
+                    <a href="https://calendly.com/founders-cryptique/book-a-demo" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Book a Demo</a>
+                    <a href="https://app.cryptique.io/login" class="btn btn-text">Try it yourself &gt;</a>
+                </div>
+            </div>
+            <div id="canvas-container"></div>
+        </section>
+
+        <!-- Blockchain Carousel Section -->
+        <section class="blockchain-carousel">
+            <div class="carousel-container glass">
+                <h2 class="carousel-title">We support 10+ Blockchains</h2>
+                <div class="carousel-track">
+                    <div class="carousel-slide">
+                        <img src="images/ethereum-logo.png" alt="Ethereum">
+                        <img src="images/solana-logo.png" alt="Solana">
+                        <img src="images/avalanche-logo.png" alt="Avalanche">
+                        <img src="images/bnb-logo.png" alt="BNB Chain">
+                        <img src="images/optimism-logo.png" alt="Optimism">
+                        <img src="images/base-logo.png" alt="Base">
+                        <img src="images/sui-logo.png" alt="Sui">
+                        <img src="images/kaia-logo.png" alt="Kaia">
+                        <!-- Duplicate for seamless loop -->
+                        <img src="images/ethereum-logo.png" alt="Ethereum">
+                        <img src="images/solana-logo.png" alt="Solana">
+                        <img src="images/avalanche-logo.png" alt="Avalanche">
+                        <img src="images/bnb-logo.png" alt="BNB Chain">
+                        <img src="images/optimism-logo.png" alt="Optimism">
+                        <img src="images/base-logo.png" alt="Base">
+                        <img src="images/sui-logo.png" alt="Sui">
+                        <img src="images/kaia-logo.png" alt="Kaia">
+                        <!-- Duplicate for seamless loop -->
+                        <img src="images/ethereum-logo.png" alt="Ethereum">
+                        <img src="images/solana-logo.png" alt="Solana">
+                        <img src="images/avalanche-logo.png" alt="Avalanche">
+                        <img src="images/bnb-logo.png" alt="BNB Chain">
+                        <img src="images/optimism-logo.png" alt="Optimism">
+                        <img src="images/base-logo.png" alt="Base">
+                        <img src="images/sui-logo.png" alt="Sui">
+                        <img src="images/kaia-logo.png" alt="Kaia">
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Interactive Features Section -->
+    <section id="interactive-features" class="interactive-features">
+        <div class="container">
+            <div class="glass-container">
+                <h2 class="section-title">
+                    <span id="rotating-question">Don't know WHERE your users are coming from?</span>
+                    <span class="highlight">Not anymore.</span>
+                </h2>
+                <div class="feature-tabs">
+                    <button class="feature-tab active" data-tab="attribution">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>Multi touch attribution</span>
+                    </button>
+                    <button class="feature-tab" data-tab="wallet">
+                        <i class="fas fa-wallet"></i>
+                        <span>Wallet intelligence</span>
+                    </button>
+                    <button class="feature-tab" data-tab="intelligence">
+                        <i class="fas fa-brain"></i>
+                        <span>Amplified Intelligence</span>
+                    </button>
+                </div>
+            </div>
+            <div class="feature-preview glass-container" style="padding: 0; overflow: hidden;">
+                <!-- Dashboard Content (Default) -->
+                <div class="dashboard-content">
+                    <div class="app-container">
+                        <!-- App Header -->
+                        <header class="app-header">
+                            <div class="app-logo">
+                                <img src="images/cryptique-logo-navbar-light-mode.png" alt="Cryptique Logo" class="logo-light">
+                                <img src="images/cryptique-logo-navbar-dark-mode.png" alt="Cryptique Logo" class="logo-dark">
+                            </div>
+                            <div class="app-actions">
+                                <button class="btn btn-icon"><i class="fas fa-bell"></i></button>
+                                <a href="#" class="btn btn-icon settings-btn" title="Settings"><i class="fas fa-cog"></i></a>
+                                <div class="user-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                            </div>
+                        </header>
+                        
+                        <!-- Main Content -->
+                        <div class="app-content">
+                            <!-- Sidebar Navigation -->
+                            <nav class="app-sidebar">
+                                <ul class="nav-menu">
+                                    <li class="active">
+                                        <a href="#" title="Dashboard">
+                                            <i class="fas fa-tachometer-alt"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="Off-chain">
+                                            <i class="fas fa-wallet"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="On-chain">
+                                            <i class="fas fa-link"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="CQ Intelligence">
+                                            <i class="fas fa-brain"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="Campaigns">
+                                            <i class="fas fa-bullhorn"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="Conversion Events">
+                                            <i class="fas fa-exchange-alt"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="User Intelligence">
+                                            <i class="fas fa-users"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="Manage Websites">
+                                            <i class="fas fa-globe"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </nav>
+                            
+                            <!-- Main Content Area -->
+                            <main class="main-content">
+                                <!-- Dashboard Header -->
+                                <div class="dashboard-header">
+                                    <h2>Dashboard</h2>
+                                    <div class="header-actions">
+                                        <div class="date-range-picker">
+                                            <i class="far fa-calendar-alt"></i>
+                                            <span>Last 30 days</span>
+                                            <i class="fas fa-chevron-down"></i>
+                                        </div>
+                                        <button class="btn btn-primary">
+                                            <i class="fas fa-download"></i> Export
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Dashboard Content -->
+                                <div class="dashboard-container">
+                                    <!-- User Funnel -->
+                                    <div class="dashboard-section">
+                                        <h3>User Funnel</h3>
+                                        <div class="funnel-container">
+                                            <div class="funnel-stage">
+                                                <div class="funnel-metric">
+                                                    <div class="metric-value">12.5K</div>
+                                                    <div class="metric-label">Unique Visitors</div>
+                                                </div>
+                                                <div class="funnel-arrow">→</div>
+                                                <div class="funnel-metric">
+                                                    <div class="metric-value">8.2K</div>
+                                                    <div class="metric-label">Web3 Users</div>
+                                                </div>
+                                                <div class="funnel-arrow">→</div>
+                                                <div class="funnel-metric">
+                                                    <div class="metric-value">5.7K</div>
+                                                    <div class="metric-label">Wallets Transacted</div>
+                                                </div>
+                                                <div class="funnel-arrow">→</div>
+                                                <div class="metric-value">342K</div>
+                                                <div class="metric-label">Total Value</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Traffic Sources Table -->
+                                    <div class="dashboard-section">
+                                        <h3>Traffic Sources</h3>
+                                        <div class="table-container">
+                                            <table class="traffic-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Source</th>
+                                                        <th>Unique Visitors</th>
+                                                        <th>Web3 Users</th>
+                                                        <th>Wallet Connected</th>
+                                                        <th>Value Transacted</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                            <td><i class="fab fa-twitter"></i> X</td>
+                                            <td>8,430</td>
+                                            <td>4,210</td>
+                                            <td>3,120</td>
+                                            <td>$1.2M</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fab fa-discord"></i> Discord</td>
+                                            <td>5,670</td>
+                                            <td>3,450</td>
+                                            <td>2,890</td>
+                                            <td>$890K</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fab fa-telegram"></i> Telegram</td>
+                                            <td>4,320</td>
+                                            <td>2,780</td>
+                                            <td>1,950</td>
+                                            <td>$670K</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fab fa-google"></i> Google</td>
+                                            <td>3,210</td>
+                                            <td>1,230</td>
+                                            <td>890</td>
+                                            <td>$340K</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fab fa-instagram"></i> Instagram</td>
+                                            <td>2,780</td>
+                                            <td>1,450</td>
+                                            <td>1,020</td>
+                                            <td>$410K</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fas fa-link"></i> Direct</td>
+                                            <td>1,020</td>
+                                            <td>730</td>
+                                            <td>620</td>
+                                            <td>$290K</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Campaigns -->
+                        <div class="dashboard-section">
+                            <h3>Active Campaigns</h3>
+                            <div class="campaigns-grid">
+                                <div class="campaign-card">
+                                    <div class="campaign-header">
+                                        <h4>DeFi Launch</h4>
+                                        <span class="status-badge active">active</span>
+                                    </div>
+                                    <div class="campaign-metrics">
+                                        <div class="metric">
+                                            <div class="metric-value">5,200</div>
+                                            <div class="metric-label">Participants</div>
+                                        </div>
+                                        <div class="metric">
+                                            <div class="metric-value">68%</div>
+                                            <div class="metric-label">Conversion</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="campaign-card">
+                                    <div class="campaign-header">
+                                        <h4>NFT Drop</h4>
+                                        <span class="status-badge completed">completed</span>
+                                    </div>
+                                    <div class="campaign-metrics">
+                                        <div class="metric">
+                                            <div class="metric-value">3,800</div>
+                                            <div class="metric-label">Participants</div>
+                                        </div>
+                                        <div class="metric">
+                                            <div class="metric-value">45%</div>
+                                            <div class="metric-label">Conversion</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="campaign-card">
+                                    <div class="campaign-header">
+                                        <h4>Governance Vote</h4>
+                                        <span class="status-badge active">active</span>
+                                    </div>
+                                    <div class="campaign-metrics">
+                                        <div class="metric">
+                                            <div class="metric-value">7,100</div>
+                                            <div class="metric-label">Participants</div>
+                                        </div>
+                                        <div class="metric">
+                                            <div class="metric-value">82%</div>
+                                            <div class="metric-label">Conversion</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>
+        <!-- Wallet Intelligence Content -->
+        <div class="wallet-content" style="display: none;">
+            <div class="app-container">
+                <!-- App Header -->
+                <header class="app-header">
+                    <div class="app-logo">
+                        <img src="images/cryptique-logo-navbar-light-mode.png" alt="Cryptique Logo" class="logo-light">
+                        <img src="images/cryptique-logo-navbar-dark-mode.png" alt="Cryptique Logo" class="logo-dark">
+                    </div>
+                    <div class="app-actions">
+                        <button class="btn btn-icon"><i class="fas fa-bell"></i></button>
+                        <a href="#" class="btn btn-icon settings-btn" title="Settings"><i class="fas fa-cog"></i></a>
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="app-content">
+                    <!-- Sidebar Navigation -->
+                    <nav class="app-sidebar">
+                        <ul class="nav-menu">
+                            <li>
+                                <a href="#" title="Dashboard">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="#" title="Off-chain">
+                                    <i class="fas fa-wallet"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="On-chain">
+                                    <i class="fas fa-link"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="CQ Intelligence">
+                                    <i class="fas fa-brain"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="Campaigns">
+                                    <i class="fas fa-bullhorn"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="Conversion Events">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="User Intelligence">
+                                    <i class="fas fa-users"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="Manage Websites">
+                                    <i class="fas fa-globe"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="sidebar-footer">
+                        </div>
+                    </nav>
+                    
+                    <!-- Main Content Area -->
+                    <main class="main-content">
+
+                        
+                        <!-- Wallet Intelligence Content -->
+                        <div class="dashboard-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <!-- User Profile Section -->
+                            <div class="dashboard-section">
+                                <h3 style="font-size: 1.1em; margin-bottom: 12px;">User Profile</h3>
+                                <div class="user-profile-card" style="background: var(--glass-bg); border-radius: 8px; padding: 16px; margin-bottom: 16px;">
+                                    <div class="user-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                                        <div>
+                                            <h4 style="margin: 0 0 4px 0; color: var(--text); font-size: 1em;">user_abc123</h4>
+                                            <span class="status-badge active" style="margin-top: 2px; display: inline-block; font-size: 0.75em; padding: 2px 8px;">Active</span>
+                                            <span class="status-badge" style="background: #4CAF50; color: white; margin-left: 4px; font-size: 0.75em; padding: 2px 8px;">High-Value Trader</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="user-stats" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 8px;">
+                                        <div class="stat-item">
+                                            <div class="stat-label" style="font-size: 0.75em; color: var(--text-secondary);">First Visit</div>
+                                            <div class="stat-value" style="font-weight: 500; font-size: 0.85em;">Jan 15, 2024</div>
+                                        </div>
+                                        <div class="stat-item">
+                                            <div class="stat-label" style="font-size: 0.75em; color: var(--text-secondary);">Last Seen</div>
+                                            <div class="stat-value" style="font-weight: 500; font-size: 0.85em;">2 hours ago</div>
+                                        </div>
+                                        <div class="stat-item">
+                                            <div class="stat-label" style="font-size: 0.75em; color: var(--text-secondary);">Total Sessions</div>
+                                            <div class="stat-value" style="font-weight: 500; font-size: 0.85em;">47</div>
+                                        </div>
+                                        <div class="stat-item">
+                                            <div class="stat-label" style="font-size: 0.75em; color: var(--text-secondary);">Pages Viewed</div>
+                                            <div class="stat-value" style="font-weight: 500; font-size: 0.85em;">234</div>
+                                        </div>
+                                        <div class="stat-item" style="grid-column: span 2;">
+                                            <div class="stat-label" style="font-size: 0.75em; color: var(--text-secondary);">Time on Site</div>
+                                            <div class="stat-value" style="font-weight: 500; font-size: 0.85em;">12h 34m</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h4>User Sessions</h4>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px;">
+                                    <!-- Session 1 -->
+                                    <div class="timeline-item" style="margin-bottom: 0; padding: 12px; background: var(--glass-bg); border-radius: 6px; border-left: 3px solid var(--primary);">
+                                        <div class="timeline-header" style="font-weight: 500; margin-bottom: 8px; font-size: 0.9em;">
+                                            <div>Session 1 - Jan 15, 2024</div>
+                                            <div style="font-size: 0.85em; color: var(--text-secondary);">10:23 AM • 8m 34s</div>
+                                        </div>
+                                        <div class="timeline-content" style="font-size: 0.85em;">
+                                            <div style="margin-bottom: 4px;">• Entry: Google Search → Landing</div>
+                                            <div style="margin-bottom: 4px;">• Clicked: "Connect Wallet" (3x)</div>
+                                            <div style="margin-bottom: 4px;">• Pages: Home → Features → Pricing</div>
+                                            <div style="color: #f44336; font-size: 0.9em;">• Exit: Pricing page (no conversion)</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Session 2 -->
+                                    <div class="timeline-item" style="margin-bottom: 0; padding: 12px; background: var(--glass-bg); border-radius: 6px; border-left: 3px solid #4CAF50;">
+                                        <div class="timeline-header" style="font-weight: 500; margin-bottom: 8px; font-size: 0.9em;">
+                                            <div>Session 2 - Jan 16, 2024</div>
+                                            <div style="font-size: 0.85em; color: var(--text-secondary);">2:15 PM • 15m 22s</div>
+                                        </div>
+                                        <div class="timeline-content" style="font-size: 0.85em;">
+                                            <div style="margin-bottom: 4px;">• Entry: Direct visit</div>
+                                            <div style="margin-bottom: 4px;">• Connected: MetaMask</div>
+                                            <div style="color: #4CAF50; margin-bottom: 4px;">• CONVERSION: Wallet Connected</div>
+                                            <div style="margin-bottom: 4px;">• Pages: Dashboard → Analytics</div>
+                                            <div style="color: #4CAF50;">• First on-chain transaction</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Wallet Analysis Section -->
+                            <div class="dashboard-section">
+                                <h3 style="font-size: 1.1em; margin-bottom: 12px;">Wallet Analysis: <span style="font-family: monospace; font-size: 0.95em;">0x742d35...a3b8D</span></h3>
+                                
+                                <div class="wallet-networks" style="margin: 12px 0 16px 0;">
+                                    <div style="font-weight: 500; margin-bottom: 8px; font-size: 0.9em;">Connected Wallets (3):</div>
+                                    <div style="display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;">
+                                        <span class="network-tag" style="background: #3C3C3D; color: white; padding: 3px 10px; border-radius: 20px; font-size: 0.75em; display: flex; align-items: center; margin-bottom: 4px;">
+                                            <span style="display: inline-block; width: 8px; height: 8px; background: #3C3C3D; border-radius: 50%; margin-right: 4px;"></span>
+                                            Ethereum
+                                        </span>
+                                        <span class="network-tag" style="background: #8247E5; color: white; padding: 3px 10px; border-radius: 20px; font-size: 0.75em; display: flex; align-items: center; margin-bottom: 4px;">
+                                            <span style="display: inline-block; width: 8px; height: 8px; background: #8247E5; border-radius: 50%; margin-right: 4px;"></span>
+                                            Polygon
+                                        </span>
+                                        <span class="network-tag" style="background: #28A0F0; color: white; padding: 3px 10px; border-radius: 20px; font-size: 0.75em; display: flex; align-items: center; margin-bottom: 4px;">
+                                            <span style="display: inline-block; width: 8px; height: 8px; background: #28A0F0; border-radius: 50%; margin-right: 4px;"></span>
+                                            Arbitrum
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="wallet-metrics" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px;">
+                                    <div class="stat-item">
+                                        <div class="stat-label" style="font-size: 0.75em; color: var(--text-secondary);">Portfolio Value</div>
+                                        <div class="stat-value" style="font-weight: 500; font-size: 0.85em;">$45,678</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label" style="font-size: 0.75em; color: var(--text-secondary);">Transactions</div>
+                                        <div class="stat-value" style="font-weight: 500; font-size: 0.85em;">1,234</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label" style="font-size: 0.75em; color: var(--text-secondary);">First Activity</div>
+                                        <div class="stat-value" style="font-weight: 500; font-size: 0.85em;">Dec 2023</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label" style="font-size: 0.75em; color: var(--text-secondary);">Last Activity</div>
+                                        <div class="stat-value" style="font-weight: 500; font-size: 0.85em;">2h ago</div>
+                                    </div>
+                                    <div class="stat-item" style="grid-column: span 2;">
+                                        <div class="stat-label" style="font-size: 0.75em; color: var(--text-secondary);">Chains Active</div>
+                                        <div class="stat-value" style="font-weight: 500; font-size: 0.85em;">5</div>
+                                    </div>
+                                </div>
+
+                                <h4 style="margin-top: 55px; font-size: 1em;">Transaction History</h4>
+                                <div class="transaction-list" style="margin-top: 8px; max-height: 180px; overflow-y: auto; padding-right: 5px;">
+                                    <!-- Example transaction items -->
+                                    <div class="transaction-item" style="display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid var(--glass-border); font-size: 0.85em;">
+                                        <div>
+                                            <div style="font-weight: 500;">Swap ETH for USDC</div>
+                                            <div style="font-size: 0.9em; color: var(--text-secondary);">2 hours ago • Uniswap</div>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <div style="color: #4CAF50; font-weight: 500;">+1,200 USDC</div>
+                                            <div style="font-size: 0.9em; color: var(--text-secondary);">-0.5 ETH</div>
+                                        </div>
+                                    </div>
+                                    <div class="transaction-item" style="display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid var(--glass-border); font-size: 0.85em;">
+                                        <div>
+                                            <div style="font-weight: 500;">Deposit to Aave</div>
+                                            <div style="font-size: 0.9em; color: var(--text-secondary);">1 day ago • Aave</div>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <div style="color: #4CAF50; font-weight: 500;">Deposited</div>
+                                            <div style="font-size: 0.9em; color: var(--text-secondary);">10,000 USDC</div>
+                                        </div>
+                                    </div>
+                                    <div class="transaction-item" style="display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid var(--glass-border); font-size: 0.85em;">
+                                        <div>
+                                            <div style="font-weight: 500;">NFT Purchase</div>
+                                            <div style="font-size: 0.9em; color: var(--text-secondary);">3 days ago • OpenSea</div>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <div style="color: #f44336; font-weight: 500;">-0.8 ETH</div>
+                                            <div style="font-size: 0.9em; color: var(--text-secondary);">CryptoPunk #1234</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </main>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Amplified Intelligence Content -->
+        <div class="intelligence-content" style="display: none;">
+            <div class="app-container">
+                <!-- App Header -->
+                <header class="app-header">
+                    <div class="app-logo">
+                        <img src="images/cryptique-logo-navbar-light-mode.png" alt="Cryptique Logo" class="logo-light">
+                        <img src="images/cryptique-logo-navbar-dark-mode.png" alt="Cryptique Logo" class="logo-dark">
+                    </div>
+                    <div class="app-actions">
+                        <button class="btn btn-icon"><i class="fas fa-bell"></i></button>
+                        <a href="#" class="btn btn-icon settings-btn" title="Settings"><i class="fas fa-cog"></i></a>
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="app-content">
+                    <!-- Sidebar Navigation -->
+                    <nav class="app-sidebar">
+                        <ul class="nav-menu">
+                            <li>
+                                <a href="#" title="Dashboard">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="Off-chain">
+                                    <i class="fas fa-wallet"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="On-chain">
+                                    <i class="fas fa-link"></i>
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="#" title="CQ Intelligence">
+                                    <i class="fas fa-brain"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="Campaigns">
+                                    <i class="fas fa-bullhorn"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="Conversion Events">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="User Intelligence">
+                                    <i class="fas fa-users"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="Manage Websites">
+                                    <i class="fas fa-globe"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="sidebar-footer">
+                        </div>
+                    </nav>
+                    
+                    <!-- Main Content Area -->
+                    <main class="main-content">
+                        <!-- Amplified Intelligence Header -->
+                        <div class="dashboard-header">
+                            <h2>CQ Intelligence</h2>
+                        </div>
+                        
+                        <!-- Amplified Intelligence Content -->
+                        <div class="dashboard-container">
+                            <!-- AI Chatbot Interface -->
+                            <div class="ai-chat-container">
+                                <!-- Chat Messages -->
+                                <div class="chat-messages">
+                                    <!-- User Message -->
+                                    <div class="message user-message">
+                                        <div class="message-avatar">
+                                            <i class="fas fa-user"></i>
+                                        </div>
+                                        <div class="message-content">
+                                            <p>Show me how effective my last Launch-Day campaign was</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- AI Response -->
+                                    <div class="message ai-message">
+                                        <div class="message-avatar ai-avatar">
+                                            <i class="fas fa-robot"></i>
+                                        </div>
+                                        <div class="message-content">
+                                            <!-- Campaign Summary -->
+                                            <div class="campaign-summary">
+                                                <h3>⚡ Launch-Day Campaign – Executive Summary</h3>
+                                                <div class="summary-grid">
+                                                    <div class="summary-item">
+                                                        <div class="summary-value">183K</div>
+                                                        <div class="summary-label">Total Reach</div>
+                                                    </div>
+                                                    <div class="summary-item">
+                                                        <div class="summary-value">12,438 <span class="positive">(↑ 34% vs avg)</span></div>
+                                                        <div class="summary-label">Website Visitors</div>
+                                                    </div>
+                                                    <div class="summary-item">
+                                                        <div class="summary-value">5,211 <span class="highlight">(42% of visitors)</span></div>
+                                                        <div class="summary-label">Wallet Connects</div>
+                                                    </div>
+                                                    <div class="summary-item">
+                                                        <div class="summary-value">3,487 Tx / 1,892</div>
+                                                        <div class="summary-label">On-chain Conversions</div>
+                                                    </div>
+                                                    <div class="summary-item">
+                                                        <div class="summary-value">38%</div>
+                                                        <div class="summary-label">Returning Users</div>
+                                                    </div>
+                                                    <div class="summary-item">
+                                                        <div class="summary-value">Twitter</div>
+                                                        <div class="summary-label">Effective Source</div>
+                                                    </div>
+                                                    <div class="summary-item">
+                                                        <div class="summary-value">UAE</div>
+                                                        <div class="summary-label">Top Geography</div>
+                                                    </div>
+                                                    <div class="summary-item highlight">
+                                                        <div class="summary-value">$214K <span class="positive">(2.8× spend)</span></div>
+                                                        <div class="summary-label">ROI Est.</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Key Findings -->
+                                            <div class="key-findings">
+                                                <h4>Key Findings & Recommendations</h4>
+                                                <div class="confidence-badge">Confidence: 94%</div>
+                                                
+                                                <ul class="findings-list">
+                                                    <li><strong>Traffic Quality:</strong> Twitter drove the broadest reach, but Direct traffic converted 1.4× better.</li>
+                                                    <li><strong>User Retention:</strong> 38% of converters were returning users – 6pp higher than the Q1 average.</li>
+                                                    <li><strong>Attribution Trail:</strong> 61% of returning converters first visited during the Teaser campaign two weeks earlier.</li>
+                                                    <li><strong>Chain Efficiency:</strong> Polygon users cost 23% less gas and completed 1.7× more repeat transactions.</li>
+                                                    <li><strong>Viral Moment:</strong> Spike on Day-4 correlates with @CryptoGuru tweet (12:14 UTC).</li>
+                                                </ul>
+                                                
+<div class="ai-conclusion">
+                                                    <p>Analysis complete! Would you like me to dive deeper into any specific metric, or shall we explore optimization strategies for your next campaign?</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Chat Input -->
+                                <div class="chat-input-container">
+                                    <input type="text" placeholder="Ask me anything about your campaign..." class="chat-input">
+                                    <button class="send-button">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
+</div>
+</section>
+
+    <!-- How Cryptique Works Section -->
+<section class="how-it-works">
+    <div class="container">
+        <h2 class="section-title">How CRYPTIQUE Works</h2>
+        <div class="workflow-container">
+            <div class="workflow-card glass">
+                   <div class="campaign-tag">TRACK CAMPAIGNS</div>
+                   <div class="campaign-header">
+                       <div class="campaign-title">Launch Campaign - X</div>
+                       <div class="campaign-period">Jul 1, 2025 - Present</div>
+                   </div>
+                   
+                   <div class="campaign-metrics">
+                       <div class="metric-row">
+                           <div class="metric-item">
+                               <div class="metric-value">1.2K</div>
+                               <div class="metric-label">Visitors <span class="metric-change positive">+12.5%</span></div>
+                           </div>
+                           <div class="metric-item">
+                               <div class="metric-value">842</div>
+                               <div class="metric-label">Web3 <span class="metric-change positive">+8.3%</span></div>
+                           </div>
+                           <div class="metric-item">
+                               <div class="metric-value">723</div>
+                               <div class="metric-label">Wallets <span class="metric-change positive">+5.7%</span></div>
+                           </div>
+                       </div>
+                       
+                       <div class="metric-row">
+                           <div class="metric-item highlight">
+                               <div class="metric-value">$48.2K</div>
+                               <div class="metric-label">Value <span class="metric-change positive">+23.1%</span></div>
+                           </div>
+                           <div class="metric-item">
+                               <div class="metric-value">3.2x</div>
+                               <div class="metric-label">ROI <span class="metric-change positive">+0.4x</span></div>
+                           </div>
+                           <div class="metric-item">
+                               <div class="metric-value">187</div>
+                               <div class="metric-label">Convs <span class="metric-change positive">+15.2%</span></div>
+                           </div>
+                       </div>
+                   </div>
+                   
+                   <div class="conversion-analytics">
+                       <div class="conversion-metric">
+                           <div class="metric-row">
+                               <div class="metric-value">14.6%</div>
+                               <div class="metric-value">$257.89</div>
+                           </div>
+                           <div class="progress-container">
+                               <div class="progress-bar" style="width: 73%"></div>
+                               <div class="progress-bar" style="width: 86%; background: #4CAF50; margin-left: 8px;"></div>
+                           </div>
+                           <div class="metric-row">
+                               <div class="metric-label">CR</div>
+                               <div class="metric-label">Avg. Value</div>
+                           </div>
+                       </div>
+                       
+                       <div class="user-breakdown">
+                           <div class="breakdown-item">
+                               <span class="breakdown-label">New:</span>
+                               <span class="breakdown-value">142 <span class="breakdown-percent">76%</span></span>
+                           </div>
+                           <div class="breakdown-item">
+                               <span class="breakdown-label">Ret:</span>
+                               <span class="breakdown-value">45 <span class="breakdown-percent">24%</span></span>
+                           </div>
+                       </div>
+                   </div>
+                   
+                   <div class="marketing-text">
+                       <p><strong>Your marketing spend feeling like a black hole?</strong></p>
+                       <p>Connect every dollar of your campaign budget to a tangible on-chain action to see exactly which strategies drive value and which ones don't.</p>
+                   </div>
+            </div>
+            <div class="workflow-card glass">
+                <div class="campaign-tag">TRACK USERS</div>
+                <div class="user-journey">
+                    <div class="journey-step active">
+                        <div class="step-icon">
+                            <div class="icon-circle">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                            </div>
+                            <div class="step-line"></div>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-title">Visited Website</div>
+                            <div class="step-time">2m ago</div>
+                        </div>
+                    </div>
+                    <div class="journey-step active">
+                        <div class="step-icon">
+                            <div class="icon-circle">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                                </svg>
+                            </div>
+                            <div class="step-line"></div>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-title">Clicked About Us</div>
+                            <div class="step-time">1m 30s ago</div>
+                        </div>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-icon">
+                            <div class="icon-circle">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                </svg>
+                            </div>
+                            <div class="step-line"></div>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-title">Connected Wallet</div>
+                            <div class="step-time">Just now</div>
+                        </div>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-icon">
+                            <div class="icon-circle">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                                    <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                                </svg>
+                            </div>
+                            <div class="step-line"></div>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-title">Minted NFT</div>
+                            <div class="step-time">Pending</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="marketing-text">
+                    <p><strong>Your user's journey, lost in the gap?</strong></p>
+                    <p>Unify their entire journey, from first click to final transaction.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- New Row with 40/60 Split -->
+        <div class="workflow-container second-row">
+            <!-- Left Card (40%) -->
+            <div class="workflow-card glass">
+                <div class="user-cards-container">
+                    <div class="user-card">
+                        <div class="user-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        </div>
+                        <div class="user-info">
+                            <h4 class="user-name">Userid: 5s5d5s</h4>
+                            <p class="user-description">USA, 0xsfg75d5...</p>
+                        </div>
+                    </div>
+                    <div class="user-card">
+                        <div class="user-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        </div>
+                        <div class="user-info">
+                            <h4 class="user-name">Userid: sff48s</h4>
+                            <p class="user-description">Germany, 0x544sff4...</p>
+                        </div>
+                    </div>
+                    <div class="user-card">
+                        <div class="user-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        </div>
+                        <div class="user-info">
+                            <h4 class="user-name">Userid: 54dsf4</h4>
+                            <p class="user-description">UAE, 0xaf765sd...</p>
+                        </div>
+                    </div>
+                    <div class="user-card">
+                        <div class="user-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        </div>
+                        <div class="user-info">
+                            <h4 class="user-name">Userid: dggd44</h4>
+                            <p class="user-description">India, 0x982sffs...</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="marketing-text">
+                    <p><strong>Can't link your visitors to their wallets?</strong></p>
+                    <p>Connect every visitor to their on-chain identity to understand the person behind the wallet.</p>
+                </div>
+            </div>
+            
+            <!-- Right Card (60%) -->
+            <div class="workflow-card glass">
+                <div class="campaign-tag">AMPLIFIED TRUTH</div>
+                <div class="agent-workflow">
+                    <div class="workflow-item">
+                        <div class="workflow-node user-prompt">
+                            <i class="fas fa-user-edit"></i>
+                            <span>User Prompt</span>
+                        </div>
+                    </div>
+                    <div class="workflow-connector">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="workflow-item">
+                        <div class="workflow-node orchestrator">
+                            <i class="fas fa-brain"></i>
+                            <span>Orchestrator</span>
+                        </div>
+                    </div>
+                    <div class="workflow-connector">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="workflow-item specialist-agents">
+                        <div class="workflow-node agent">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>Analyst</span>
+                        </div>
+                         <div class="workflow-node agent">
+                            <i class="fas fa-search"></i>
+                            <span>Researcher</span>
+                        </div>
+                        <div class="workflow-node agent">
+                            <i class="fas fa-pen-nib"></i>
+                            <span>Writer</span>
+                        </div>
+                    </div>
+                    <div class="workflow-connector">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="workflow-item">
+                        <div class="workflow-node user-output">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>User Output</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="marketing-text">
+                    <p><strong>Your data telling you what happened, but not why?</strong></p>
+                    <p>Go from complex data to strategic answers and growth recommendations with a single question.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Works for Everyone Section -->
+<section class="new-section">
+    <div class="container">
+        <div class="glass-container">
+            <div class="content-wrapper">
+                <div class="content-text">
+                    <h2 class="section-title">Works for <span class="highlight-word">Everyone</span></h2>
+                    <p class="lead-text">Stop guessing and start growing. Pinpoint the exact strategies that drive user adoption and token utility.</p>
+                </div>
+                <div class="word-carousel">
+                    <div class="carousel-track carousel-track-1"></div>
+                    <div class="carousel-track carousel-track-2"></div>
+                    <div class="carousel-track carousel-track-3"></div>
+                    <div class="carousel-track carousel-track-4"></div>
+                    <div class="carousel-track carousel-track-5"></div>
+                    <div class="carousel-track carousel-track-6"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section">
+    <div class="container">
+        <h2 class="section-title">What Our <span class="highlight-word">Clients Say</span></h2>
+        <div class="testimonials-carousel">
+            <div class="testimonials-track">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card glass">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"B2B Web3 adoption is a maze of moving parts, and connecting the dots was a major challenge—until Cryptique stepped in. With its CQ Intelligence, we finally gained end-to-end visibility: from the first enterprise contact to on-chain activity. Now we know exactly which marketing efforts lead to carrier onboarding and $ZBU utility. Cryptique isn't just a dashboard—it’s a strategic accelerator driving precision and performance across our ecosystem."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="images/raghav-zeebu.jpeg" alt="Client Avatar" />
+                            </div>
+                            <div class="author-info">
+                                <h4>Dr. Raghavendra Husangi</h4>
+                                <p>CMO @Zeebu</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card glass">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"For mobile-first platforms, tracking the leap from a simple app download to real on-chain interaction was a blind spot. Cryptique illuminated that path. It let us pinpoint which channels delivered genuine users—and which didn’t. With segmentation based on actual blockchain behavior, we cut acquisition costs and focused efforts where they mattered most: sustained engagement and growth."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="images/gerald-MWT.jpg" alt="Client Avatar" />
+                            </div>
+                            <div class="author-info">
+                                <h4>Gerald Chenyi</h4>
+                                <p>CEO @MWT</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card glass">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"We thought we knew our users—until Cryptique showed us the bigger picture. Its AI-powered segmentation helped us distinguish between speculators, occasional users, and loyal power users. When we spotted an at-risk segment with high potential, we acted fast on Cryptique’s insights. The result? A tailored campaign that boosted retention by over 50%. That’s strategic intelligence you can actually use."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="images/jitesh-cubane.jpeg" alt="Client Avatar" />
+                            </div>
+                            <div class="author-info">
+                                <h4>Jitesh Kumar</h4>
+                                <p>CEO @Cubane</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 4 -->
+                <div class="testimonial-card glass">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"In the fast-moving NFT world, community noise doesn’t always equal conversion. Cryptique helped us filter the hype and identify the community members who were ready to mint. By analyzing engagement and on-chain history before launch, we delivered highly targeted campaigns that turned Discord buzz into our most successful mint ever. Cryptique made sentiment quantifiable—and profitable."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="images/Bailey-THAT.jpeg" alt="Client Avatar" />
+                            </div>
+                            <div class="author-info">
+                                <h4>Bailey Nahi</h4>
+                                <p>CEO @THAT</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card glass">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"B2B Web3 adoption is a maze of moving parts, and connecting the dots was a major challenge—until Cryptique stepped in. With its CQ Intelligence, we finally gained end-to-end visibility: from the first enterprise contact to on-chain activity. Now we know exactly which marketing efforts lead to carrier onboarding and $ZBU utility. Cryptique isn't just a dashboard—it’s a strategic accelerator driving precision and performance across our ecosystem."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="images/raghav-zeebu.jpeg" alt="Client Avatar" />
+                            </div>
+                            <div class="author-info">
+                                <h4>Dr. Raghavendra Husangi</h4>
+                                <p>CMO @Zeebu</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card glass">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"For mobile-first platforms, tracking the leap from a simple app download to real on-chain interaction was a blind spot. Cryptique illuminated that path. It let us pinpoint which channels delivered genuine users—and which didn’t. With segmentation based on actual blockchain behavior, we cut acquisition costs and focused efforts where they mattered most: sustained engagement and growth."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="images/gerald-MWT.jpg" alt="Client Avatar" />
+                            </div>
+                            <div class="author-info">
+                                <h4>Gerald Chenyi</h4>
+                                <p>CEO @MWT</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Get Started Section -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-container">
+            <h2 class="cta-title">Ready to Unlock Real <br>Marketing Intelligence?</h2>
+            <a href="https://calendly.com/founders-cryptique/book-a-demo" target="_blank" rel="noopener noreferrer" class="cta-button">Book a Demo</a>
+        </div>
+    </div>
+</section>
+
+<!-- Theme Toggle Script -->
+<script src="theme.js"></script>
+
+<!-- Carousel Scripts -->
+<script src="carousel.js"></script>
+<script src="blockchain-carousel.js"></script>
+
+<!-- Three.js and related libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/math/ConvexHull.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/math/ConvexHull.js"></script>
+    
+    <!-- Main Scripts -->
+    <script src="blockchain-visualization.js"></script>
+    <script src="interactive-features.js"></script>
+    <script src="testimonials-carousel.js"></script>
+    <script src="script.js"></script>
+
+
+    <!-- Footer with Blockchain Background -->
+    <div class="footer-divider"></div>
+    <div class="blockchain-bg">
+        <div class="blockchain-pattern"></div>
+    </div>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Company Info -->
+                <div class="footer-company">
+                    <div class="footer-logo">
+                        <img src="images/cryptique-logo-navbar-light-mode.png" alt="Cryptique Logo" class="logo-light">
+                        <img src="images/cryptique-logo-navbar-dark-mode.png" alt="Cryptique Logo" class="logo-dark">
+                    </div>
+                    <p class="company-description">Your Intelligent Hub, For The New Internet.</p>
+                    <div class="social-links">
+                        <a href="https://x.com/Cryptiqueio" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                            <i class="fab fa-x-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/cryptique-io" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://discord.com/invite/H38UGQ6u" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h3>Cryptique</h3>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="https://www.linkedin.com/company/cryptique-io/jobs" target="_blank" rel="noopener noreferrer">Careers</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="https://cryptique.gitbook.io/cryptique/" target="_blank" rel="noopener noreferrer">Docs</a></li>
+                            <li><a href="#">Blogs</a></li>
+                            <li><a href="#">Technical Whitepaper</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Legal</h3>
+                        <ul>
+                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="terms-of-service.html">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Cryptique. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    </div>
+
+    <!-- Theme Toggle Script -->
+    <script src="theme.js"></script>
+
+    <!-- Carousel Script -->
+    <script src="carousel.js"></script>
+
+    <!-- Three.js and related libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/math/ConvexHull.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/math/ConvexHull.js"></script>
+    
+    <!-- Main Scripts -->
+    <script src="blockchain-visualization.js"></script>
+    <script src="interactive-features.js"></script>
+    <script src="testimonials-carousel.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
