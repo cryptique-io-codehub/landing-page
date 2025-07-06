@@ -1866,19 +1866,6 @@ body:not(.dark-mode) .workflow-connector {
     overflow: hidden;
 }
 
-.carousel-track {
-    display: flex;
-    width: 100%;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Firefox */
-}
-
-.carousel-track::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
-}
-
 /* Sidebar Navigation - Collapsed */
 .app-sidebar {
     width: 52px;
@@ -2995,86 +2982,9 @@ body:not(.dark-mode) .workflow-connector {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 576px) {
     .interactive-features {
-        padding: 20px 0;
-        overflow-x: hidden;
-    }
-    
-    .feature-tabs {
-        flex-direction: column;
-        gap: 8px;
-        padding: 0 15px;
-    }
-    
-    .feature-tab {
-        width: 100%;
-        padding: 14px 10px;
-        font-size: 0.95rem;
-        justify-content: flex-start;
-        text-align: left;
-    }
-    
-    .feature-tab i {
-        margin-right: 12px;
-        font-size: 1.1rem;
-    }
-    
-    .feature-preview {
-        margin: 20px 10px 0;
-        border-radius: 12px;
-        overflow: hidden;
-    }
-    
-    .dashboard-content, 
-    .wallet-content, 
-    .intelligence-content {
-        transform: scale(0.85);
-        transform-origin: top left;
-        width: 118%;
-        margin-left: -9%;
-    }
-    
-    .ai-chat-container {
-        padding: 10px;
-    }
-    
-    .chat-messages {
-        max-height: 300px;
-    }
-    
-    .message {
-        padding: 10px 12px;
-        margin-bottom: 12px;
-        max-width: 85%;
-    }
-    
-    .message-avatar {
-        width: 28px;
-        height: 28px;
-        margin-right: 8px;
-    }
-    
-    .message-avatar i {
-        font-size: 0.9rem;
-    }
-    
-    .message-content {
-        font-size: 0.9rem;
-        line-height: 1.4;
-    }
-    
-    .chat-input-container {
-        padding: 10px;
-    }
-    
-    .chat-input {
-        padding: 10px 15px;
-        font-size: 0.9rem;
-    }
-    
-    .send-button {
-        padding: 0 15px;
+        padding: 30px 0;
     }
     
     .section-title {
