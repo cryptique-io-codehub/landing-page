@@ -7,6 +7,7 @@ class BlockchainVisualization {
         this.blocks = [];
         this.connections = [];
         this.clock = new THREE.Clock();
+        this.mainGroup = new THREE.Group();
         
         this.init();
         this.animate();
@@ -26,6 +27,7 @@ class BlockchainVisualization {
         this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
         this.renderer.toneMappingExposure = 1.0;
         this.container.appendChild(this.renderer.domElement);
+        this.scene.add(this.mainGroup);
         
         // Store references to materials for theme updates
         this.materials = [];
@@ -41,19 +43,6 @@ class BlockchainVisualization {
         
         // Create blockchain blocks
         this.createBlockchain();
-        
-        // Add orbit controls with auto-rotate
-        this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
-        this.controls.enableDamping = true;
-        this.controls.dampingFactor = 0.05;
-        this.controls.autoRotate = true;
-        this.controls.autoRotateSpeed = 0.5;
-        this.controls.enableZoom = true;
-        this.controls.enablePan = false;
-        
-        // Set initial target to center of the scene
-        this.controls.target.set(0, 0, 0);
-        this.controls.update();
         
         // Handle window resize
         window.addEventListener('resize', () => this.onWindowResize(), false);
@@ -204,7 +193,7 @@ class BlockchainVisualization {
         this.materials.push(material);
         this.materials.push(lineMaterial);
         
-        this.scene.add(block);
+        this.mainGroup.add(block);
         this.blocks.push(block);
         
         // Add data particles inside the block
@@ -298,7 +287,7 @@ class BlockchainVisualization {
         this.materials.push(material);
         
         const line = new THREE.Line(geometry, material);
-        this.scene.add(line);
+        this.mainGroup.add(line);
         this.connections.push({
             line,
             originalGeometry: geometry,
@@ -337,7 +326,7 @@ class BlockchainVisualization {
             particleGroup.add(particle);
         }
         
-        this.scene.add(particleGroup);
+        this.mainGroup.add(particleGroup);
         this.connections[this.connections.length - 1].particles = particleGroup;
     }
     
@@ -346,9 +335,13 @@ class BlockchainVisualization {
         
         const delta = this.clock.getDelta();
         const time = this.clock.getElapsedTime();
+
+        if (this.mainGroup) {
+            // Automatic rotation and movement
+            this.mainGroup.rotation.y += 0.0005;
+            this.mainGroup.position.y = Math.sin(time * 0.3) * 0.5;
+        }
         
-        // Update controls for smooth camera movement
-        this.controls.update();
         
         // Animate blocks
         this.blocks.forEach((block, index) => {
@@ -431,9 +424,6 @@ class BlockchainVisualization {
                 });
             }
         });
-        
-        // Update controls
-        this.controls.update();
         
         // Render scene
         this.renderer.render(this.scene, this.camera);
