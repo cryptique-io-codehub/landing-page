@@ -1,8 +1,39 @@
 document.addEventListener('DOMContentLoaded', function() {
     const track = document.querySelector('.testimonials-track');
     const cards = document.querySelectorAll('.testimonial-card');
+    const carousel = document.querySelector('.testimonials-carousel');
     let cardWidth = 0;
     let isTransitioning = false;
+    
+    // Handle individual card hover for flip effect (including cloned cards)
+    function attachCardHoverListeners() {
+        const allTestimonialCards = document.querySelectorAll('.testimonial-card');
+        allTestimonialCards.forEach(card => {
+            // Remove existing listeners to avoid duplicates
+            card.removeEventListener('mouseenter', handleCardMouseEnter);
+            card.removeEventListener('mouseleave', handleCardMouseLeave);
+            
+            // Add listeners
+            card.addEventListener('mouseenter', handleCardMouseEnter);
+            card.addEventListener('mouseleave', handleCardMouseLeave);
+        });
+    }
+    
+    function handleCardMouseEnter() {
+        // Pause carousel when hovering over individual cards
+        isTransitioning = true;
+        cancelAnimationFrame(animationId);
+    }
+    
+    function handleCardMouseLeave() {
+        // Resume carousel when leaving individual cards
+        setTimeout(() => {
+            if (!carousel.matches(':hover')) {
+                isTransitioning = false;
+                moveCarousel();
+            }
+        }, 100);
+    }
     
     // Clone first few cards and append to the end for seamless looping
     const firstCard = cards[0].cloneNode(true);
@@ -13,6 +44,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Get updated card list with clones
     const allCards = document.querySelectorAll('.testimonial-card');
     const cardCount = allCards.length;
+    
+    // Reattach listeners to cloned cards
+    attachCardHoverListeners();
     
     // Set initial position
     let currentPosition = 0;
@@ -67,8 +101,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 250);
     });
     
-    // Pause on hover
-    const carousel = document.querySelector('.testimonials-carousel');
+    // Pause on hover and handle flip interactions
+    // Pause carousel on hover
     carousel.addEventListener('mouseenter', () => {
         isTransitioning = true;
         cancelAnimationFrame(animationId);
@@ -78,6 +112,9 @@ document.addEventListener('DOMContentLoaded', function() {
         isTransitioning = false;
         moveCarousel();
     });
+    
+    // Initial attachment of listeners
+    attachCardHoverListeners();
     
     // Initialize
     updateCardWidth();

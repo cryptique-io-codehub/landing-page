@@ -5,6 +5,11 @@ const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const mobileMenu = document.querySelector('.mobile-menu');
 const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 const navLinks = document.querySelectorAll('.nav-link');
+const navbar = document.querySelector('.navbar');
+
+// Variables for scroll behavior
+let lastScrollTop = 0;
+let scrollTimeout;
 
 // Check for saved theme preference or use system preference
 const savedTheme = localStorage.getItem('theme');
@@ -74,10 +79,50 @@ function setActiveNavLink() {
     }
 }
 
+// Handle navbar scroll behavior
+function handleNavbarScroll() {
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    const isScrollingDown = currentScroll > lastScrollTop;
+    const isAtTop = currentScroll < 100;
+
+    // Clear the timeout if it exists
+    if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+    }
+
+    // Show navbar immediately when at top
+    if (isAtTop) {
+        navbar.classList.remove('nav-hidden');
+        navbar.classList.add('nav-visible');
+    } else {
+        // Handle scroll direction
+        if (isScrollingDown) {
+            navbar.classList.add('nav-hidden');
+            navbar.classList.remove('nav-visible');
+        } else {
+            navbar.classList.remove('nav-hidden');
+            navbar.classList.add('nav-visible');
+        }
+    }
+
+    // Set a timeout to ensure navbar stays visible briefly after scrolling stops
+    scrollTimeout = setTimeout(() => {
+        if (!isScrollingDown && !isAtTop) {
+            navbar.classList.remove('nav-hidden');
+            navbar.classList.add('nav-visible');
+        }
+    }, 150);
+
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+}
+
 // Event Listeners
 themeToggles.forEach(toggle => {
     toggle.addEventListener('click', toggleTheme);
 });
+
+// Add scroll event listener for navbar
+window.addEventListener('scroll', handleNavbarScroll, { passive: true });
 
 mobileMenuBtn.addEventListener('click', toggleMobileMenu);
 
