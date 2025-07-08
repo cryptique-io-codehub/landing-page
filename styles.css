@@ -337,7 +337,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    overflow: visible; /* Allow background to extend beyond hero */
     padding: 2rem 1.5rem 1rem;
     margin-bottom: 0;
 }
@@ -388,7 +388,7 @@ h1, h2, h3, h4, h5, h6 {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 120vh; /* Extend beyond hero to cover carousel area */
     z-index: 1;
     opacity: 0.9;
 }
@@ -555,24 +555,27 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
     width: 100%;
     background: transparent;
+    z-index: 2; /* Above hero background elements */
 }
 
 .carousel-container {
     width: 100%;
     margin: 0 auto;
     padding: 1rem 0;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(6px) saturate(130%);
+    -webkit-backdrop-filter: blur(6px) saturate(130%);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(200, 200, 200, 0.04));
+    box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.08);
     transition: all 0.3s ease;
 }
 
-.dark-mode .carousel-container {
-    background: rgba(0, 0, 0, 0.05);
-    border-top: 1px solid rgba(255, 255, 255, 0.02);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+[data-theme="dark"] .carousel-container {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(150, 150, 150, 0.02));
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.15);
 }
 
 .carousel-title {
@@ -587,33 +590,31 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .carousel-track {
-    overflow: hidden;
-    width: 100%;
-    position: relative;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: none; /* Remove default animation as we're using JS */
 }
 
 .carousel-slide {
     display: flex;
     align-items: center;
-    gap: 4rem;
-    animation: scroll 30s linear infinite;
-    width: max-content;
-    padding: 2rem 0;
+    gap: 120px; /* Increased gap for more spacing between logos */
+    padding: 0 60px; /* Increased padding proportionally */
 }
 
 .carousel-slide img {
-    height: 32px;
+    height: 40px;
     width: auto;
     object-fit: contain;
-    filter: grayscale(100%) brightness(0.8);
-    transition: all 0.3s ease;
-    opacity: 0.8;
+    filter: none;
+    opacity: 1;
+    transition: transform 0.3s ease;
+    margin: 0;
 }
 
 .carousel-slide img:hover {
-    filter: grayscale(0) brightness(1);
-    transform: scale(1.15);
-    opacity: 1;
+    transform: scale(1.1);
 }
 
 @keyframes scroll {
@@ -621,7 +622,7 @@ h1, h2, h3, h4, h5, h6 {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(calc(-50% - 1.5rem));
+        transform: translateX(-100%);
     }
 }
 

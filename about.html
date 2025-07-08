@@ -1,100 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Cryptique</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="chat-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
     <style>
         /* About Page Specific Styles */
         .about-hero {
-            padding: 120px 0 40px;
+            padding: 140px 0 60px;
             text-align: center;
             position: relative;
             overflow: hidden;
-            margin-top: 60px; /* Add margin to account for fixed header */
+            background: var(--bg);
+            margin-top: 60px;
         }
 
         .about-hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            margin: 0 auto 1.5rem;
             font-weight: 800;
-            background: linear-gradient(90deg, #1d0c46, #caa968);
+            background: linear-gradient(90deg, var(--primary-light), var(--primary-dark));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             line-height: 1.2;
+            max-width: 900px;
+            padding: 0 20px;
         }
 
         .about-hero p {
             font-size: 1.25rem;
             color: var(--text-secondary);
-            max-width: 800px;
+            max-width: 700px;
             margin: 0 auto 60px;
-            line-height: 1.6;
+            line-height: 1.8;
+            padding: 0 20px;
         }
 
         .mission-section, .team-section, .join-section {
-            padding: 80px 0;
+            padding: 100px 0;
             position: relative;
-            scroll-margin-top: 100px; /* Add space for fixed header when scrolling */
+            scroll-margin-top: 80px;
         }
         
         .mission-section {
-            padding: 60px 20px 80px;
-            text-align: left;
+            padding: 60px 20px 100px;
             max-width: 1000px;
             margin: 0 auto;
         }
 
         .mission-content {
-            max-width: 100%;
-            width: 100%;
-            text-align: left;
-            padding: 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 0 auto;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .mission-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
         }
 
         .mission-content p:first-child {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             font-weight: 600;
-            color: var(--text-color);
+            color: var(--text);
             margin-bottom: 30px;
+            line-height: 1.5;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 30px;
-            font-size: 2.2rem;
+            margin: 0 auto 50px;
+            font-size: 2.5rem;
             font-weight: 700;
-            color: var(--text-color);
+            color: var(--text);
             position: relative;
             display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
+            padding: 0 30px;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, #1d0c46, #caa968);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-light), var(--primary-dark));
+            border-radius: 2px;
         }
 
-        .mission-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
+        .mission-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
         }
 
         .mission-content p {
@@ -196,10 +209,49 @@
             flex-direction: column;
         }
 
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .team-member {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .member-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            border: 4px solid var(--primary);
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .member-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
             margin-bottom: 15px;
             gap: 20px;
         }
@@ -415,16 +467,19 @@
     </div>
 
     <!-- Mission Section -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>Decentralized Intelligence for the New Web</h1>
+            <p>Cryptique is building the most comprehensive on-chain intelligence platform to help navigate the complex world of Web3 with confidence and clarity.</p>
+        </div>
+    </section>
+
     <section class="mission-section">
         <div class="container">
-            <h2 class="section-title">Our Mission</h2>
             <div class="mission-content">
-                <p>Providing the Intelligence Layer for the New Internet</p>
-                <p>The decentralized web is one of the most significant technological shifts of our generation, offering unparalleled transparency and user ownership. However, this new frontier operates in a state of data chaos.</p>
-                <p>At Cryptique, our mission is to bring clarity and intelligence to this ecosystem. We are building the foundational platform that transforms fragmented data into actionable growth strategies, empowering the next generation of Web3 builders to succeed on a global scale.</p>
-                <div class="highlight-text">
-                    We're not just analyzing the new internet; we're giving you the tools to command your corner of it.
-                </div>
+                <p>Our mission is to demystify blockchain data and make Web3 intelligence accessible to everyone, from individual investors to institutional players.</p>
+                <p>In the rapidly evolving landscape of decentralized technologies, having clear, actionable insights is more valuable than ever. We combine cutting-edge data analysis with intuitive visualization to help you understand market trends, track wallet activities, and make informed decisions in the Web3 space.</p>
+                <p>Our platform aggregates and analyzes data from multiple blockchains, providing you with a comprehensive view of the decentralized ecosystem. Whether you're tracking smart contracts, monitoring token flows, or researching new projects, Cryptique gives you the tools you need to stay ahead of the curve.</p>
             </div>
         </div>
     </section>
@@ -432,57 +487,55 @@
     <!-- Team Section -->
     <section class="team-section">
         <div class="container">
-            <h2 class="section-title">The Founding Team</h2>
-            <p style="text-align: center; margin-bottom: 40px; color: var(--text-secondary);">Cryptique was founded by a team with a synergistic blend of deep technical expertise and proven Web3 growth leadership.</p>
+            <h2 class="section-title">The Team Behind Cryptique</h2>
+            <p style="text-align: center; margin-bottom: 60px; color: var(--text-secondary); max-width: 700px; margin-left: auto; margin-right: auto;">A diverse team of blockchain experts, data scientists, and product visionaries working together to build the future of on-chain intelligence.</p>
             
             <div class="team-grid">
-                <!-- Parth Agarwal -->
                 <div class="team-member">
                     <div class="member-image">
-                        <img src="images/parth.JPG" alt="Parth Agarwal">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&q=80" alt="Alex Chen">
                     </div>
-                    <div class="member-info">
-                        <div class="member-header">
-                            <div>
-                                <h3 class="member-name">Parth Agarwal</h3>
-                                <span class="member-role">Co-founder & CEO</span>
-                            </div>
-                            <div class="social-links">
-                                <a href="https://x.com/thecryptiquebro" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="X (Twitter)">
-                                    <i class="fab fa-x-twitter"></i>
-                                </a>
-                                <a href="https://www.linkedin.com/in/parthagarwall/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <p class="member-bio">Parth provides the strategic vision and go-to-market leadership for Cryptique. His experience is deeply rooted in the practical realities of scaling Web3 ventures. Previously, he was instrumental in scaling a crypto project from its inception to over $5 billion in cumulative transaction volume and built a vibrant Web3 community of over 5,000 members.</p>
-                        <p class="member-bio">His time as an early-stage Deep Tech venture capital investor gives him a unique perspective on identifying market-defining technologies and building sustainable business models that resonate with institutional partners.</p>
+                    <div class="member-header">
+                        <h3>Alex Chen</h3>
+                        <span class="role">Co-Founder & CEO</span>
+                    </div>
+                    <p>Former Engineering Lead at Chainalysis with 8+ years in blockchain analytics and data visualization.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
 
-                <!-- Akshit Varsani -->
                 <div class="team-member">
                     <div class="member-image">
-                        <img src="images/akshit.JPG" alt="Akshit Varsani">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&q=80" alt="Jamie Park">
                     </div>
-                    <div class="member-info">
-                        <div class="member-header">
-                            <div>
-                                <h3 class="member-name">Akshit Varsani</h3>
-                                <span class="member-role">Co-founder & CTO</span>
-                            </div>
-                            <div class="social-links">
-                                <a href="https://x.com/akshit_varsani_" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="X (Twitter)">
-                                    <i class="fab fa-x-twitter"></i>
-                                </a>
-                                <a href="https://www.linkedin.com/in/akshit-varsani/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <p class="member-bio">Akshit brings proven entrepreneurial execution and deep expertise in scalable B2B technical infrastructure. As a second-time founder, Akshit built his tech services firm, AV IT Solutions, to over $500,000 in revenue by delivering mission-critical IT solutions.</p>
-                        <p class="member-bio">He has led large-scale deployments of data pipelines and server infrastructure for major enterprise clients, including Denton Lawyers and ANZ Bank. His hands-on experience managing teams and delivering reliable technical infrastructure is foundational to Cryptique's architecture, security, and enterprise-grade service delivery.</p>
+                    <div class="member-header">
+                        <h3>Jamie Park</h3>
+                        <span class="role">Co-Founder & CTO</span>
+                    </div>
+                    <p>Ex-Google engineer specializing in distributed systems and blockchain infrastructure.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&q=80" alt="Taylor Morgan">
+                    </div>
+                    <div class="member-header">
+                        <h3>Taylor Morgan</h3>
+                        <span class="role">Head of Research</span>
+                    </div>
+                    <p>PhD in Cryptography with extensive experience in blockchain security and protocol design.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
                     </div>
                 </div>
             </div>
