@@ -14,100 +14,85 @@
     <style>
         /* About Page Specific Styles */
         .about-hero {
-            padding: 140px 0 60px;
+            padding: 120px 0 40px;
             text-align: center;
             position: relative;
             overflow: hidden;
-            background: var(--bg);
-            margin-top: 60px;
+            margin-top: 60px; /* Add margin to account for fixed header */
         }
 
         .about-hero h1 {
-            font-size: 3.5rem;
-            margin: 0 auto 1.5rem;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
             font-weight: 800;
-            background: linear-gradient(90deg, var(--primary-light), var(--primary-dark));
+            background: linear-gradient(90deg, #1d0c46, #caa968);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             line-height: 1.2;
-            max-width: 900px;
-            padding: 0 20px;
         }
 
         .about-hero p {
             font-size: 1.25rem;
             color: var(--text-secondary);
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto 60px;
-            line-height: 1.8;
-            padding: 0 20px;
+            line-height: 1.6;
         }
 
         .mission-section, .team-section, .join-section {
-            padding: 100px 0;
+            padding: 80px 0;
             position: relative;
-            scroll-margin-top: 80px;
+            scroll-margin-top: 100px; /* Add space for fixed header when scrolling */
         }
         
         .mission-section {
-            padding: 60px 20px 100px;
+            padding: 60px 20px 80px;
+            text-align: left;
             max-width: 1000px;
             margin: 0 auto;
         }
 
         .mission-content {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 40px;
-            margin: 0 auto;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-        }
-
-        .mission-content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            max-width: 100%;
+            width: 100%;
+            text-align: left;
+            padding: 0;
         }
 
         .mission-content p:first-child {
-            font-size: 1.75rem;
+            font-size: 1.5rem;
             font-weight: 600;
-            color: var(--text);
+            color: var(--text-color);
             margin-bottom: 30px;
-            line-height: 1.5;
         }
 
         .section-title {
             text-align: center;
-            margin: 0 auto 50px;
-            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
             font-weight: 700;
-            color: var(--text);
+            color: var(--text-color);
             position: relative;
             display: inline-block;
-            padding: 0 30px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -15px;
+            bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-light), var(--primary-dark));
-            border-radius: 2px;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #1d0c46, #caa968);
         }
 
-        .mission-content p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
+        .mission-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
         }
 
         .mission-content p {
@@ -209,49 +194,10 @@
             flex-direction: column;
         }
 
-        /* Team Section */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .team-member {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 30px;
-            text-align: center;
-            transition: var(--transition);
-            height: 100%;
-        }
-
-        .team-member:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .member-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            overflow: hidden;
-            border: 4px solid var(--primary);
-        }
-
-        .member-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
         .member-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
             margin-bottom: 15px;
             gap: 20px;
         }
@@ -466,104 +412,88 @@
         </div>
     </div>
 
-    <!-- Mission Section -->
-    <section class="about-hero">
-        <div class="container">
-            <h1>Decentralized Intelligence for the New Web</h1>
-            <p>Cryptique is building the most comprehensive on-chain intelligence platform to help navigate the complex world of Web3 with confidence and clarity.</p>
-        </div>
-    </section>
-
-    <section class="mission-section">
-        <div class="container">
-            <div class="mission-content">
-                <p>Our mission is to demystify blockchain data and make Web3 intelligence accessible to everyone, from individual investors to institutional players.</p>
-                <p>In the rapidly evolving landscape of decentralized technologies, having clear, actionable insights is more valuable than ever. We combine cutting-edge data analysis with intuitive visualization to help you understand market trends, track wallet activities, and make informed decisions in the Web3 space.</p>
-                <p>Our platform aggregates and analyzes data from multiple blockchains, providing you with a comprehensive view of the decentralized ecosystem. Whether you're tracking smart contracts, monitoring token flows, or researching new projects, Cryptique gives you the tools you need to stay ahead of the curve.</p>
+    <main>
+        <!-- Mission Section -->
+        <section id="mission" class="mission-section">
+            <div class="container">
+                <h2 class="section-title">Our Mission</h2>
+                <div class="mission-content">
+                    <p>Our mission is to demystify the complexities of the blockchain and make on-chain intelligence accessible to everyone. We believe that by providing clear, actionable insights, we can empower individuals and organizations to navigate the decentralized world with confidence.</p>
+                    <p class="highlight-text">We are building the most comprehensive on-chain intelligence platform to help you thrive in the new era of digital assets.</p>
+                    <p>In a world of ever-expanding data, clarity is paramount. Cryptique cuts through the noise, offering a curated, real-time view of the trends, transactions, and transformations shaping the future of Web3. Whether you're an investor, a developer, or an enthusiast, our platform is designed to be your trusted guide.</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Team Section -->
-    <section class="team-section">
-        <div class="container">
-            <h2 class="section-title">The Team Behind Cryptique</h2>
-            <p style="text-align: center; margin-bottom: 60px; color: var(--text-secondary); max-width: 700px; margin-left: auto; margin-right: auto;">A diverse team of blockchain experts, data scientists, and product visionaries working together to build the future of on-chain intelligence.</p>
-            
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&q=80" alt="Alex Chen">
+        <!-- Founding Team Section -->
+        <section id="team" class="team-section">
+            <div class="container">
+                <h2 class="section-title">Meet the Founding Team</h2>
+                <div class="team-grid">
+                    <!-- Parth Agarwal -->
+                    <div class="team-member">
+                        <div class="member-image">
+                            <img src="images/parth.png" alt="Parth Agarwal">
+                        </div>
+                        <div class="member-info">
+                            <div class="member-header">
+                                <div>
+                                    <h3 class="member-name">Parth Agarwal</h3>
+                                    <span class="member-role">Co-Founder & CEO</span>
+                                </div>
+                                <div class="social-links">
+                                    <a href="https://www.linkedin.com/in/parth-agarwal-25256518a/" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="https://x.com/parthagarwal_9" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-x-twitter"></i></a>
+                                </div>
+                            </div>
+                            <p class="member-bio">Parth is a visionary leader with a deep understanding of market dynamics and a passion for decentralized technologies. His experience in strategic growth and product management drives Cryptique's mission to deliver an unparalleled intelligence platform.</p>
+                        </div>
                     </div>
-                    <div class="member-header">
-                        <h3>Alex Chen</h3>
-                        <span class="role">Co-Founder & CEO</span>
-                    </div>
-                    <p>Former Engineering Lead at Chainalysis with 8+ years in blockchain analytics and data visualization.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&q=80" alt="Jamie Park">
-                    </div>
-                    <div class="member-header">
-                        <h3>Jamie Park</h3>
-                        <span class="role">Co-Founder & CTO</span>
-                    </div>
-                    <p>Ex-Google engineer specializing in distributed systems and blockchain infrastructure.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&q=80" alt="Taylor Morgan">
-                    </div>
-                    <div class="member-header">
-                        <h3>Taylor Morgan</h3>
-                        <span class="role">Head of Research</span>
-                    </div>
-                    <p>PhD in Cryptography with extensive experience in blockchain security and protocol design.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-icon" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                    <!-- Akshit Varsani -->
+                    <div class="team-member">
+                        <div class="member-image">
+                            <img src="images/akshit.png" alt="Akshit Varsani">
+                        </div>
+                        <div class="member-info">
+                            <div class="member-header">
+                                <div>
+                                    <h3 class="member-name">Akshit Varsani</h3>
+                                    <span class="member-role">Co-Founder & CTO</span>
+                                </div>
+                                <div class="social-links">
+                                    <a href="https://www.linkedin.com/in/akshit-varsani-522a75195/" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="https://x.com/AkshitVarsani" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-x-twitter"></i></a>
+                                </div>
+                            </div>
+                            <p class="member-bio">Akshit is a seasoned engineer with expertise in data science, machine learning, and blockchain architecture. He leads the technological innovation at Cryptique, building a robust and scalable platform that turns raw data into actionable intelligence.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Join Section -->
-    <section class="join-section">
-        <div class="container">
-            <h2 class="section-title">Join Us in Building the Future of Web3 Intelligence</h2>
-            <div class="join-content">
-                <p>The future of the decentralized web will be defined by those who can navigate its complexity with clarity and intelligence. We are always looking for passionate builders, data scientists, and community leaders to join us on our mission.</p>
-                
-                <div class="cta-cards">
-                    <div class="cta-card">
-                        <h3>Partnerships & Inquiries</h3>
-                        <p>Let's build the future together</p>
-                        <a href="mailto:partnerships@cryptique.io" class="btn btn-secondary">partnerships@cryptique.io</a>
-                    </div>
-                    <div class="cta-card">
-                        <h3>Follow Our Journey</h3>
-                        <p>Stay updated with our latest developments</p>
-                        <a href="https://x.com/Cryptiqueio" target="_blank" rel="noopener noreferrer" class="btn btn-outline">@Cryptiqueio</a>
+        <!-- Join Us Section -->
+        <section id="join" class="join-section">
+            <div class="container">
+                <h2 class="section-title">Join Our Mission</h2>
+                <div class="join-content">
+                    <p>The future of the decentralized web is being built today. We are always looking for passionate builders, data scientists, and community leaders to join us on our journey. Let's shape the future of on-chain intelligence together.</p>
+                    <div class="cta-cards">
+                        <div class="cta-card">
+                            <h3>Partnerships & Inquiries</h3>
+                            <p>Let's build the future together.</p>
+                            <a href="mailto:partnerships@cryptique.io" class="btn btn-secondary">partnerships@cryptique.io</a>
+                        </div>
+                        <div class="cta-card">
+                            <h3>Follow Our Journey</h3>
+                            <p>Stay updated with our latest developments.</p>
+                            <a href="https://x.com/Cryptiqueio" target="_blank" rel="noopener noreferrer" class="btn btn-outline">@Cryptiqueio</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer with Blockchain Background -->
     <div class="footer-divider"></div>
