@@ -13,6 +13,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <style>
+        /* Custom colors for section title */
+        .how-it-works .section-title span {
+            color: #1d0c46;
+        }
+        
+        [data-theme="dark"] .how-it-works .section-title span {
+            color: #caa968;
+        }
+        
+        /* Fix for Works for Everyone section visibility in dark mode */
+        [data-theme="dark"] .new-section .glass-container {
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            background: var(--glass-bg);
+        }
+    </style>
     <script>
         var script = document.createElement('script');
         script.src = 'https://cdn.cryptique.io/scripts/analytics/1.0.1/cryptique.script.min.js';  
@@ -32,7 +49,7 @@
                 <a href="/" class="nav-link active">Home</a>
                 <a href="#interactive-features" class="nav-link">Why Us</a>
                 <a href="https://cryptique.gitbook.io/cryptique/" target="_blank" rel="noopener noreferrer" class="nav-link">Docs</a>
-                <a href="https://blogs.cryptique.io" target="_blank" rel="noopener noreferrer" class="nav-link">Blogs</a>
+                <a href="blog/blog.html" class="nav-link">Blogs</a>
             </div>
             <div class="nav-buttons">
                 <a href="https://app.cryptique.io/login" class="btn btn-login">Log In</a>
@@ -53,7 +70,7 @@
         <a href="/" class="mobile-nav-link active">Home</a>
         <a href="#interactive-features" class="mobile-nav-link">Why Us</a>
         <a href="https://cryptique.gitbook.io/cryptique/" target="_blank" rel="noopener noreferrer" class="mobile-nav-link">Docs</a>
-        <a href="https://blogs.cryptique.io" target="_blank" rel="noopener noreferrer" class="mobile-nav-link">Blogs</a>
+        <a href="blog/blog.html" class="mobile-nav-link">Blogs</a>
         <div class="mobile-theme-toggle">
             <div class="theme-toggle" id="mobileThemeToggle">
                 <i class="fas fa-moon"></i>
@@ -127,22 +144,17 @@
                     <span id="rotating-question">Don't know WHERE your users are coming from?</span>
                     <span class="highlight">Not anymore.</span>
                 </h2>
-                <div class="feature-tabs">
-                    <button class="feature-tab active" data-tab="attribution">
-                        <i class="fas fa-project-diagram"></i>
-                        <span>Multi touch attribution</span>
-                    </button>
-                    <button class="feature-tab" data-tab="wallet">
-                        <i class="fas fa-wallet"></i>
-                        <span>Wallet intelligence</span>
-                    </button>
-                    <button class="feature-tab" data-tab="intelligence">
-                        <i class="fas fa-brain"></i>
-                        <span>Amplified Intelligence</span>
-                    </button>
-                </div>
             </div>
-            <div class="feature-preview glass-container" style="padding: 0; overflow: hidden;">
+            <div class="feature-sections">
+                <!-- Attribution Feature -->
+                <div class="feature-section glass-container">
+                    <div class="feature-content">
+                        <div class="feature-title">
+                            <h3>Multi Touch Attribution</h3>
+                            <p>Connect every marketing dollar to its on-chain conversion. See the full journey from first click to final transaction, allowing you to finally prove your true ROI and optimize your spend with confidence.</p>
+                        </div>
+                    </div>
+                    <div class="feature-preview" style="padding: 0; overflow: hidden;">
                 <!-- Dashboard Content (Default) -->
                 <div class="dashboard-content">
                     <div class="app-container">
@@ -374,8 +386,19 @@
                 </div>
             </div>
         </div>
-        <!-- Wallet Intelligence Content -->
-        <div class="wallet-content" style="display: none;">
+                    </div>
+                </div>
+
+                <!-- Wallet Intelligence Feature -->
+                <div class="feature-section glass-container feature-section--reverse">
+                    <div class="feature-content">
+                        <div class="feature-title">
+                            <h3>Wallet Intelligence</h3>
+                            <p>Fuse on-chain and off-chain data to transform anonymous wallet addresses into rich user profiles. Segment your audience with unparalleled precision and act on real behavior, not just transaction history.</p>
+                        </div>
+                    </div>
+                    <div class="feature-preview" style="padding: 0; overflow: hidden;">
+                        <div class="wallet-content">
             <div class="app-container">
                 <!-- App Header -->
                 <header class="app-header">
@@ -600,10 +623,20 @@
                     </main>
                 </div>
             </div>
-        </div>
-        
-        <!-- Amplified Intelligence Content -->
-        <div class="intelligence-content" style="display: none;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Amplified Intelligence Feature -->
+                <div class="feature-section glass-container">
+                    <div class="feature-content">
+                        <div class="feature-title">
+                            <h3>Amplified Intelligence</h3>
+                            <p>Stop staring at static dashboards. Ask complex questions in plain English and get strategic, AI-powered answers and growth recommendations, not just raw data points.</p>
+                        </div>
+                    </div>
+                    <div class="feature-preview" style="padding: 0; overflow: hidden;">
+                        <div class="intelligence-content">
             <div class="app-container">
                 <!-- App Header -->
                 <header class="app-header">
@@ -779,7 +812,10 @@
     <!-- How Cryptique Works Section -->
 <section class="how-it-works">
     <div class="container">
-        <h2 class="section-title">How CRYPTIQUE Works</h2>
+        <h2 class="section-title">
+            <small style="font-size: 0.45em; display: block; margin-bottom: 0.5rem;">THE TURNING POINT OF WEB3 GROWTH</small>
+            <span style="display: block;">Cryptique turns all your user data into<br>actionable growth strategy</span>
+        </h2>
         <div class="workflow-container">
             <div class="workflow-card glass">
                    <div class="campaign-tag">TRACK CAMPAIGNS</div>
@@ -1024,10 +1060,16 @@
                     <p><strong>Your data telling you what happened, but not why?</strong></p>
                     <p>Go from complex data to strategic answers and growth recommendations with a single question.</p>
                 </div>
+                                        </div>
+                                    </main>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 <!-- Works for Everyone Section -->
 <section class="new-section">
@@ -1045,13 +1087,13 @@
                     <div class="carousel-track carousel-track-4"></div>
                     <div class="carousel-track carousel-track-5"></div>
                     <div class="carousel-track carousel-track-6"></div>
+                                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Testimonials Section -->
+    <!-- Testimonials Section -->
 <section class="testimonials-section">
     <div class="container">
         <h2 class="section-title">What Our <span class="highlight-word">Clients Say</span></h2>
@@ -1264,7 +1306,7 @@
                         <h3>Resources</h3>
                         <ul>
                             <li><a href="https://cryptique.gitbook.io/cryptique/" target="_blank" rel="noopener noreferrer">Docs</a></li>
-                            <li><a href="#">Blogs</a></li>
+                            <li><a href="blog/blog.html">Blogs</a></li>
                             <li><a href="#">Technical Whitepaper</a></li>
                         </ul>
                     </div>
@@ -1294,8 +1336,9 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/math/ConvexHull.js"></script>
     <!-- Main Scripts -->
     <script src="blockchain-visualization.js"></script>
-    <script src="interactive-features.js"></script>
+    <script src="rotating-questions.js"></script>
     <script src="testimonials-carousel.js"></script>
+    <script src="feature-scroll.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

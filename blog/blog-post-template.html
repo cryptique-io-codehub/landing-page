@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[BLOG_TITLE] - Cryptique Blog</title>
+    <meta name="description" content="[BLOG_DESCRIPTION]">
+    <meta name="keywords" content="[BLOG_KEYWORDS]">
+    <meta name="author" content="[AUTHOR_NAME]">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://cryptique.io/blog/[BLOG_SLUG]/">
+    <meta property="og:title" content="[BLOG_TITLE]">
+    <meta property="og:description" content="[BLOG_DESCRIPTION]">
+    <meta property="og:image" content="https://cryptique.io/blog/[BLOG_SLUG]/images/[BLOG_IMAGE]">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://cryptique.io/blog/[BLOG_SLUG]/">
+    <meta property="twitter:title" content="[BLOG_TITLE]">
+    <meta property="twitter:description" content="[BLOG_DESCRIPTION]">
+    <meta property="twitter:image" content="https://cryptique.io/blog/[BLOG_SLUG]/images/[BLOG_IMAGE]">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../blog-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="../../images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon">
+    <script>
+        var script = document.createElement('script');
+        script.src = 'https://cdn.cryptique.io/scripts/analytics/1.0.1/cryptique.script.min.js';  
+        script.setAttribute('site-id', '6408961d-6f30-4d20-afe3-db70b620158d');
+        document.head.appendChild(script);
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../../images/cryptique-logo-navbar-light-mode.png" alt="Cryptique Logo" class="logo-light">
+                <img src="../../images/cryptique-logo-navbar-dark-mode.png" alt="Cryptique Logo" class="logo-dark">
+            </div>
+            <div class="nav-links">
+                <a href="../../index.html" class="nav-link">Home</a>
+                <a href="../../index.html#interactive-features" class="nav-link">Why Us</a>
+                <a href="https://cryptique.gitbook.io/cryptique/" target="_blank" rel="noopener noreferrer" class="nav-link">Docs</a>
+                <a href="../blog.html" class="nav-link active">Blogs</a>
+            </div>
+            <div class="nav-buttons">
+                <a href="https://app.cryptique.io/login" class="btn btn-login">Log In</a>
+                <a href="https://calendly.com/founders-cryptique/book-a-demo" target="_blank" rel="noopener noreferrer" class="btn btn-demo">Request a Demo</a>
+                <div class="theme-toggle nav-theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </div>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Post Content -->
+    <main class="blog-post-container">
+        <div class="blog-post-header">
+            <div class="blog-post-meta">
+                <span class="blog-category">[CATEGORY]</span>
+                <span class="blog-date">[DATE]</span>
+                <span class="blog-read-time">[READ_TIME] min read</span>
+            </div>
+            <h1 class="blog-post-title">[BLOG_TITLE]</h1>
+            <div class="blog-post-author">
+                <div class="author-avatar">[AUTHOR_INITIAL]</div>
+                <div class="author-info">
+                    <span class="author-name">[AUTHOR_NAME]</span>
+                    <span class="author-role">[AUTHOR_ROLE]</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="blog-post-featured-image">
+            <img src="images/[BLOG_IMAGE]" alt="[BLOG_TITLE]">
+        </div>
+
+        <div class="blog-post-content">
+            <!-- Blog content goes here -->
+            <p>[BLOG_CONTENT]</p>
+        </div>
+
+        <div class="blog-post-footer">
+            <div class="blog-post-tags">
+                <span class="tag">[TAG1]</span>
+                <span class="tag">[TAG2]</span>
+                <span class="tag">[TAG3]</span>
+            </div>
+            <div class="blog-post-share">
+                <span>Share this post:</span>
+                <a href="#" class="share-link twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="share-link linkedin"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="share-link facebook"><i class="fab fa-facebook"></i></a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="../../images/cryptique-logo-light-mode.png" alt="Cryptique Logo" class="footer-logo-light">
+                        <img src="../../images/cryptique-logo-dark-mode.png" alt="Cryptique Logo" class="footer-logo-dark">
+                    </div>
+                    <p class="footer-description">Building the foundational infrastructure for Web3 marketing and analytics.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="../../index.html#interactive-features">Features</a></li>
+                        <li><a href="https://cryptique.gitbook.io/cryptique/" target="_blank">Documentation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="../../about.html">About</a></li>
+                        <li><a href="../blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="../../privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="../../terms-of-service.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Cryptique. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../theme.js"></script>
+    <script src="../../script.js"></script>
+</body>
+</html> 
